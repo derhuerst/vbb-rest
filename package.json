@@ -35,7 +35,9 @@
 	"dependencies": {
 		"coffee-script":		"^1.9.3",
 		"hapi":					"^8.8.1",
-		"vbb":					"^0.1.1"
+		"vbb":					"^0.1.1",
+		"boom":					"^2.8.0",
+		"underscore.parse":		"^0.1.1"
 	},
 	"directories": {
 		"lib": "./src"
