@@ -22,6 +22,10 @@ module.exports =
 	onRoutes:		onRoutes
 	onDepartures:	onDepartures
 
+	onOptions:		(req, reply) ->
+		response = reply 'GET'
+		response.header 'Accept', 'GET'
+
 
 
 	init: (accessId, port) ->
@@ -53,6 +57,11 @@ module.exports =
 			method:		'GET'
 			path:		'/departures/{id}'
 			handler:	@onDepartures
+
+		@server.route
+			method:		'OPTIONS'
+			path:		'/'
+			handler:	@onOptions
 
 		return this
 
