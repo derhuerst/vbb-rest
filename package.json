@@ -33,7 +33,9 @@
 	},
 	"license": "MIT",
 	"dependencies": {
-		"coffee-script":		"^1.9.3"
+		"coffee-script":		"^1.9.3",
+		"hapi":					"^8.8.1",
+		"vbb":					"^0.1.1"
 	},
 	"directories": {
 		"lib": "./src"
