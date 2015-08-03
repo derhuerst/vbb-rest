@@ -1,0 +1,41 @@
+{
+	"name": "vbb-rest",
+	"description": "An HTTP REST server for Berlin & Brandenburg public transport.",
+	"version": "0.1.0",
+	"main": "src/Server.coffee",
+	"keywords": [
+		"vbb",
+		"rest",
+		"http",
+		"server",
+		"berlin",
+		"brandenburg",
+		"public transport",
+		"api",
+		"hafas",
+		"json",
+		"rest",
+		"fahrinfo",
+		"javascript"
+	],
+	"author": {
+		"name": "Jannis R",
+		"email": "mail@jannisr.de",
+		"url": "http://jannisr.de"
+	},
+	"homepage": "https://github.com/derhuerst/vbb-rest",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/derhuerst/vbb-rest.git"
+	},
+	"bugs": {
+		"url": "https://github.com/derhuerst/vbb-rest/issues"
+	},
+	"license": "MIT",
+	"dependencies": {
+		"coffee-script":		"^1.9.3"
+	},
+	"directories": {
+		"lib": "./src"
+	}
+}
