@@ -24,6 +24,12 @@ Get an [API token](http://www.vbb.de/de/article/webservices/schnittstellen-fuer-
 vbb-rest -t <token>   # run the server in "live mode"
 ```
 
+or
+
+```shell
+vbb-restd -t <token>   # start/stop the server in the background
+```
+
 
 ### `vbb-rest`
 
@@ -36,6 +42,36 @@ Arguments:
 
 Options:
   -p, --port  Where the casket server will listen. Default: 8000
+```
+
+
+### `vbb-restd`
+
+```
+Usage:
+vbb-restd start <token> [-p <port>]
+vbb-restd stop <id>
+
+Arguments:
+  token       The VBB API server access token.
+  id          The server process id.
+
+Options:
+  -p, --port  Where the server will listen. Default: 8000
+```
+
+When you start a server, it will print its process id.
+
+```shell
+$ vbb-restd start <token> -p 8888
+info: The server <id> has been started.
+```
+
+You can use thie id later use to stop the server.
+
+```shell
+$ vbb-restd stop <id>.
+info: The server <id> has been stopped.
 ```
 
 

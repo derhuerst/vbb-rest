@@ -40,7 +40,9 @@
 		"hapi":					"^8.8.1",
 		"vbb":					"^0.1.1",
 		"boom":					"^2.8.0",
-		"underscore.parse":		"^0.1.1"
+		"underscore.parse":		"^0.1.1",
+		"pm2":					"^0.14.5",
+		"shortid":				"^2.2.2"
 	},
 	"directories": {
 		"docs": "./docs",
