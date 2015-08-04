@@ -14,11 +14,11 @@ module.exports = (req, reply) ->
 	if req.query.results?
 		options.results = parseInt req.query.results
 	if req.query.stations?
-		options.products.stations = parse req.query.stations
+		options.stations = parse req.query.stations
 	if req.query.addresses?
-		options.products.addresses = parse req.query.addresses
+		options.addresses = parse req.query.addresses
 	if req.query.pois?
-		options.products.pois = parse req.query.pois
+		options.pois = parse req.query.pois
 	options.products = {}
 	for product in [
 		'suburban',
