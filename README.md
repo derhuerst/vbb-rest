@@ -42,7 +42,7 @@ Options:
 
 ## Documentation
 
-- [*vbb-rest* documentation](docs/index.md)
+- [*vbb-rest* HTTP documentation](docs/index.md)
 
 
 
