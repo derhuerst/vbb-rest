@@ -1,0 +1,42 @@
+#!/usr/bin/env coffee
+
+
+
+minimist =		require 'minimist'
+argv = minimist process.argv.slice 2
+
+
+
+help = [
+	'Usage:'
+	'vbb-rest -t <token> [-p <port>]'
+	''
+	'Options:'
+	'  -t, --token The VBB APi server access token.'
+	'  -p, --port  Where the casket server will listen. Default: 8000'
+].join '\n'
+
+if argv.h is true or argv.help is true
+	process.stdout.write help
+	process.exit 0
+
+
+
+options =
+	port:		8000
+
+if argv.t? then options.token = argv.t
+if argv.token? then options.token = argv.token
+
+if argv.p? then options.port = argv.p
+if argv.port? then options.port = argv.port
+
+
+
+Server =		require '../src/Server'
+winston =		require 'winston'   # todo: consider using `bunyan`
+
+server = Object.create Server
+server.init options.token, options.port, winston
+server.listen () ->
+	winston.info "Server listening on #{options.port}."

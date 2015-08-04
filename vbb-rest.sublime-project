@@ -4,12 +4,17 @@
 			"path": ".",
 			"name": "vbb-rest",
 			"folder_exclude_patterns": [
+				"bin",
 				"src",
 				"node_modules"
 			],
 			"file_exclude_patterns": [
 				"*.sublime-workspace"
 			]
+		},
+		{
+			"path": "./bin",
+			"name": "bin"
 		},
 		{
 			"path": "./src",
