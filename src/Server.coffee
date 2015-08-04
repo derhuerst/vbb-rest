@@ -13,10 +13,10 @@ module.exports =
 
 
 
-	accessId:		null
 	server:			null
-
 	client:			null   # VBB api client
+
+	logger:			null
 
 	onLocations:	onLocations
 	onRoutes:		onRoutes
@@ -28,9 +28,9 @@ module.exports =
 
 
 
-	init: (accessId, port) ->
-		if not accessId? then throw new Error 'Missing `accessId` parameter'
-		@client = vbb accessId
+	init: (token, port, logger) ->
+		if not token? then throw new Error 'Missing `token` parameter'
+		@client = vbb token
 
 		if not port? then throw new Error 'Missing `port` parameter'
 		@server = new hapi.Server()
@@ -38,10 +38,17 @@ module.exports =
 			port:	port
 		@server.bind this
 
+		if not logger? then throw new Error 'Missing `logger` parameter'
+		@logger = logger
+
 		# todo: `bind` option
 		# todo: `auth` option
 		# todo: `cors` option
 		# todo: `validate` option?
+
+		# todo: API client timeouts
+		# todo: http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api#rate-limiting
+		# todo: http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api#authentication
 
 		@server.route
 			method:		'GET'
@@ -69,5 +76,8 @@ module.exports =
 
 	listen: (cb) ->
 		@server.start cb
+		return this
 
+	stop: (cb) ->
+		@server.stop cb
 		return this
