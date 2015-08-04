@@ -5,6 +5,7 @@
 			"name": "vbb-rest",
 			"folder_exclude_patterns": [
 				"bin",
+				"docs",
 				"src",
 				"node_modules"
 			],
@@ -19,6 +20,10 @@
 		{
 			"path": "./src",
 			"name": "src"
+		},
+		{
+			"path": "./docs",
+			"name": "docs"
 		}
 	],
 	"settings": {

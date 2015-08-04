@@ -43,6 +43,7 @@
 		"underscore.parse":		"^0.1.1"
 	},
 	"directories": {
+		"docs": "./docs",
 		"bin": "./bin",
 		"lib": "./src"
 	}
