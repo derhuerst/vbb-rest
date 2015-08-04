@@ -29,10 +29,12 @@ vbb-rest -t <token>   # run the server in "live mode"
 
 ```
 Usage:
-vbb-rest -t <token> [-p <port>]
+vbb-rest <token> [-p <port>]
+
+Arguments:
+  token       The VBB API server access token.
 
 Options:
-  -t, --token The VBB API server access token.
   -p, --port  Where the casket server will listen. Default: 8000
 ```
 

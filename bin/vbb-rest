@@ -11,9 +11,11 @@ help = [
 	'Usage:'
 	'vbb-rest -t <token> [-p <port>]'
 	''
+	'Arguments:'
+	'  token       The VBB API server access token.'
+	''
 	'Options:'
-	'  -t, --token The VBB APi server access token.'
-	'  -p, --port  Where the casket server will listen. Default: 8000'
+	'  -p, --port  Where the server will listen. Default: 8000'
 ].join '\n'
 
 if argv.h is true or argv.help is true
@@ -25,8 +27,6 @@ if argv.h is true or argv.help is true
 options =
 	port:		8000
 
-if argv.t? then options.token = argv.t
-if argv.token? then options.token = argv.token
 
 if argv.p? then options.port = argv.p
 if argv.port? then options.port = argv.port
@@ -37,6 +37,6 @@ Server =		require '../src/Server'
 winston =		require 'winston'   # todo: consider using `bunyan`
 
 server = Object.create Server
-server.init options.token, options.port, winston
+server.init argv._[0], port, winston
 server.listen () ->
 	winston.info "Server listening on #{options.port}."
