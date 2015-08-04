@@ -28,38 +28,35 @@ Connection: close
 
 ```json
 [
-    {
-        stop: 9007102,
-        type: 'suburban',
-        line: 'S25',
-        direction: 'S+U Potsdamer Platz Bhf (Berlin)',
-        when: '2015-08-04T02:24:00.000Z',
-        realtime: '2015-08-04T02:24:00.000Z'
-    },
-    {
-        stop: 9007102,
-        type: 'suburban',
-        line: 'S41',
-        direction: 'Ringbahn S 41',
-        when: '2015-08-04T02:25:00.000Z',
-        realtime: '2015-08-04T02:25:00.000Z'
-    },
-    {
-        stop: 9007102,
-        type: 'subway',
-        line: 'U8',
-        direction: 'S+U Wittenau (Berlin) [U8]',
-        when: '2015-08-04T02:26:00.000Z',
-        realtime: '2015-08-04T02:28:00.000Z'
-    },
-    {
-        stop: 9007102,
-        type: 'suburban',
-        line: 'S2',
-        direction: 'S Bernau Bhf',
-        when: '2015-08-04T02:26:00.000Z',
-        realtime: '2015-08-04T02:26:00.000Z'
-    }
+	{
+		"stop": 9007102,
+		"line": "S25",
+		"type": "suburban",
+		"direction": "S+U Potsdamer Platz Bhf (Berlin)",
+		"when": "2015-08-04T02:24:00.000Z",
+		"realtime": "2015-08-04T02:24:00.000Z"
+	}, {
+		"stop": 9007102,
+		"line": "S41",
+		"type": "suburban",
+		"direction": "Ringbahn S 41",
+		"when": "2015-08-04T02:25:00.000Z",
+		"realtime": "2015-08-04T02:25:00.000Z"
+	}, {
+		"stop": 9007102,
+		"line": "U8",
+		"type": "subway",
+		"direction": "S+U Wittenau (Berlin) [U8]",
+		"when": "2015-08-04T02:26:00.000Z",
+		"realtime": "2015-08-04T02:28:00.000Z"
+	}, {
+		"stop": 9007102,
+		"line": "S2",
+		"type": "suburban",
+		"direction": "S Bernau Bhf",
+		"when": "2015-08-04T02:26:00.000Z",
+		"realtime": "2015-08-04T02:26:00.000Z"
+	}
 ]
 ```
 

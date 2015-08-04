@@ -28,55 +28,62 @@ Connection: close
 
 ```json
 [
-    {
-        duration: 1140000,
-        parts: [
-            {
-                from: {
-                    title: 'S+U Alexanderplatz Bhf (Berlin)',
-                    latitude: 52.521508,
-                    longitude: 13.411267,
-                    id: 9100003,
-                    type: 'station',
-                    notes: { lift: true, escalator: true },
-                    when: '2015-08-04T02:19:00.000Z'
-                },
-                to: {
-                    title: 'S+U Zoologischer Garten Bhf (Berlin)',
-                    latitude: 52.506882,
-                    longitude: 13.332926,
-                    id: 9023201,
-                    type: 'station',
-                    notes: { lift: true, escalator: true },
-                    when: '2015-08-04T02:30:00.000Z'
-                },
-                transport: 'public',
-                type: 'regional',
-                line: 'RE2',
-                direction: 'Wismar, Bahnhof',
-                notes: {}
-            },
-            {
-                from: {
-                    title: 'S+U Zoologischer Garten Bhf (Berlin)',
-                    latitude: 52.506882,
-                    longitude: 13.332926,
-                    id: 9023201,
-                    type: 'station',
-                    notes: { lift: true, escalator: true },
-                    when: '2015-08-04T02:30:00.000Z'
-                },
-                to: {
-                    title: '10623 Berlin-Tiergarten, Müller-Breslau-Str.',
-                    latitude: 52.511143,
-                    longitude: 13.336108,
-                    type: 'address',
-                    when: '2015-08-04T02:38:00.000Z'
-                },
-                transport: 'walk'
-            }
-        ]
-    }
+	{
+		"duration": 1140000,
+		"parts": [
+			{
+				"from": {
+					"id": 9100003,
+					"latitude": 52.521507999999997,
+					"longitude": 13.411267,
+					"notes": {
+						"escalator": true,
+						"lift": true
+					},
+					"title": "S+U Alexanderplatz Bhf (Berlin)",
+					"type": "station",
+					"when": "2015-08-04T02:19:00.000Z"
+				},
+				"to": {
+					"id": 9023201,
+					"latitude": 52.506881999999997,
+					"longitude": 13.332926,
+					"notes": {
+						"escalator": true,
+						"lift": true
+					},
+					"title": "S+U Zoologischer Garten Bhf (Berlin)",
+					"type": "station",
+					"when": "2015-08-04T02:30:00.000Z"
+				},
+				"transport": "public",
+				"type": "regional",
+				"line": "RE2",
+				"direction": "Wismar, Bahnhof",
+				"notes": {}
+			}, {
+				"from": {
+					"id": 9023201,
+					"latitude": 52.506881999999997,
+					"longitude": 13.332926,
+					"notes": { "escalator": true,
+					  "lift": true
+					},
+					"title": "S+U Zoologischer Garten Bhf (Berlin)",
+					"type": "station",
+					"when": "2015-08-04T02:30:00.000Z"
+				},
+				"to": {
+					"latitude": 52.511142999999997,
+					"longitude": 13.336107999999999,
+					"title": "10623 Berlin-Tiergarten, Müller-Breslau-Str.",
+					"type": "address",
+					"when": "2015-08-04T02:38:00.000Z"
+				},
+				"transport": "walk"
+			}
+		]
+	}
 ]
 ```
 

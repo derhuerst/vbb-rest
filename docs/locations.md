@@ -26,38 +26,37 @@ Connection: close
 
 ```json
 [
-    {
-        title: 'Alexanderplatz Bhf (Berlin) (S+U)',
-        latitude: 52.521508,
-        longitude: 13.411267,
-        id: 9100003,
-        type: 'station',
-        products: {
-            suburban: true,
-            subway: false,
-            tram: false,
-            bus: true,
-            ferry: false,
-            express: false,
-            regional: true
-        }
-    },
-    {
-        title: 'Alexanderplatz (Berlin) [Tram] (U)',
-        latitude: 52.522389,
-        longitude: 13.414494,
-        id: 9100005,
-        type: 'station',
-        products: {
-            suburban: false,
-            subway: false,
-            tram: true,
-            bus: false,
-            ferry: false,
-            express: false,
-            regional: false
-        }
-    }
+	{
+		"title": "Alexanderplatz Bhf (Berlin) (S+U)",
+		"latitude": 52.521507999999997,
+		"longitude": 13.411267,
+		"id": 9100003,
+		"type": "station",
+		"products": {
+			"bus": true,
+			"express": false,
+			"ferry": false,
+			"regional": true,
+			"suburban": true,
+			"subway": false,
+			"tram": false
+		}
+	}, {
+		"title": "Alexanderplatz (Berlin) [Tram] (U)",
+		"latitude": 52.522388999999997,
+		"longitude": 13.414493999999999,
+		"id": 9100005,
+		"type": "station",
+		"products": {
+			"bus": false,
+			"express": false,
+			"ferry": false,
+			"regional": false,
+			"suburban": false,
+			"subway": false,
+			"tram": true
+		}
+	}
 ]
 ```
 
