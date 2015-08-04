@@ -46,5 +46,11 @@ module.exports = (req, reply) ->
 
 	@client.routes options
 	.then (results) ->
+		for result in results
+			result.duration /= 1000
+			for part in result.parts
+				part.from.when = part.from.when.getTime()   # unix timestamp
+				part.to.when = part.to.when.getTime()   # unix timestamp
+
 		response = reply results
 		response.type 'application/json'

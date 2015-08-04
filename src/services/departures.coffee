@@ -28,5 +28,9 @@ module.exports = (req, reply) ->
 
 	@client.departures req.params.id, options
 	.then (results) ->
+		for result in results
+			result.when = result.when.getTime()   # unix timestamp
+			result.realtime = result.realtime.getTime()   # unix timestamp
+
 		response = reply results
 		response.type 'application/json'

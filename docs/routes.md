@@ -29,7 +29,7 @@ Connection: close
 ```json
 [
 	{
-		"duration": 1140000,
+		"duration": 1140,
 		"parts": [
 			{
 				"from": {
@@ -42,7 +42,7 @@ Connection: close
 					},
 					"title": "S+U Alexanderplatz Bhf (Berlin)",
 					"type": "station",
-					"when": "2015-08-04T02:19:00.000Z"
+					"when": 1438654740000
 				},
 				"to": {
 					"id": 9023201,
@@ -54,7 +54,7 @@ Connection: close
 					},
 					"title": "S+U Zoologischer Garten Bhf (Berlin)",
 					"type": "station",
-					"when": "2015-08-04T02:30:00.000Z"
+					"when": 1438655400000
 				},
 				"transport": "public",
 				"type": "regional",
@@ -66,19 +66,20 @@ Connection: close
 					"id": 9023201,
 					"latitude": 52.506881999999997,
 					"longitude": 13.332926,
-					"notes": { "escalator": true,
-					  "lift": true
+					"notes": {
+						"escalator": true,
+						"lift": true
 					},
 					"title": "S+U Zoologischer Garten Bhf (Berlin)",
 					"type": "station",
-					"when": "2015-08-04T02:30:00.000Z"
+					"when": 1438655400000
 				},
 				"to": {
 					"latitude": 52.511142999999997,
 					"longitude": 13.336107999999999,
 					"title": "10623 Berlin-Tiergarten, Müller-Breslau-Str.",
 					"type": "address",
-					"when": "2015-08-04T02:38:00.000Z"
+					"when": 1438655880000
 				},
 				"transport": "walk"
 			}
@@ -86,6 +87,10 @@ Connection: close
 	}
 ]
 ```
+
+`duration` is the trips overall duration in seconds.
+
+`when` is an [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time#Encoding_time_as_a_number).
 
 
 

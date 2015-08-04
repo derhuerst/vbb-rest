@@ -33,32 +33,34 @@ Connection: close
 		"line": "S25",
 		"type": "suburban",
 		"direction": "S+U Potsdamer Platz Bhf (Berlin)",
-		"when": "2015-08-04T02:24:00.000Z",
-		"realtime": "2015-08-04T02:24:00.000Z"
+		"when": 1438655040000,
+		"realtime": 1438655040000
 	}, {
 		"stop": 9007102,
 		"line": "S41",
 		"type": "suburban",
 		"direction": "Ringbahn S 41",
-		"when": "2015-08-04T02:25:00.000Z",
-		"realtime": "2015-08-04T02:25:00.000Z"
+		"when": 1438655100000,
+		"realtime": 1438655100000
 	}, {
 		"stop": 9007102,
 		"line": "U8",
 		"type": "subway",
 		"direction": "S+U Wittenau (Berlin) [U8]",
-		"when": "2015-08-04T02:26:00.000Z",
-		"realtime": "2015-08-04T02:28:00.000Z"
+		"when": 1438655160000,
+		"realtime": 1438655280000
 	}, {
 		"stop": 9007102,
 		"line": "S2",
 		"type": "suburban",
 		"direction": "S Bernau Bhf",
-		"when": "2015-08-04T02:26:00.000Z",
-		"realtime": "2015-08-04T02:26:00.000Z"
+		"when": 1438655160000,
+		"realtime": 1438655160000
 	}
 ]
 ```
+
+`when` and `realtime` are [UNIX timestamps](https://en.wikipedia.org/wiki/Unix_time#Encoding_time_as_a_number).
 
 
 
