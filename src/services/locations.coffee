@@ -19,18 +19,6 @@ module.exports = (req, reply) ->
 		options.addresses = parse req.query.addresses
 	if req.query.pois?
 		options.pois = parse req.query.pois
-	options.products = {}
-	for product in [
-		'suburban',
-		'subway',
-		'tram',
-		'bus',
-		'ferry',
-		'express',
-		'regional'
-	]
-		if req.query[product]?
-			options.products[product] = parse req.query[product]
 
 	@client.locations req.query.query, options
 	.then (results) ->
