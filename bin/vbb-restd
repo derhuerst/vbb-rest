@@ -9,11 +9,11 @@ argv = minimist process.argv.slice 2
 
 help = [
 	'Usage:'
-	'vbb-restd start <token> [-p <port>]'
+	'vbb-restd start <apiKey> [-p <port>]'
 	'vbb-restd stop <id>'
 	''
 	'Arguments:'
-	'  token       The VBB API server access token.'
+	'  apiKey       The VBB API server API key.'
 	'  id          The server process id.'
 	''
 	'Options:'

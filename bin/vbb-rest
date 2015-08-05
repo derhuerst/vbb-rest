@@ -9,10 +9,10 @@ argv = minimist process.argv.slice 2
 
 help = [
 	'Usage:'
-	'vbb-rest -t <token> [-p <port>]'
+	'vbb-rest <apiKey> [-p <port>]'
 	''
 	'Arguments:'
-	'  token       The VBB API server access token.'
+	'  apiKey       The VBB API server API key.'
 	''
 	'Options:'
 	'  -p, --port  Where the server will listen. Default: 8000'

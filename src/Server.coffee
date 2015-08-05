@@ -28,9 +28,9 @@ module.exports =
 
 
 
-	init: (token, port, logger) ->
-		if not token? then throw new Error 'Missing `token` parameter'
-		@client = vbb token
+	init: (apiKey, port, logger) ->
+		if not apiKey? then throw new Error 'Missing `apiKey` parameter'
+		@client = vbb apiKey
 
 		if not port? then throw new Error 'Missing `port` parameter'
 		@server = new hapi.Server()
