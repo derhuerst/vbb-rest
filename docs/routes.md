@@ -9,7 +9,7 @@
 Request:
 
 ```http
-GET /routes/9100003/@52.5112362|13.3358289?results=1&suburban=false
+GET <api key>@<server>:<port>/routes/9100003/@52.5112362|13.3358289?results=1&suburban=false
 ```
 
 `9100003` is the `id` for the [station *Alexanderplatz*](https://www.google.de/maps/place/Alexanderplatz/@52.5219184,13.4132147,17z). `@52.5112362|13.3358289` are GPS coordinates for the [restaurant *Schleusenkrug*](https://www.google.de/maps/place/Schleusenkrug/@52.5112362,13.3358289,17z). Both values can be found using the [`/locations` endpoint](locations.md).

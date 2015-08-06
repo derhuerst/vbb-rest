@@ -9,7 +9,7 @@
 Request:
 
 ```http
-GET /departures/9007102?bus=false&results=4
+GET <api key>@<server>:<port>/departures/9007102?bus=false&results=4
 ```
 
 `9100003` is the `id` for the [station *Gesundbrunnen*](https://www.google.de/maps/place/Bahnhof+Berlin+Gesundbrunnen/@52.5487914,13.3893007,17z). This value can be found using the [`/locations` endpoint](locations.md).

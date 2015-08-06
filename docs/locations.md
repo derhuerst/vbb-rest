@@ -9,7 +9,7 @@
 Request:
 
 ```http
-GET /locations?query=alexanderplatz&addresses=false&results=2
+GET <api key>@<server>:<port>/locations?query=alexanderplatz&addresses=false&results=2
 ```
 
 Response:
