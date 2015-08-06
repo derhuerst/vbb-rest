@@ -9,15 +9,17 @@ argv = minimist process.argv.slice 2
 
 help = [
 	'Usage:'
-	'vbb-restd start <apiKey> [-p <port>]'
+	'vbb-restd start -a <apiKey> -c <cert> -k <key> [-p <port>]'
 	'vbb-restd stop <id>'
 	''
 	'Arguments:'
-	'  apiKey       The VBB API server API key.'
-	'  id          The server process id.'
+	'  -a, --apiKey  The VBB API server API key.'
+	'  -c, --cert    The SSL certificate.'
+	'  -k, --key     The SSL key.'
+	'  id            The server process id.'
 	''
 	'Options:'
-	'  -p, --port  Where the server will listen. Default: 8000'
+	'  -p, --port    Where the server will listen. Default: 8000'
 ].join '\n'
 
 if argv.h is true or argv.help is true or argv._.length is 0
@@ -29,53 +31,71 @@ else if argv._.length is 1
 
 
 
-switch argv._[0]
+if argv._[0] is 'start'
+	fs =			require 'fs'
+	pm2 =			require 'pm2'
+	path =			require 'path'
+	shortid =		require 'shortid'
+	winston =		require 'winston'   # todo: consider using `bunyan`
 
-	when 'start'
-		pm2 =			require 'pm2'
-		path =			require 'path'
-		shortid =		require 'shortid'
-		winston =		require 'winston'   # todo: consider using `bunyan`
+	apiKey = null
+	if argv.a? then apiKey = argv.a
+	else if argv.apiKey? then apiKey = argv.apiKey
+	else throw new Error 'Missing `--apiKey` argument.'
 
-		port = 8000
-		if argv.p? then port = argv.p
-		if argv.port? then port = argv.port
+	cert = null
+	if argv.c? then cert = argv.c
+	else if argv.cert? then cert = argv.cert
+	else throw new Error 'Missing `--cert` argument.'
+	cert = fs.readFileSync cert
 
-		id = shortid.generate()
+	key = null
+	if argv.k? then key = argv.k
+	else if argv.key? then key = argv.key
+	else throw new Error 'Missing `--key` argument.'
+	key = fs.readFileSync key
 
-		options =
-			exec_mode:			'fork_mode'
-			exec_interpreter:	'coffee'
-			script:				path.join __dirname, 'vbb-rest'
-			name:				"vbb-rest-#{id}"
-			args: [
-				argv._[1]
-				'-p', port
-			]
-			watch:				false
+	port = 8000
+	if argv.p? then port = argv.p
+	if argv.port? then port = argv.port
 
-		pm2.connect ()->
-			pm2.start options, (err, process) ->
+	id = shortid.generate()
+
+	options =
+		exec_mode:			'fork_mode'
+		exec_interpreter:	'coffee'
+		script:				path.join __dirname, 'vbb-rest'
+		name:				"vbb-rest-#{id}"
+		args: [
+			'-a', apiKey
+			'-c', cert
+			'-k', ley
+			'-p', port
+		]
+		watch:				false
+
+	pm2.connect ()->
+		pm2.start options, (err, process) ->
+			if err then throw err
+			winston.info "The server #{id} has been started."
+			pm2.disconnect()
+
+
+
+else if argv._[0] is 'stop'
+	pm2 =			require 'pm2'
+	winston =		require 'winston'   # todo: consider using `bunyan`
+
+	pm2.connect ()->
+		pm2.stop "vbb-rest-#{argv._[1]}", (err) ->
+			if err then throw err
+			pm2.delete "vbb-rest-#{argv._[1]}", (err) ->
 				if err then throw err
-				winston.info "The server #{id} has been started."
+				winston.info "The server #{id} has been stopped."
 				pm2.disconnect()
 
 
 
-	when 'stop'
-		pm2 =			require 'pm2'
-		winston =		require 'winston'   # todo: consider using `bunyan`
-
-		pm2.connect ()->
-			pm2.stop "vbb-rest-#{argv._[1]}", (err) ->
-				if err then throw err
-				pm2.delete "vbb-rest-#{argv._[1]}", (err) ->
-					if err then throw err
-					winston.info "The server #{id} has been stopped."
-					pm2.disconnect()
-
-
-
-	else
-		process.stdout.write help
-		process.exit 1
+else
+	process.stdout.write help
+	process.exit 1

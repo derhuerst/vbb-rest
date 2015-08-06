@@ -2,7 +2,7 @@
 
 *vbb-rest* is an HTTP server that proxies all requests to the **Berlin & Brandenburg public transport (VBB) API**. Using the [`vbb` API client library](https://github.com/derhuerst/vbb), it wraps the verbose HAFAS interface in a straightforward REST API.
 
-*vbb-rest* is written in CoffeeScript and embraces [prototypal programming](http://davidwalsh.name/javascript-objects-deconstruction#simpler-object-object), making it easily extendable. It is [MIT-licensed](LICENSE).**
+*vbb-rest* is written in CoffeeScript and embraces [prototypal programming](http://davidwalsh.name/javascript-objects-deconstruction#simpler-object-object), making it easily extendable. It is [MIT-licensed](LICENSE).
 
 
 
@@ -21,13 +21,13 @@ You can now start the *vbb-rest* server wherever you want.
 Get an [API token](http://www.vbb.de/de/article/webservices/schnittstellen-fuer-webentwickler/5070.html#testserver) first.
 
 ```shell
-vbb-rest -t <token>   # run the server in "live mode"
+vbb-rest -a <apiKey> -c <cert> -k <key>   # run the server in "live mode"
 ```
 
 or
 
 ```shell
-vbb-restd -t <token>   # start/stop the server in the background
+vbb-restd start -a <apiKey> -c <cert> -k <key>   # start/stop the server in the background
 ```
 
 
@@ -35,13 +35,15 @@ vbb-restd -t <token>   # start/stop the server in the background
 
 ```
 Usage:
-vbb-rest <token> [-p <port>]
+vbb-rest -a <apiKey> -c <cert> -k <key> [-p <port>]
 
 Arguments:
-  token       The VBB API server access token.
+  -a, --apiKey  The VBB API server API key.
+  -c, --cert    The SSL certificate.
+  -k, --key     The SSL key.
 
 Options:
-  -p, --port  Where the casket server will listen. Default: 8000
+  -p, --port    Where the server will listen. Default: 8000
 ```
 
 
@@ -49,25 +51,27 @@ Options:
 
 ```
 Usage:
-vbb-restd start <token> [-p <port>]
+vbb-restd start -a <apiKey> -c <cert> -k <key> [-p <port>]
 vbb-restd stop <id>
 
 Arguments:
-  token       The VBB API server access token.
-  id          The server process id.
+  -a, --apiKey  The VBB API server API key.
+  -c, --cert    The SSL certificate.
+  -k, --key     The SSL key.
+  id            The server process id.
 
 Options:
-  -p, --port  Where the server will listen. Default: 8000
+  -p, --port    Where the server will listen. Default: 8000
 ```
 
-When you start a server, it will print its process id.
+When you `start` a server, it will print its process id.
 
 ```shell
-$ vbb-restd start <token> -p 8888
+vbb-restd start -a <apiKey> -c <cert> -k <key>
 info: The server <id> has been started.
 ```
 
-You can use thie id later use to stop the server.
+You can use the `id` later to `stop` the server.
 
 ```shell
 $ vbb-restd stop <id>.
