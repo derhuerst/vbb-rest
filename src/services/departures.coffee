@@ -26,11 +26,14 @@ module.exports = (req, reply) ->
 		if req.query[product]?
 			options.products[product] = parse req.query[product]
 
+	if req.auth.credentials and req.auth.credentials.apiKey
+		options.apiKey = req.auth.credentials.apiKey
 	@client.departures req.params.id, options
 	.then (results) ->
 		for result in results
 			result.when = result.when.getTime()   # unix timestamp
-			result.realtime = result.realtime.getTime()   # unix timestamp
+			if result.realtime
+				result.realtime = result.realtime.getTime()   # unix timestamp
 
 		response = reply results
 		response.type 'application/json'

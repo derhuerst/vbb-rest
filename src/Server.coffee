@@ -1,5 +1,6 @@
 hapi =			require 'hapi'
 vbb =			require 'vbb'
+httpBasicAuth =	require 'hapi-auth-basic'
 
 onLocations =	require './services/locations'
 onRoutes =		require './services/routes'
@@ -7,6 +8,11 @@ onDepartures =	require './services/departures'
 
 
 
+
+
+auth = (req, user, pw, cb) ->
+	cb null, true,
+		apiKey: user
 
 
 module.exports =
@@ -42,6 +48,9 @@ module.exports =
 				key:	key
 			port:		port
 		@server.bind this
+		@server.register httpBasicAuth, (err) =>
+			@server.auth.strategy 'api-token', 'basic', true,
+				validateFunc: auth
 
 		if not logger? then throw new Error 'Missing `logger` parameter'
 		@logger = logger

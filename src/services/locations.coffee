@@ -20,6 +20,8 @@ module.exports = (req, reply) ->
 	if req.query.pois?
 		options.pois = parse req.query.pois
 
+	if req.auth.credentials and req.auth.credentials.apiKey
+		options.apiKey = req.auth.credentials.apiKey
 	@client.locations req.query.query, options
 	.then (results) ->
 		response = reply results
