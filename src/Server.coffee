@@ -28,14 +28,19 @@ module.exports =
 
 
 
-	init: (apiKey, port, logger) ->
+	init: (apiKey, cert, key, port, logger) ->
 		if not apiKey? then throw new Error 'Missing `apiKey` parameter'
 		@client = vbb apiKey
 
+		if not cert? then throw new Error 'Missing `cert` parameter'
+		if not key? then throw new Error 'Missing `key` parameter'
 		if not port? then throw new Error 'Missing `port` parameter'
 		@server = new hapi.Server()
 		@server.connection
-			port:	port
+			tls:
+				cert:	cert
+				key:	key
+			port:		port
 		@server.bind this
 
 		if not logger? then throw new Error 'Missing `logger` parameter'
