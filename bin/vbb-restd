@@ -9,11 +9,10 @@ argv = minimist process.argv.slice 2
 
 help = [
 	'Usage:'
-	'vbb-restd start -a <apiKey> -c <cert> -k <key> [-p <port>]'
+	'vbb-restd start -c <cert> -k <key> [-p <port>]'
 	'vbb-restd stop <id>'
 	''
 	'Arguments:'
-	'  -a, --apiKey  The VBB API server API key.'
 	'  -c, --cert    The SSL certificate.'
 	'  -k, --key     The SSL key.'
 	'  id            The server process id.'
@@ -37,11 +36,6 @@ if argv._[0] is 'start'
 	path =			require 'path'
 	shortid =		require 'shortid'
 	winston =		require 'winston'   # todo: consider using `bunyan`
-
-	apiKey = null
-	if argv.a? then apiKey = argv.a
-	else if argv.apiKey? then apiKey = argv.apiKey
-	else throw new Error 'Missing `--apiKey` argument.'
 
 	cert = null
 	if argv.c? then cert = argv.c
@@ -67,7 +61,6 @@ if argv._[0] is 'start'
 		script:				path.join __dirname, 'vbb-rest'
 		name:				"vbb-rest-#{id}"
 		args: [
-			'-a', apiKey
 			'-c', cert
 			'-k', ley
 			'-p', port

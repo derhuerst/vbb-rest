@@ -21,16 +21,16 @@ You can now start the *vbb-rest* server wherever you want.
 
 ## Usage
 
-Get an [API token](http://www.vbb.de/de/article/webservices/schnittstellen-fuer-webentwickler/5070.html#testserver) first.
+The server will forward the [VBB API token](http://www.vbb.de/de/article/webservices/schnittstellen-fuer-webentwickler/5070.html#testserver) from the HTTP `X-API-Key` field, so get one for testing.
 
 ```shell
-vbb-rest -a <apiKey> -c <cert> -k <key>   # run the server in "live mode"
+vbb-rest -c <cert> -k <key>   # run the server in "live mode"
 ```
 
 or
 
 ```shell
-vbb-restd start -a <apiKey> -c <cert> -k <key>   # start/stop the server in the background
+vbb-restd start -c <cert> -k <key>   # start/stop the server in the background
 ```
 
 
@@ -38,10 +38,9 @@ vbb-restd start -a <apiKey> -c <cert> -k <key>   # start/stop the server in the 
 
 ```
 Usage:
-vbb-rest -a <apiKey> -c <cert> -k <key> [-p <port>]
+vbb-rest -c <cert> -k <key> [-p <port>]
 
 Arguments:
-  -a, --apiKey  The VBB API server API key.
   -c, --cert    The SSL certificate.
   -k, --key     The SSL key.
 
@@ -54,11 +53,10 @@ Options:
 
 ```
 Usage:
-vbb-restd start -a <apiKey> -c <cert> -k <key> [-p <port>]
+vbb-restd start -c <cert> -k <key> [-p <port>]
 vbb-restd stop <id>
 
 Arguments:
-  -a, --apiKey  The VBB API server API key.
   -c, --cert    The SSL certificate.
   -k, --key     The SSL key.
   id            The server process id.
@@ -70,7 +68,7 @@ Options:
 When you `start` a server, it will print its process id.
 
 ```shell
-vbb-restd start -a <apiKey> -c <cert> -k <key>
+vbb-restd start -c <cert> -k <key>
 info: The server <id> has been started.
 ```
 

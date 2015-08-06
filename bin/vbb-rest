@@ -10,10 +10,9 @@ argv = minimist process.argv.slice 2
 
 help = [
 	'Usage:'
-	'vbb-rest -a <apiKey> -c <cert> -k <key> [-p <port>]'
+	'vbb-rest -c <cert> -k <key> [-p <port>]'
 	''
 	'Arguments:'
-	'  -a, --apiKey  The VBB API server API key.'
 	'  -c, --cert    The SSL certificate.'
 	'  -k, --key     The SSL key.'
 	''
@@ -26,11 +25,6 @@ if argv.h is true or argv.help is true
 	process.exit 0
 
 
-
-apiKey = null
-if argv.a? then apiKey = argv.a
-else if argv.apiKey? then apiKey = argv.apiKey
-else throw new Error 'Missing `--apiKey` argument.'
 
 cert = null
 if argv.c? then cert = argv.c
@@ -54,6 +48,6 @@ Server =		require '../src/Server'
 winston =		require 'winston'   # todo: consider using `bunyan`
 
 server = Object.create Server
-server.init apiKey, cert, key, port, winston
+server.init cert, key, port, winston
 server.listen () ->
 	winston.info "Server listening on #{port}."

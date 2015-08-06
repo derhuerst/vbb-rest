@@ -34,9 +34,8 @@ module.exports =
 
 
 
-	init: (apiKey, cert, key, port, logger) ->
-		if not apiKey? then throw new Error 'Missing `apiKey` parameter'
-		@client = vbb apiKey
+	init: (cert, key, port, logger) ->
+		@client = vbb()
 
 		if not cert? then throw new Error 'Missing `cert` parameter'
 		if not key? then throw new Error 'Missing `key` parameter'
