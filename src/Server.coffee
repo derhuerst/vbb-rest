@@ -1,5 +1,5 @@
-hapi =			require 'hapi'
 vbb =			require 'vbb'
+hapi =			require 'hapi'
 httpBasicAuth =	require 'hapi-auth-basic'
 
 onLocations =	require './services/locations'
