@@ -1,32 +1,39 @@
 {
-	"folders": [
+	"folders":
+	[
 		{
-			"path": ".",
-			"name": "vbb-rest",
-			"folder_exclude_patterns": [
+			"file_exclude_patterns":
+			[
+				"*.sublime-workspace"
+			],
+			"folder_exclude_patterns":
+			[
 				"bin",
 				"docs",
 				"src",
 				"node_modules"
 			],
-			"file_exclude_patterns": [
-				"*.sublime-workspace"
-			]
+			"name": "vbb-rest",
+			"path": "."
 		},
 		{
-			"path": "./bin",
-			"name": "bin"
+			"name": "bin",
+			"path": "bin"
 		},
 		{
-			"path": "./src",
-			"name": "src"
+			"name": "src",
+			"path": "src"
 		},
 		{
-			"path": "./docs",
-			"name": "docs"
+			"name": "docs",
+			"path": "docs"
+		},
+		{
+			"path": "/Volumes/Medien/Web/Projekte/vbb/129384"
 		}
 	],
-	"settings": {
+	"settings":
+	{
 		"tab_size": 4,
 		"translate_tabs_to_spaces": false
 	}

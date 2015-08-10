@@ -17,6 +17,7 @@
 		"json",
 		"rest",
 		"fahrinfo",
+		"coffeescript",
 		"javascript"
 	],
 	"author": {
@@ -38,6 +39,7 @@
 		"minimist":				"^1.1.2",
 		"winston":				"^1.0.1",
 		"hapi":					"^8.8.1",
+		"hapi-auth-basic":		"^3.0.0",
 		"vbb":					"^0.2.0",
 		"boom":					"^2.8.0",
 		"underscore.parse":		"^0.1.1",
