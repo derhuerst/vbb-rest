@@ -40,7 +40,7 @@
 		"winston":				"^1.0.1",
 		"hapi":					"^8.8.1",
 		"hapi-auth-basic":		"^3.0.0",
-		"vbb":					"^0.2.0",
+		"vbb":					"^0.3.1",
 		"boom":					"^2.8.0",
 		"underscore.parse":		"^0.1.1",
 		"pm2":					"^0.14.5",
