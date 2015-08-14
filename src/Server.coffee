@@ -1,10 +1,11 @@
-vbb =			require 'vbb'
-hapi =			require 'hapi'
-httpBasicAuth =	require 'hapi-auth-basic'
+vbb =				require 'vbb'
+hapi =				require 'hapi'
+httpBasicAuth =		require 'hapi-auth-basic'
 
-onLocations =	require './services/locations'
-onRoutes =		require './services/routes'
-onDepartures =	require './services/departures'
+onAutocomplete =	require './services/autocomplete'
+onLocations =		require './services/locations'
+onRoutes =			require './services/routes'
+onDepartures =		require './services/departures'
 
 
 
@@ -24,6 +25,7 @@ module.exports =
 
 	logger:			null
 
+	onAutocomplete:	onAutocomplete
 	onLocations:	onLocations
 	onRoutes:		onRoutes
 	onDepartures:	onDepartures
@@ -62,6 +64,13 @@ module.exports =
 		# todo: API client timeouts
 		# todo: http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api#rate-limiting
 		# todo: http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api#authentication
+
+		@server.route
+			method:		'GET'
+			path:		'/autocomplete'
+			handler:	@onAutocomplete
+			config:
+				auth:	false
 
 		@server.route
 			method:		'GET'
