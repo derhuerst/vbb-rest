@@ -1,5 +1,4 @@
 boom =			require 'boom'
-parse =			require('underscore.parse').parse
 
 
 
