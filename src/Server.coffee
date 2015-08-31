@@ -79,6 +79,11 @@ module.exports =
 
 		@server.route
 			method:		'GET'
+			path:		'/stations/autocomplete'
+			handler:	services.static.autocomplete
+
+		@server.route
+			method:		'GET'
 			path:		'/{method}'
 			handler:	services.static.filter
 
