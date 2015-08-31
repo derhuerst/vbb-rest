@@ -1,11 +1,8 @@
-vbb =				require 'vbb'
 hapi =				require 'hapi'
 httpBasicAuth =		require 'hapi-auth-basic'
+hafas =				require 'vbb-hafas'
 
-onAutocomplete =	require './services/autocomplete'
-onLocations =		require './services/locations'
-onRoutes =			require './services/routes'
-onDepartures =		require './services/departures'
+services =			require './services'
 
 
 
@@ -21,14 +18,9 @@ module.exports =
 
 
 	server:			null
-	client:			null   # VBB api client
+	hafas:			null   # VBB api client
 
 	logger:			null
-
-	onAutocomplete:	onAutocomplete
-	onLocations:	onLocations
-	onRoutes:		onRoutes
-	onDepartures:	onDepartures
 
 	onOptions:		(req, reply) ->
 		response = reply 'GET'
@@ -37,7 +29,7 @@ module.exports =
 
 
 	init: (cert, key, port, logger) ->
-		@client = vbb()
+		@hafas = hafas()
 
 		if not cert? then throw new Error 'Missing `cert` parameter'
 		if not key? then throw new Error 'Missing `key` parameter'
@@ -67,25 +59,23 @@ module.exports =
 
 		@server.route
 			method:		'GET'
-			path:		'/autocomplete'
-			handler:	@onAutocomplete
-			config:
-				auth:	false
-
-		@server.route
-			method:		'GET'
 			path:		'/locations'
-			handler:	@onLocations
+			handler:	services.hafas.locations
 
 		@server.route
 			method:		'GET'
 			path:		'/routes/{from}/{to}'
-			handler:	@onRoutes
+			handler:	services.hafas.routes
 
 		@server.route
 			method:		'GET'
-			path:		'/departures/{id}'
-			handler:	@onDepartures
+			path:		'/{method}/{id}'
+			handler:	services.static.byId
+
+		@server.route
+			method:		'GET'
+			path:		'/{method}'
+			handler:	services.static.filter
 
 		@server.route
 			method:		'OPTIONS'

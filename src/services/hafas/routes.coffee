@@ -46,7 +46,7 @@ module.exports = (req, reply) ->
 
 	if req.auth.credentials and req.auth.credentials.apiKey
 		options.apiKey = req.auth.credentials.apiKey
-	@client.routes options
+	@hafas.routes options
 	.then (results) ->
 		for result in results
 			result.duration /= 1000

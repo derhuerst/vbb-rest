@@ -22,7 +22,7 @@ module.exports = (req, reply) ->
 
 	if req.auth.credentials and req.auth.credentials.apiKey
 		options.apiKey = req.auth.credentials.apiKey
-	@client.locations req.query.query, options
+	@hafas.locations req.query.query, options
 	.then (results) ->
 		response = reply results
 		response.type 'application/json'
