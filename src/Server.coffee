@@ -74,6 +74,11 @@ module.exports =
 
 		@server.route
 			method:		'GET'
+			path:		'/stations/{id}/departures'
+			handler:	services.static.departures
+
+		@server.route
+			method:		'GET'
 			path:		'/{method}'
 			handler:	services.static.filter
 
