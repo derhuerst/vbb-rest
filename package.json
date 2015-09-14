@@ -3,6 +3,11 @@
 	"description": "An HTTP REST server for Berlin & Brandenburg public transport.",
 	"version": "0.2.0",
 	"main": "src/Server.coffee",
+	"bin": {
+		"vbb-rest":		"./bin/vbb-rest",
+		"vbb-restd":	"./bin/vbb-restd"
+	},
+	"preferGlobal": true,
 	"keywords": [
 		"vbb",
 		"rest",
