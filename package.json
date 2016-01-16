@@ -40,18 +40,18 @@
 	},
 	"license": "ISC",
 	"dependencies": {
-		"coffee-script":				"^1.9.3",
-		"minimist":						"^1.1.2",
-		"winston":						"^1.0.1",
+		"coffee-script":				"^1.10.0",
+		"minimist":						"^1.2.0",
+		"winston":						"^1.1.2",
 		"hapi":							"^8.8.1",
 		"hapi-auth-basic":				"^3.0.0",
-		"vbb-hafas":					"^0.4.0",
+		"vbb-hafas":					"^0.6.0",
 		"vbb-static":					"^0.7.0",
-		"vbb-stations-autocomplete":	"^0.2.0",
-		"boom":							"^2.8.0",
+		"vbb-stations-autocomplete":	"^0.3.0",
+		"boom":							"^2.10.1",
 		"underscore.parse":				"^0.1.1",
-		"pm2":							"^0.14.5",
-		"shortid":						"^2.2.2"
+		"pm2":							"^0.14.7",
+		"shortid":						"^2.2.4"
 	},
 	"directories": {
 		"docs": "./docs",
