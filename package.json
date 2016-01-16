@@ -38,7 +38,7 @@
 	"bugs": {
 		"url": "https://github.com/derhuerst/vbb-rest/issues"
 	},
-	"license": "MIT",
+	"license": "ISC",
 	"dependencies": {
 		"coffee-script":				"^1.9.3",
 		"minimist":						"^1.1.2",
