@@ -1,61 +1,14 @@
 {
-	"name": "vbb-rest",
-	"description": "An HTTP REST server for Berlin & Brandenburg public transport.",
-	"version": "0.3.0",
-	"main": "src/Server.coffee",
-	"bin": {
-		"vbb-rest":		"./bin/vbb-rest",
-		"vbb-restd":	"./bin/vbb-restd"
-	},
-	"preferGlobal": true,
-	"keywords": [
-		"vbb",
-		"rest",
-		"http",
-		"server",
-		"berlin",
-		"brandenburg",
-		"public transport",
-		"api",
-		"open data",
-		"hafas",
-		"json",
-		"rest",
-		"fahrinfo",
-		"coffeescript",
-		"javascript"
-	],
-	"author": {
-		"name": "Jannis R",
-		"email": "mail@jannisr.de",
-		"url": "http://jannisr.de"
-	},
-	"homepage": "https://github.com/derhuerst/vbb-rest",
-	"repository": {
-		"type": "git",
-		"url": "git://github.com/derhuerst/vbb-rest.git"
-	},
-	"bugs": {
-		"url": "https://github.com/derhuerst/vbb-rest/issues"
-	},
-	"license": "ISC",
-	"dependencies": {
-		"coffee-script":				"^1.10.0",
-		"minimist":						"^1.2.0",
-		"winston":						"^1.1.2",
-		"hapi":							"^8.8.1",
-		"hapi-auth-basic":				"^3.0.0",
-		"vbb-hafas":					"^0.6.0",
-		"vbb-static":					"^0.7.0",
-		"vbb-stations-autocomplete":	"^0.3.0",
-		"boom":							"^2.10.1",
-		"underscore.parse":				"^0.1.1",
-		"pm2":							"^0.14.7",
-		"shortid":						"^2.2.4"
-	},
-	"directories": {
-		"docs": "./docs",
-		"bin": "./bin",
-		"lib": "./src"
-	}
+	"name":         "vbb-rest",
+	"description":  "A sane public transport API for Berlin.",
+	"version":      "0.3.0",
+	"main":         "todo",
+	"files":        ["todo"],
+	"author":       "Jannis R <mail@jannisr.de>",
+	"homepage":     "https://github.com/derhuerst/vbb-rest",
+	"repository":   "derhuerst/vbb-rest",
+	"bugs":         "https://github.com/derhuerst/vbb-rest/issues",
+	"license":      "ISC",
+	"keywords":     ["public", "transport", "api", "http", "rest"],
+	"engines" :     {"node": ">=4"}
 }
