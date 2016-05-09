@@ -4,6 +4,8 @@ const express      = require('express')
 const autocomplete = require('vbb-stations-autocomplete')
 const search       = require('vbb-find-stations')
 const ndjson       = require('ndjson')
+const hafas        = require('vbb-hafas')
+const config       = require('config')
 
 const api = express()
 
@@ -19,6 +21,11 @@ api.get('/stations', (req, res) => {
 		.pipe(ndjson.stringify())
 		.pipe(res)
 	}
+})
+
+api.get('/stations/:id/departures', (req, res) => {
+	hafas.departures(config.vbbKey, req.params.id)
+	.then((deps) => res.json(deps))
 })
 
 api.listen(3000)
