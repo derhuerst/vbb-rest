@@ -1,0 +1,12 @@
+#!/bin/sh
+
+rsync -rav --delete -e 'ssh -i ./.digital-ocean' \
+	--exclude '.*' \
+	--exclude node_modules \
+	. 'root@vbb-rest.do.jannisr.de:~/vbb-rest/'
+
+ssh -i ./.digital-ocean 'root@vbb-rest.do.jannisr.de' "\
+cd ~/vbb-rest
+npm i
+forever stop vbb-rest
+forever start -a --uid vbb-rest index.js"
