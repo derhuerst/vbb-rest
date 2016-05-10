@@ -2,13 +2,21 @@
 	"name":         "vbb-rest",
 	"description":  "A sane public transport API for Berlin.",
 	"version":      "0.3.0",
-	"main":         "todo",
-	"files":        ["todo"],
+	"main":         "index.js",
+	"files":        ["index.js"],
 	"author":       "Jannis R <mail@jannisr.de>",
 	"homepage":     "https://github.com/derhuerst/vbb-rest",
 	"repository":   "derhuerst/vbb-rest",
 	"bugs":         "https://github.com/derhuerst/vbb-rest/issues",
 	"license":      "ISC",
 	"keywords":     ["public", "transport", "api", "http", "rest"],
-	"engines" :     {"node": ">=4"}
+	"engines" :     {"node": ">=4"},
+	"dependencies": {
+		"express": "^4.13.4",
+		"vbb-stations-autocomplete": "^0.8",
+		"vbb-find-stations": "^0.3",
+		"ndjson": "^1.4.3",
+		"vbb-hafas": "^0.8.1",
+		"config": "^1.20.1"
+	}
 }

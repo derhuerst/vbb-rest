@@ -5,4 +5,5 @@ Thumbs.db
 node_modules
 npm-debug.log
 
-config/production.json
+config/*
+!config/default.json

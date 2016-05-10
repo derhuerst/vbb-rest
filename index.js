@@ -33,7 +33,7 @@ api.get('/stations', (req, res) => {
 
 api.get('/stations/:id/departures', (req, res) => {
 	hafas.departures(config.vbbKey, req.params.id)
-	.catch((err) => (err) => onError(req, res, err))
+	.catch((err) => onError(req, res, err))
 	.then((deps) => res.json(deps))
 })
 
@@ -41,7 +41,7 @@ api.get('/routes', (req, res) => {
 	if (!req.query.from) return res.status(400).end('Missing origin station.')
 	if (!req.query.to) return res.status(400).end('Missing destination station.')
 	hafas.routes(config.vbbKey, req.query.from, req.query.to)
-	.catch((err) => (err) => onError(req, res, err))
+	.catch((err) => onError(req, res, err))
 	.then((routes) => res.json(routes))
 })
 
