@@ -18,5 +18,9 @@
 		"ndjson": "^1.4.3",
 		"vbb-hafas": "^0.8.1",
 		"config": "^1.20.1"
+	},
+	"scripts": {
+		"start":    "forever start --uid vbb-rest index.js",
+		"stop":     "forever stop vbb-rest"
 	}
 }
