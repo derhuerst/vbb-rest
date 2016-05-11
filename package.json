@@ -15,6 +15,7 @@
 		"redis": "^2.6.0-2",
 		"express": "^4.13.4",
 		"hsts": "^1",
+		"nocache": "^1",
 		"corser": "^2",
 		"express-limiter": "^1.6",
 		"vbb-stations-autocomplete": "^0.8",

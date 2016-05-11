@@ -4,6 +4,7 @@ const fs           = require('fs')
 const redis        = require('redis')
 const express      = require('express')
 const hsts         = require('hsts')
+const nocache      = require('nocache')
 const corser       = require('corser')
 const limiter      = require('express-limiter')
 const autocomplete = require('vbb-stations-autocomplete')
@@ -24,6 +25,7 @@ const ssl = {
 const db = redis.createClient()
 const api = express()
 api.use(hsts({maxAge: 24 * 60 * 60 * 1000}))
+api.use(nocache())
 api.use(corser.create()) // CORS
 
 const limit = ((tracker) => (amount) => tracker({
