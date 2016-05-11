@@ -1,6 +1,5 @@
 {
 	"hostname":      "localhost",
 	"port":          3000,
-	"telegramToken": "<your Telegram bot token>",
 	"vbbKey":        "<your VBB api key>"
 }

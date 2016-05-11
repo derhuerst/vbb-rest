@@ -4,9 +4,9 @@ const fs           = require('fs')
 const redis        = require('redis')
 const express      = require('express')
 const hsts         = require('hsts')
-const nocache      = require('nocache')
 const morgan       = require('morgan')
 const corser       = require('corser')
+const nocache      = require('nocache')
 const limiter      = require('express-limiter')
 const autocomplete = require('vbb-stations-autocomplete')
 const search       = require('vbb-find-stations')
@@ -25,9 +25,9 @@ const ssl = {
 const db = redis.createClient()
 const api = express()
 api.use(hsts({maxAge: 24 * 60 * 60 * 1000}))
-api.use(nocache())
 api.use(morgan(':remote-addr :method :url :status :response-time ms'))
 api.use(corser.create()) // CORS
+const noCache = nocache()
 
 const limit = ((tracker) => (amount) => tracker({
 	  lookup: 'connection.remoteAddress'
@@ -57,13 +57,18 @@ api.get('/stations', limit(1000), (req, res) => {
 	}
 })
 
-api.get('/stations/:id/departures', limit(250), (req, res) => {
+
+
+api.get('/stations/:id/departures', noCache, limit(250), (req, res) => {
+	console.log(req.headers)
 	hafas.departures(config.vbbKey, req.params.id)
 	.catch((err) => onError(req, res, err))
 	.then((deps) => res.json(deps))
 })
 
-api.get('/routes', limit(100), (req, res) => {
+
+
+api.get('/routes', noCache, limit(100), (req, res) => {
 	if (!req.query.from) return res.status(400).end('Missing origin station.')
 	if (!req.query.to) return res.status(400).end('Missing destination station.')
 	hafas.routes(config.vbbKey, req.query.from, req.query.to)
