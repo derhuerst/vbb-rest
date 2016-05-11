@@ -9,12 +9,42 @@
 
 ## Installing
 
-todo
+Install & run [Redis](http://redis.io/)
+
+```
+git clone https://github.com/derhuerst/vbb-rest.git
+cd vbb-rest
+npm install --production
+npm start
+```
 
 
 ## Usage
 
-todo
+### `GET /stations`
+
+- `completion=true`: Use [`vbb-stations-autocomplete`](https://github.com/derhuerst/vbb-stations-autocomplete). Otherwise, [`vbb-find-stations`](https://github.com/derhuerst/vbb-find-stations) will be used.
+- `query=…`: **Required.**
+
+`Content-Type`: `application/x-ndjson` if `completion=true`, otherwise `application/json`
+`X-Rate-Limit`: `1000` (per hour)
+
+### `GET /stations/:id/departures`
+
+Output from [`require('vbb-hafas').departures(…)`](https://github.com/derhuerst/vbb-hafas#getting-started).
+
+`Content-Type`: `application/json`
+`X-Rate-Limit`: `250` (per hour)
+
+### `GET /routes`
+
+- `from=…`: **Required.** Station ID.
+- `to=…`: **Required.** Station ID.
+
+Output from [`require('vbb-hafas').routes(…)`](https://github.com/derhuerst/vbb-hafas#getting-started).
+
+`Content-Type`: `application/json`
+`X-Rate-Limit`: `100` (per hour)
 
 
 ## Contributing
