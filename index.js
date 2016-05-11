@@ -1,5 +1,6 @@
 'use strict'
 
+const fs           = require('fs')
 const redis        = require('redis')
 const express      = require('express')
 const corser       = require('corser')
@@ -9,6 +10,15 @@ const search       = require('vbb-find-stations')
 const ndjson       = require('ndjson')
 const hafas        = require('vbb-hafas')
 const config       = require('config')
+const https        = require('https')
+
+const ssl = {
+	  key:  fs.readFileSync(config.key)
+	, cert: fs.readFileSync(config.cert)
+	, ca:   fs.readFileSync(config.ca)
+}
+
+
 
 const db = redis.createClient()
 const api = express()
@@ -58,4 +68,5 @@ api.get('/routes', limit(100), (req, res) => {
 
 
 
-api.listen(config.port)
+https.createServer(ssl, api).listen(config.port, () =>
+	console.log(`Server listening on ${config.port}.`))
