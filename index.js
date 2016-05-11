@@ -36,8 +36,14 @@ const limit = ((tracker) => (amount) => tracker({
 }))(limiter(api, db))
 
 const onError = (req, res, err) => {
-	console.error(err.message)
-	res.status(500).json({error: true, msg: err.message})
+	// todo: move this to vbb-util?
+	     if (err.code === 'R5000') err.statusCode = 401
+	else if (err.code === 'R0002') err.statusCode = 400
+	else if (err.code === 'H890')  err.statusCode = 404
+	else if (err.code === 'H9240') err.statusCode = 404
+	else err.statusCode = 502
+	res.status(err.statusCode || 500)
+		.json({error: true, msg: err.message})
 	return err
 }
 
@@ -60,8 +66,8 @@ api.get('/stations', limit(1000), (req, res) => {
 
 
 api.get('/stations/:id/departures', noCache, limit(250), (req, res) => {
-	console.log(req.headers)
-	hafas.departures(config.vbbKey, req.params.id)
+	const key = req.headers['x-vbb-api-key'] || config.vbbKey
+	hafas.departures(key, req.params.id)
 	.catch((err) => onError(req, res, err))
 	.then((deps) => res.json(deps))
 })
@@ -69,9 +75,10 @@ api.get('/stations/:id/departures', noCache, limit(250), (req, res) => {
 
 
 api.get('/routes', noCache, limit(100), (req, res) => {
+	const key = req.headers['x-vbb-api-key'] || config.vbbKey
 	if (!req.query.from) return res.status(400).end('Missing origin station.')
 	if (!req.query.to) return res.status(400).end('Missing destination station.')
-	hafas.routes(config.vbbKey, req.query.from, req.query.to)
+	hafas.routes(key, req.query.from, req.query.to)
 	.catch((err) => onError(req, res, err))
 	.then((routes) => res.json(routes))
 })
