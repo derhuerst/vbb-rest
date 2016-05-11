@@ -2,6 +2,7 @@
 
 const redis        = require('redis')
 const express      = require('express')
+const corser       = require('corser')
 const limiter      = require('express-limiter')
 const autocomplete = require('vbb-stations-autocomplete')
 const search       = require('vbb-find-stations')
@@ -11,6 +12,7 @@ const config       = require('config')
 
 const db = redis.createClient()
 const api = express()
+api.use(corser.create()) // CORS
 
 const limit = ((tracker) => (amount) => tracker({
 	  lookup: 'connection.remoteAddress'
