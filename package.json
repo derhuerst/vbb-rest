@@ -14,8 +14,9 @@
 	"dependencies": {
 		"redis": "^2.6.0-2",
 		"express": "^4.13.4",
-		"express-limiter": "^1.6",
+		"hsts": "^1",
 		"corser": "^2",
+		"express-limiter": "^1.6",
 		"vbb-stations-autocomplete": "^0.8",
 		"vbb-find-stations": "^0.3",
 		"ndjson": "^1.4.3",
