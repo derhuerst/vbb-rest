@@ -58,4 +58,4 @@ api.get('/routes', limit(100), (req, res) => {
 
 
 
-api.listen(3000)
+api.listen(config.port)

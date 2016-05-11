@@ -8,5 +8,6 @@ rsync -rav --delete -e 'ssh -i ./.digital-ocean' \
 ssh -i ./.digital-ocean 'root@vbb-rest.do.jannisr.de' "\
 cd ~/vbb-rest
 npm i
+export NODE_ENV=production
 forever stop vbb-rest
 forever start -a --uid vbb-rest index.js"
