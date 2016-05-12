@@ -5,6 +5,7 @@ const redis        = require('redis')
 const express      = require('express')
 const hsts         = require('hsts')
 const morgan       = require('morgan')
+const shorthash    = require('shorthash').unique
 const corser       = require('corser')
 const nocache      = require('nocache')
 const limiter      = require('express-limiter')
@@ -29,7 +30,8 @@ const api = express()
 const server = https.createServer(ssl, api)
 
 api.use(hsts({maxAge: 24 * 60 * 60 * 1000}))
-api.use(morgan(':remote-addr :method :url :status :response-time ms'))
+morgan.token('ip', (req, res) => shorthash(req.ip))
+api.use(morgan(':date[iso] :ip :method :url :status :response-time ms'))
 api.use(corser.create()) // CORS
 const noCache = nocache()
 
