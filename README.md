@@ -1,6 +1,13 @@
 # *vbb-rest*
 
-***vbb-rest* is a public transport REST API**, a clean alternative to the [VBB HAFAS API](https://github.com/derhuerst/vbb-hafas).
+***vbb-rest* is a public transport REST API**, a clean alternative to the [VBB HAFAS API](https://github.com/derhuerst/vbb-hafas). Things you don't get with their API:
+
+- CORS
+- HTTPS
+- speed!
+- completely REST
+- nearby stations API
+- sane, transparent rate-limiting
 
 [![npm version](https://img.shields.io/npm/v/vbb-rest.svg)](https://www.npmjs.com/package/vbb-rest)
 [![dependency status](https://img.shields.io/david/derhuerst/vbb-rest.svg)](https://david-dm.org/derhuerst/vbb-rest)
@@ -22,6 +29,11 @@ npm start
 
 ## Usage
 
+**The public endpoint is [`vbb-rest.do.jannisr.de`](`https://vbb-rest.do.jannisr.de`).**
+
+You can pass your own VBB API key with an `x-vbb-api-key` HTTP header.
+
+
 ### `GET /stations?query=…`
 
 - `completion=true`: Use [`vbb-stations-autocomplete`](https://github.com/derhuerst/vbb-stations-autocomplete). Otherwise, [`vbb-find-stations`](https://github.com/derhuerst/vbb-find-stations) will be used.
@@ -29,6 +41,7 @@ npm start
 `Content-Type`: `application/x-ndjson` if `completion=true`, otherwise `application/json`
 
 `X-Rate-Limit`: `1000` (per hour)
+
 
 ### `GET /stations`
 
@@ -43,6 +56,7 @@ Passes all parameters into [`vbb-stations`](https://github.com/derhuerst/vbb-sta
 
 `X-Rate-Limit`: `1000` (per hour)
 
+
 ### `GET /nearby`
 
 *Note:* This route calculates the *map* distance, not the *walking* distance!
@@ -55,6 +69,7 @@ Passes all parameters into [`vbb-stations`](https://github.com/derhuerst/vbb-sta
 
 `X-Rate-Limit`: `1000` (per hour)
 
+
 ### `GET /stations/:id/departures`
 
 Output from [`require('vbb-hafas').departures(…)`](https://github.com/derhuerst/vbb-hafas#getting-started).
@@ -62,6 +77,7 @@ Output from [`require('vbb-hafas').departures(…)`](https://github.com/derhuers
 `Content-Type`: `application/json`
 
 `X-Rate-Limit`: `250` (per hour)
+
 
 ### `GET /routes`
 
