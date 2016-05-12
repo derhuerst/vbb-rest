@@ -21,6 +21,7 @@
 		"express-limiter": "^1.6",
 		"vbb-stations-autocomplete": "^0.8",
 		"vbb-find-stations": "^0.3",
+		"cli-native": "^1",
 		"ndjson": "^1.4.3",
 		"vbb-stations": "^0.4",
 		"vbb-hafas": "^0.8.1",
