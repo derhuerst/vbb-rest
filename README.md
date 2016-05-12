@@ -22,12 +22,25 @@ npm start
 
 ## Usage
 
-### `GET /stations`
+### `GET /stations?query=…`
 
 - `completion=true`: Use [`vbb-stations-autocomplete`](https://github.com/derhuerst/vbb-stations-autocomplete). Otherwise, [`vbb-find-stations`](https://github.com/derhuerst/vbb-find-stations) will be used.
-- `query=…`: **Required.**
 
 `Content-Type`: `application/x-ndjson` if `completion=true`, otherwise `application/json`
+
+`X-Rate-Limit`: `1000` (per hour)
+
+### `GET /stations`
+
+Passes all parameters into [`vbb-stations`](https://github.com/derhuerst/vbb-stations).
+
+- `name=…`: Filter by name.
+- `latitude=…`: Filter by latitude.
+- `longitude=…`: Filter by longitude.
+- `weight=…`: Filter by weight.
+
+`Content-Type`: `application/x-ndjson`
+
 `X-Rate-Limit`: `1000` (per hour)
 
 ### `GET /stations/:id/departures`
@@ -35,6 +48,7 @@ npm start
 Output from [`require('vbb-hafas').departures(…)`](https://github.com/derhuerst/vbb-hafas#getting-started).
 
 `Content-Type`: `application/json`
+
 `X-Rate-Limit`: `250` (per hour)
 
 ### `GET /routes`
@@ -45,6 +59,7 @@ Output from [`require('vbb-hafas').departures(…)`](https://github.com/derhuers
 Output from [`require('vbb-hafas').routes(…)`](https://github.com/derhuerst/vbb-hafas#getting-started).
 
 `Content-Type`: `application/json`
+
 `X-Rate-Limit`: `100` (per hour)
 
 
