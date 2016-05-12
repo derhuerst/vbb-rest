@@ -14,6 +14,7 @@ const https        = require('https')
 
 const stations     = require('./lib/stations')
 const station      = require('./lib/station')
+const lines        = require('./lib/lines')
 const nearby       = require('./lib/nearby')
 const departures   = require('./lib/departures')
 const routes       = require('./lib/routes')
@@ -45,6 +46,7 @@ const limit = ((tracker) => (amount) => tracker({
 
 api.get('/stations', limit(1000), stations)
 api.get('/stations/:id', limit(1000), station)
+api.get('/lines', limit(1000), lines)
 api.get('/stations/:id/departures', noCache, limit(250), departures)
 api.get('/nearby', limit(1000), nearby)
 api.get('/routes', noCache, limit(100), routes)

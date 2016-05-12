@@ -57,6 +57,19 @@ Passes all parameters into [`vbb-stations`](https://github.com/derhuerst/vbb-sta
 `X-Rate-Limit`: `1000` (per hour)
 
 
+### `GET /lines`
+
+Passes all parameters into [`vbb-lines`](https://github.com/derhuerst/vbb-lines).
+
+- `name=…`: Filter by name.
+- `agencyId=…`: Filter by agency id. See [`vbb-static`](https://github.com/derhuerst/vbb-static).
+- `type=…`: Filter by type. See [`vbb-util`](https://github.com/derhuerst/vbb-util/blob/cd0c74f8a851549cfb9cf561d1fcf366248557c3/products.js#L116-L125).
+
+`Content-Type`: `application/x-ndjson`
+
+`X-Rate-Limit`: `1000` (per hour)
+
+
 ### `GET /nearby`
 
 *Note:* This route calculates the *map* distance, not the *walking* distance!
