@@ -49,7 +49,7 @@ api.use((err, req, res, next) => {
 	else if (err.code === 'R0002') err.statusCode = 400
 	else if (err.code === 'H890')  err.statusCode = 404
 	else if (err.code === 'H9240') err.statusCode = 404
-	else err.statusCode = 502
+	else if (!err.statusCode)      err.statusCode = 502
 	res.status(err.statusCode || 500).json({error: true, msg: err.message})
 	next()
 })
