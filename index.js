@@ -46,11 +46,11 @@ const limit = ((tracker) => (amount) => tracker({
 
 
 api.get('/stations', limit(1000), stations)
+api.get('/stations/nearby', limit(1000), nearby)
 api.get('/stations/:id', limit(1000), station)
 api.get('/stations/:id/departures', noCache, limit(250), departures)
 api.get('/lines', limit(1000), lines)
 api.get('/lines/:id', limit(1000), line)
-api.get('/nearby', limit(1000), nearby)
 api.get('/routes', noCache, limit(100), routes)
 
 api.use((err, req, res, next) => {

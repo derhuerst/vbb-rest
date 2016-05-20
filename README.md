@@ -57,6 +57,19 @@ Passes all parameters into [`vbb-stations`](https://github.com/derhuerst/vbb-sta
 `X-Rate-Limit`: `1000` (per hour)
 
 
+### `GET /stations/nearby`
+
+*Note:* This route calculates the *map* distance, not the *walking* distance!
+
+- `latitude=…`: **Required.**
+- `longitude=…`: **Required.**
+- `results=…`: How many stations shall be shown?
+
+`Content-Type`: `application/x-ndjson`
+
+`X-Rate-Limit`: `1000` (per hour)
+
+
 ### `GET /stations/:id`
 
 `Content-Type`: `application/json`
@@ -89,19 +102,6 @@ Passes all parameters into [`vbb-lines`](https://github.com/derhuerst/vbb-lines)
 ### `GET /lines/:id`
 
 `Content-Type`: `application/json`
-
-`X-Rate-Limit`: `1000` (per hour)
-
-
-### `GET /nearby`
-
-*Note:* This route calculates the *map* distance, not the *walking* distance!
-
-- `latitude=…`: **Required.**
-- `longitude=…`: **Required.**
-- `results=…`: How many stations shall be shown?
-
-`Content-Type`: `application/x-ndjson`
 
 `X-Rate-Limit`: `1000` (per hour)
 
