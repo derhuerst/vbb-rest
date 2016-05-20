@@ -35,7 +35,7 @@
 		"gps-distance": "^0.0.4"
 	},
 	"scripts": {
-		"start":    "forever start --uid vbb-rest index.js",
+		"start":    "forever start --uid vbb-rest -a index.js",
 		"stop":     "forever stop vbb-rest",
 		"ssh":      "ssh -i ./digital-ocean root@vbb-rest.do.jannisr.de",
 		"deploy":   "./deploy"
