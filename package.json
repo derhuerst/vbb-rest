@@ -27,6 +27,7 @@
 		"cli-native": "^1",
 		"ndjson": "^1.4.3",
 		"vbb-stations": "^0.4",
+		"vbb-lines-at": "^0.1",
 		"vbb-lines": "^0.1",
 		"vbb-hafas": "^0.8.1",
 		"config": "^1.20.1",
