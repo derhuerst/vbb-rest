@@ -1,14 +1,12 @@
 'use strict'
 
 const fs           = require('fs')
-const redis        = require('redis')
 const express      = require('express')
 const hsts         = require('hsts')
 const morgan       = require('morgan')
 const shorthash    = require('shorthash').unique
 const corser       = require('corser')
 const nocache      = require('nocache')
-const limiter      = require('express-limiter')
 const config       = require('config')
 const https        = require('https')
 
@@ -37,21 +35,15 @@ api.use(morgan(':date[iso] :ip :method :url :status :response-time ms'))
 api.use(corser.create()) // CORS
 const noCache = nocache()
 
-const limit = ((tracker) => (amount) => tracker({
-	  lookup: 'connection.remoteAddress'
-	, total:  amount
-	, expire: 10 * 60 * 1000 // 10min
-}))(limiter(api, redis.createClient()))
 
 
-
-api.get('/stations', limit(1000), stations)
-api.get('/stations/nearby', limit(1000), nearby)
-api.get('/stations/:id', limit(1000), station)
-api.get('/stations/:id/departures', noCache, limit(250), departures)
-api.get('/lines', limit(1000), lines)
-api.get('/lines/:id', limit(1000), line)
-api.get('/routes', noCache, limit(100), routes)
+api.get('/stations', stations)
+api.get('/stations/nearby', nearby)
+api.get('/stations/:id', station)
+api.get('/stations/:id/departures', noCache, departures)
+api.get('/lines', lines)
+api.get('/lines/:id', line)
+api.get('/routes', noCache, routes)
 
 api.use((err, req, res, next) => {
 	// todo: move this to vbb-util?

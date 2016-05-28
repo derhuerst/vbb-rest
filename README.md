@@ -17,8 +17,6 @@
 
 ## Installing
 
-Install & run [Redis](http://redis.io/)
-
 ```
 git clone https://github.com/derhuerst/vbb-rest.git
 cd vbb-rest

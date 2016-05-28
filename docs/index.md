@@ -6,8 +6,6 @@
 
 `Content-Type`: `application/x-ndjson` if `completion=true`, otherwise `application/json`
 
-`X-Rate-Limit`: `1000` (per hour)
-
 
 ## `GET /stations`
 
@@ -20,8 +18,6 @@ Passes all parameters into [`vbb-stations`](https://github.com/derhuerst/vbb-sta
 
 `Content-Type`: `application/x-ndjson`
 
-`X-Rate-Limit`: `1000` (per hour)
-
 
 ## `GET /stations/nearby`
 
@@ -33,14 +29,10 @@ Passes all parameters into [`vbb-stations`](https://github.com/derhuerst/vbb-sta
 
 `Content-Type`: `application/x-ndjson`
 
-`X-Rate-Limit`: `1000` (per hour)
-
 
 ## `GET /stations/:id`
 
 `Content-Type`: `application/json`
-
-`X-Rate-Limit`: `1000` (per hour)
 
 
 ## `GET /stations/:id/departures`
@@ -48,8 +40,6 @@ Passes all parameters into [`vbb-stations`](https://github.com/derhuerst/vbb-sta
 Output from [`require('vbb-hafas').departures(…)`](https://github.com/derhuerst/vbb-hafas#getting-started).
 
 `Content-Type`: `application/json`
-
-`X-Rate-Limit`: `250` (per hour)
 
 
 ## `GET /lines`
@@ -62,14 +52,10 @@ Passes all parameters into [`vbb-lines`](https://github.com/derhuerst/vbb-lines)
 
 `Content-Type`: `application/x-ndjson`
 
-`X-Rate-Limit`: `1000` (per hour)
-
 
 ## `GET /lines/:id`
 
 `Content-Type`: `application/json`
-
-`X-Rate-Limit`: `1000` (per hour)
 
 
 ## `GET /routes`
@@ -80,5 +66,3 @@ Passes all parameters into [`vbb-lines`](https://github.com/derhuerst/vbb-lines)
 Output from [`require('vbb-hafas').routes(…)`](https://github.com/derhuerst/vbb-hafas#getting-started).
 
 `Content-Type`: `application/json`
-
-`X-Rate-Limit`: `100` (per hour)
