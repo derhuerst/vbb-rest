@@ -67,9 +67,25 @@ Passes these parameters into [`vbb-lines`](https://github.com/derhuerst/vbb-line
 
 ## `GET /routes`
 
-- `from=…`: **Required.** Station ID.
-- `to=…`: **Required.** Station ID.
-
 Output from [`require('vbb-hafas').routes(…)`](https://github.com/derhuerst/vbb-hafas#getting-started).
+
+- `from`: **Required.** Station ID.
+- `to`: **Required.** Station ID.
+- `when`: Anything parsable by [`parse-messy-time`](https://github.com/substack/parse-messy-time#example). Default: now.
+- `results`: Maximum number of results. Default: `5`.
+- `via`: Station ID. Default: `null`.
+- `passedStations`: Return stations on the way? Default: `false`.
+- `transfers`: Maximum number of transfers. Default: `5`.
+- `transferTime`: Minimum time in minutes for a single transfer. Default: `0`.
+- `accessibility`: Possible values: `partial`, `complete`. Default: `none`.
+- `bike`: Return only bike-friendly routes. Default: `false`.
+
+- `suburban`: Include [S-Bahn trains](https://en.wikipedia.org/wiki/Berlin_S-Bahn)? Default: `true`.
+- `subway`: Include [U-Bahn trains](https://en.wikipedia.org/wiki/Berlin_U-Bahn)? Default: `true`.
+- `tram`: Include [trams](https://en.wikipedia.org/wiki/Trams_in_Berlin)? Default: `true`.
+- `bus`: Include [buses](https://en.wikipedia.org/wiki/Bus_transport_in_Berlin)? Default: `true`.
+- `ferry`: Include [ferries](https://en.wikipedia.org/wiki/Ferry_transport_in_Berlin)? Default: `true`.
+- `express`: Include [IC/ICE/EC trains](https://en.wikipedia.org/wiki/High-speed_rail_in_Germany)? Default: `true`.
+- `regional`: Include [RE/RB/ODEG trains](https://de.wikipedia.org/wiki/Liste_der_Eisenbahnlinien_in_Brandenburg_und_Berlin#Regionalverkehr)? Default: `true`.
 
 `Content-Type`: `application/json`
