@@ -21,11 +21,12 @@ Passes all parameters into [`vbb-stations`](https://github.com/derhuerst/vbb-sta
 
 ## `GET /stations/nearby`
 
-*Note:* This route calculates the *map* distance, not the *walking* distance!
-
-- `latitude=…`: **Required.**
-- `longitude=…`: **Required.**
-- `results=…`: How many stations shall be shown?
+- `latitude`: **Required.**
+- `longitude`: **Required.**
+- `results`: How many stations shall be shown? Default: `8`.
+- `distance`: Maximum distance in meters. Default: `null`.
+- `stations`: Show stations around. Default: `true`.
+- `poi`: Show points of interest around. Default: `false`.
 
 `Content-Type`: `application/x-ndjson`
 
