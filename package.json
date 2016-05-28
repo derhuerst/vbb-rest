@@ -29,10 +29,8 @@
 		"vbb-stations": "^0.4",
 		"vbb-lines-at": "^0.1",
 		"vbb-lines": "^0.1",
-		"vbb-hafas": "^0.8.1",
-		"config": "^1.20.1",
-		"hifo-stream": "^2",
-		"gps-distance": "^0.0.4"
+		"vbb-hafas": "^0.10.1",
+		"config": "^1.20.1"
 	},
 	"scripts": {
 		"start":    "forever start --uid vbb-rest -a index.js",

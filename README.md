@@ -2,6 +2,7 @@
 
 ***vbb-rest* is a public transport REST API**, a clean alternative to the [VBB HAFAS API](https://github.com/derhuerst/vbb-hafas). Things you don't get with their API:
 
+- no VBB API key required!
 - CORS
 - HTTPS
 - speed!
@@ -30,7 +31,7 @@ npm start
 
 [API Documentation](docs/index.md)
 
-**The public endpoint is [`vbb-rest.do.jannisr.de`](`https://vbb-rest.do.jannisr.de`).** You can pass your own VBB API key with an `x-vbb-api-key` HTTP header.
+**The public endpoint is [`vbb-rest.do.jannisr.de`](`https://vbb-rest.do.jannisr.de`).**
 
 
 ## Contributing
