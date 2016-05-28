@@ -1,6 +1,6 @@
 # Why use this API?
 
-If the public transport agency of Berlin and Brandenburg (VBB) itself provides an API, why use this one? (And what could VBB do better?)
+The public transport agency of Berlin and Brandenburg (VBB) itself provides an API. Why use this one? (And what could VBB do better?)
 
 ## No API Key
 
@@ -86,6 +86,10 @@ and this one:
 ```
 
 VBB also has a mobile API (which this API uses under the hood) with an even more verbose output.
+
+## More Features
+
+This API enhances the functionality of their API with static data, which is used in e.g. `GET /stations` and `GET /lines`.
 
 ## Proper HTTP, Proper REST
 

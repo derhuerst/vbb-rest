@@ -1,14 +1,14 @@
 'use strict'
 
+const config       = require('config')
 const fs           = require('fs')
 const express      = require('express')
+const https        = require('https')
 const hsts         = require('hsts')
 const morgan       = require('morgan')
 const shorthash    = require('shorthash').unique
 const corser       = require('corser')
 const nocache      = require('nocache')
-const config       = require('config')
-const https        = require('https')
 
 const stations     = require('./lib/stations')
 const station      = require('./lib/station')

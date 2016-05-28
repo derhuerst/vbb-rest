@@ -2,19 +2,19 @@
 
 ## `GET /stations?query=…`
 
-- `completion=true`: Use [`vbb-stations-autocomplete`](https://github.com/derhuerst/vbb-stations-autocomplete). Otherwise, [`vbb-find-stations`](https://github.com/derhuerst/vbb-find-stations) will be used.
+If `completion=true`, [`vbb-stations-autocomplete`](https://github.com/derhuerst/vbb-stations-autocomplete) will be used. The `Content-Type` will be `application/json`.
 
-`Content-Type`: `application/x-ndjson` if `completion=true`, otherwise `application/json`
+Otherwise, [`vbb-find-stations`](https://github.com/derhuerst/vbb-find-stations) will be used. The `Content-Type` will be `application/x-ndjson`.
 
 
 ## `GET /stations`
 
 Passes all parameters into [`vbb-stations`](https://github.com/derhuerst/vbb-stations).
 
-- `name=…`: Filter by name.
-- `latitude=…`: Filter by latitude.
-- `longitude=…`: Filter by longitude.
-- `weight=…`: Filter by weight.
+- `name`: Filter by name.
+- `latitude`: Filter by latitude.
+- `longitude`: Filter by longitude.
+- `weight`: Filter by weight.
 
 `Content-Type`: `application/x-ndjson`
 
@@ -40,9 +40,9 @@ Passes all parameters into [`vbb-stations`](https://github.com/derhuerst/vbb-sta
 
 Output from [`require('vbb-hafas').departures(…)`](https://github.com/derhuerst/vbb-hafas/blob/master/docs/departures.md).
 
-- `when=…`: Anything parsable by [`parse-messy-time`](https://github.com/substack/parse-messy-time#example). Default: now.
-- `direction=…`: Station ID.
-- `duration=…`: Show departures for the next `n` minutes. Default: `10`.
+- `when`: Anything parsable by [`parse-messy-time`](https://github.com/substack/parse-messy-time#example). Default: now.
+- `direction`: Station ID.
+- `duration`: Show departures for the next `n` minutes. Default: `10`.
 
 `Content-Type`: `application/json`
 
