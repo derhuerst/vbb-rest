@@ -48,11 +48,13 @@ Output from [`require('vbb-hafas').departures(…)`](https://github.com/derhuers
 
 ## `GET /lines`
 
-Passes all parameters into [`vbb-lines`](https://github.com/derhuerst/vbb-lines).
+- `variants`: Wether to return stations of the line. Default: `false`.
 
-- `name=…`: Filter by name.
-- `agencyId=…`: Filter by agency id. See [`vbb-static`](https://github.com/derhuerst/vbb-static).
-- `type=…`: Filter by type. See [`vbb-util`](https://github.com/derhuerst/vbb-util/blob/cd0c74f8a851549cfb9cf561d1fcf366248557c3/products.js#L116-L125).
+Passes these parameters into [`vbb-lines`](https://github.com/derhuerst/vbb-lines):
+
+- `name`: Filter by name.
+- `agencyId`: Filter by agency id. See [`vbb-gtfs`](https://github.com/derhuerst/vbb-gtfs/blob/master/agency.txt).
+- `type`: Filter by type. See [`vbb-util`](https://github.com/derhuerst/vbb-util/blob/cd0c74f8a851549cfb9cf561d1fcf366248557c3/products.js#L116-L125).
 
 `Content-Type`: `application/x-ndjson`
 
