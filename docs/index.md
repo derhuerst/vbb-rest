@@ -89,3 +89,22 @@ Output from [`require('vbb-hafas').routes(…)`](https://github.com/derhuerst/vb
 - `regional`: Include [RE/RB/ODEG trains](https://de.wikipedia.org/wiki/Liste_der_Eisenbahnlinien_in_Brandenburg_und_Berlin#Regionalverkehr)? Default: `true`.
 
 `Content-Type`: `application/json`
+
+
+## `GET /maps/:type`
+
+Redirects to PDF public transport maps. `type` may be one of these:
+
+`type` | Description
+-------|------------
+`bvg` | Day, **Berlin ABC**, S-Bahn & U-Bahn
+`bvg-tram` | Day & Night, **Berlin ABC**, Trams
+`bvg-night` | Night, **Berlin ABC**, S-Bahn & U-Bahn
+`bvg-refugees` | Day, **Berlin-ABC**, S-Bahn & U-Bahn, Translations
+`vbb` | Day, **Berlin & Brandenburg**, RE & RB trains
+`brb` | Day, **Brandenburg an der Havel**
+`cb` | Day & Night, **Cottbus**
+`cb-night` | Night, **Cottbus**
+`ff` | Day, **Frankfurt Oder**
+`p` | Day, **Potsdam**
+`p-night` | Night, **Potsdam**
