@@ -28,7 +28,7 @@ Passes all parameters into [`vbb-stations`](https://github.com/derhuerst/vbb-sta
 - `stations`: Show stations around. Default: `true`.
 - `poi`: Show points of interest around. Default: `false`.
 
-`Content-Type`: `application/x-ndjson`
+`Content-Type`: `application/json`
 
 
 ## `GET /stations/:id`
