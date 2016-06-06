@@ -27,8 +27,8 @@
 		"cli-native": "^1",
 		"vbb-stations": "^0.4",
 		"vbb-lines-at": "^0.1",
-		"vbb-lines": "^0.1",
-		"vbb-hafas": "^0.10.1"
+		"vbb-lines": "^0.2",
+		"vbb-hafas": "^0.12"
 	},
 	"scripts": {
 		"start":    "forever start --uid vbb-rest -a index.js",
