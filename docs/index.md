@@ -40,7 +40,7 @@ Passes all parameters into [`vbb-stations`](https://github.com/derhuerst/vbb-sta
 
 Output from [`require('vbb-hafas').departures(…)`](https://github.com/derhuerst/vbb-hafas/blob/master/docs/departures.md).
 
-- `when`: Anything parsable by [`parse-messy-time`](https://github.com/substack/parse-messy-time#example). Default: now.
+- `when`: A [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) or anything parsable by [`parse-messy-time`](https://github.com/substack/parse-messy-time#example). Default: now.
 - `direction`: Station ID.
 - `duration`: Show departures for the next `n` minutes. Default: `10`.
 
@@ -71,7 +71,7 @@ Output from [`require('vbb-hafas').routes(…)`](https://github.com/derhuerst/vb
 
 - `from`: **Required.** Station ID.
 - `to`: **Required.** Station ID.
-- `when`: Anything parsable by [`parse-messy-time`](https://github.com/substack/parse-messy-time#example). Default: now.
+- `when`: A [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) or anything parsable by [`parse-messy-time`](https://github.com/substack/parse-messy-time#example). Default: now.
 - `results`: Maximum number of results. Default: `5`.
 - `via`: Station ID. Default: `null`.
 - `passedStations`: Return stations on the way? Default: `false`.
