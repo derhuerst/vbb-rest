@@ -28,6 +28,7 @@
 		"vbb-stations": "^0.4",
 		"vbb-lines-at": "^0.1",
 		"vbb-lines": "^0.2",
+		"parse-messy-time": "^2",
 		"vbb-hafas": "^0.12"
 	},
 	"scripts": {
