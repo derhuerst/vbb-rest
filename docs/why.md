@@ -47,13 +47,13 @@ to this one:
 ```js
 {
     from: {
-        name: 'Kirschenallee (Berlin)',
+        name: 'Kirschenallee',
         latitude: 52.520384,
         longitude: 13.267233,
         type: 'station',
         id: 9020103
     },
-    start: 2016-05-26T09:47:00.000Z, // Date object
+    start: 1465300183, // UNIX timestamp
     transport: 'public',
     notes: {touchAndTravel: true}
 }

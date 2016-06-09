@@ -1,13 +1,6 @@
 # vbb-rest
 
-***vbb-rest* is a public transport REST API**, a clean alternative to the [VBB HAFAS API](https://github.com/derhuerst/vbb-hafas). Things you don't get with their API:
-
-- no VBB API key required!
-- CORS
-- HTTPS
-- speed
-- completely RESTy
-- sane, transparent rate-limiting
+***vbb-rest* is a public transport REST API**, a clean alternative to the [VBB HAFAS API](https://github.com/derhuerst/vbb-hafas). [It has lots of advantages over their API.](docs/why.md)
 
 [![npm version](https://img.shields.io/npm/v/vbb-rest.svg)](https://www.npmjs.com/package/vbb-rest)
 [![dependency status](https://img.shields.io/david/derhuerst/vbb-rest.svg)](https://david-dm.org/derhuerst/vbb-rest)
