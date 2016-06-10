@@ -29,7 +29,7 @@
 		"vbb-lines-at": "^0.1",
 		"vbb-lines": "^0.2",
 		"parse-messy-time": "^2",
-		"vbb-hafas": "^0.12"
+		"vbb-hafas": "^0.13"
 	},
 	"scripts": {
 		"start":    "forever start --uid vbb-rest -a index.js",

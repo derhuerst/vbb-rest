@@ -67,10 +67,22 @@ Passes these parameters into [`vbb-lines`](https://github.com/derhuerst/vbb-line
 
 ## `GET /routes`
 
-Output from [`require('vbb-hafas').routes(…)`](https://github.com/derhuerst/vbb-hafas#getting-started).
+Output from [`require('vbb-hafas').routes(…)`](https://github.com/derhuerst/vbb-hafas#getting-started). Start location and end location must be either in [station format](#station-format) or in [POI/address format](#poiaddress-format) (you can mix them).
 
-- `from`: **Required.** Station ID.
-- `to`: **Required.** Station ID.
+## station format
+
+- `from`: **Required.** Station ID (e.g. `9023201`).
+- `to`: **Required.** Station ID (e.g. `9023201`).
+
+## POI/address format
+
+- `from.latitude`/`to.latitude`: **Required.** Latitude (e.g. `52.543333`).
+- `from.longitude`/`to.longitude`: **Required.** Longitude (e.g. `13.351686`).
+- `from.name`/`to.name`: Name of the locality (e.g. `ATZE Musiktheater`).
+- `from.id`/`to.id`: POI ID (e.g. `9980720`).
+
+## other parameters
+
 - `when`: A [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) or anything parsable by [`parse-messy-time`](https://github.com/substack/parse-messy-time#example). Default: now.
 - `results`: Maximum number of results. Default: `5`.
 - `via`: Station ID. Default: `null`.
