@@ -6,6 +6,13 @@ If `completion=true`, [`vbb-stations-autocomplete`](https://github.com/derhuerst
 
 Otherwise, [`vbb-find-stations`](https://github.com/derhuerst/vbb-find-stations) will be used. The `Content-Type` will be `application/x-ndjson`.
 
+### examples
+
+```shell
+curl 'https://vbb-rest.do.jannisr.de/stations?completion=true&query=jungfernhei'
+curl 'https://vbb-rest.do.jannisr.de/stations?query=jungfernheide'
+```
+
 
 ## `GET /stations`
 
@@ -17,6 +24,12 @@ Passes all parameters into [`vbb-stations`](https://github.com/derhuerst/vbb-sta
 - `weight`: Filter by weight.
 
 `Content-Type`: `application/x-ndjson`
+
+### examples
+
+```shell
+curl 'https://vbb-rest.do.jannisr.de/stations?weight=33660'
+```
 
 
 ## `GET /stations/nearby`
@@ -30,10 +43,22 @@ Passes all parameters into [`vbb-stations`](https://github.com/derhuerst/vbb-sta
 
 `Content-Type`: `application/json`
 
+### examples
+
+```shell
+curl 'https://vbb-rest.do.jannisr.de/stations/nearby?latitude=52.52725&longitude=13.4123'
+```
+
 
 ## `GET /stations/:id`
 
 `Content-Type`: `application/json`
+
+### examples
+
+```shell
+curl 'https://vbb-rest.do.jannisr.de/stations/9013102'
+```
 
 
 ## `GET /stations/:id/departures`
@@ -45,6 +70,12 @@ Output from [`require('vbb-hafas').departures(…)`](https://github.com/derhuers
 - `duration`: Show departures for the next `n` minutes. Default: `10`.
 
 `Content-Type`: `application/json`
+
+### examples
+
+```shell
+curl 'https://vbb-rest.do.jannisr.de/stations/9013102/departures?when=tomorrow%206pm'
+```
 
 
 ## `GET /lines`
@@ -59,10 +90,22 @@ Passes these parameters into [`vbb-lines`](https://github.com/derhuerst/vbb-line
 
 `Content-Type`: `application/x-ndjson`
 
+### examples
+
+```shell
+curl 'https://vbb-rest.do.jannisr.de/lines?agencyId=BVT'
+```
+
 
 ## `GET /lines/:id`
 
 `Content-Type`: `application/json`
+
+### examples
+
+```shell
+curl 'https://vbb-rest.do.jannisr.de/lines/531'
+```
 
 
 ## `GET /routes`
@@ -102,6 +145,14 @@ Output from [`require('vbb-hafas').routes(…)`](https://github.com/derhuerst/vb
 
 `Content-Type`: `application/json`
 
+### examples
+
+```shell
+curl 'https://vbb-rest.do.jannisr.de/routes?from=9017104&to=9017101'
+curl 'https://vbb-rest.do.jannisr.de/routes?from=9023201&to.name=ATZE%20Musiktheater&to.latitude=52.543333&to.longitude=13.351686'
+curl 'https://vbb-rest.do.jannisr.de/routes?from=…&to=…&results=3&bus=false'
+```
+
 
 ## `GET /maps/:type`
 
@@ -120,3 +171,9 @@ Redirects to PDF public transport maps. `type` may be one of these:
 `ff` | Day, **Frankfurt Oder**
 `p` | Day, **Potsdam**
 `p-night` | Night, **Potsdam**
+
+### examples
+
+```shell
+curl -L -o bvg-tram-map.pdf 'https://vbb-rest.do.jannisr.de/maps/bvg-tram'
+```
