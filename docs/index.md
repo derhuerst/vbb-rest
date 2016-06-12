@@ -1,5 +1,7 @@
 # API
 
+*Note:* During development and test runs using this API, please send an **`X-Identifier` header (e.g. `my-module-testing`) to let me know the request is not from a production system**. For all other requests, a hash of the client IP will be logged.
+
 ## `GET /stations?query=…`
 
 If `completion=true`, [`vbb-stations-autocomplete`](https://github.com/derhuerst/vbb-stations-autocomplete) will be used. The `Content-Type` will be `application/json`.
