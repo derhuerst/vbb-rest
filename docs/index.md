@@ -154,6 +154,26 @@ curl 'https://vbb-rest.do.jannisr.de/routes?from=…&to=…&results=3&bus=false'
 ```
 
 
+## `GET /locations`
+
+Output from [`require('vbb-hafas').locations(…)`](https://github.com/derhuerst/vbb-hafas/blob/master/docs/locations.md)
+
+- `query`: **Required.** (e.g. `Alexanderplatz`)
+- `results`: How many stations shall be shown? Default: `10`.
+- `stations`: Show stations? Default: `true`.
+- `poi`: Show points of interest? Default: `true`.
+- `addresses`: Show addresses? Default: `true`.
+
+`Content-Type`: `application/json`
+
+### examples
+
+```shell
+curl 'https://vbb-rest.do.jannisr.de/locations?query=Alexanderplatz'
+curl 'https://localhost:3000/locations?query=Pestalozzistra%C3%9Fe%2082%2C%20Berlin&poi=false&stations=false'
+```
+
+
 ## `GET /maps/:type`
 
 Redirects to PDF public transport maps. `type` may be one of these:

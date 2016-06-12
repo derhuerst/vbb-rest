@@ -17,6 +17,7 @@ const line         = require('./lib/line')
 const nearby       = require('./lib/nearby')
 const departures   = require('./lib/departures')
 const routes       = require('./lib/routes')
+const locations    = require('./lib/locations')
 const maps         = require('./lib/maps')
 
 const ssl = {
@@ -45,6 +46,7 @@ api.get('/stations/:id/departures', noCache, departures)
 api.get('/lines', lines)
 api.get('/lines/:id', line)
 api.get('/routes', noCache, routes)
+api.get('/locations', locations)
 api.get('/maps/:type', maps)
 
 api.use((err, req, res, next) => {
