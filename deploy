@@ -3,9 +3,9 @@
 rsync -rav --delete -e 'ssh -i ./.digital-ocean' \
 	--exclude '.*' \
 	--exclude node_modules \
-	. 'root@vbb-rest.do.jannisr.de:~/vbb-rest/'
+	. 'root@transport.rest:~/vbb-rest/'
 
-ssh -i ./.digital-ocean 'root@vbb-rest.do.jannisr.de' "\
+ssh -i ./.digital-ocean 'root@transport.rest' "\
 cd ~/vbb-rest
 npm i
 export NODE_ENV=production
