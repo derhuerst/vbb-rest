@@ -1,11 +1,11 @@
 #!/bin/sh
 
-rsync -rav --delete -e 'ssh -i ./.digital-ocean' \
+rsync -rav --delete -e 'ssh -i ./.scaleway' \
 	--exclude '.*' \
 	--exclude node_modules \
 	. 'root@transport.rest:~/vbb-rest/'
 
-ssh -i ./.digital-ocean 'root@transport.rest' "\
+ssh -i ./.scaleway 'root@transport.rest' "\
 cd ~/vbb-rest
 npm i
 export NODE_ENV=production

@@ -34,7 +34,7 @@
 	"scripts": {
 		"start":    "forever start --uid vbb-rest -a index.js",
 		"stop":     "forever stop vbb-rest",
-		"ssh":      "ssh -i ./digital-ocean root@transport.rest",
+		"ssh":      "ssh -i ./scaleway root@transport.rest",
 		"deploy":   "./deploy"
 	}
 }
