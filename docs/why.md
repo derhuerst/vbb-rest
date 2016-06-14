@@ -14,6 +14,10 @@ If you want to use transport information on a web site/app, [CORS](https://devel
 
 The official API has hourly request limits and doesn't [properly tell](http://stackoverflow.com/questions/16022624/examples-of-http-api-rate-limiting-http-response-headers) that. **This API doesn't have any limits.**
 
+## GZIP support
+
+Especially on cellular connections, gzipped responses improve the performance a lot.
+
 ## Sane Markup
 
 Compare the official API:
