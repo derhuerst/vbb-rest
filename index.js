@@ -35,7 +35,8 @@ const server = https.createServer(ssl, api)
 api.use(hsts({maxAge: 24 * 60 * 60 * 1000}))
 morgan.token('id', (req, res) => req.headers['x-identifier'] || shorthash(req.ip))
 api.use(morgan(':date[iso] :id :method :url :status :response-time ms'))
-api.use(corser.create()) // CORS
+const allowed = corser.simpleRequestHeaders.concat(['User-Agent', 'X-Identifier'])
+api.use(corser.create({requestHeaders: allowed})) // CORS
 api.use(compression())
 const noCache = nocache()
 
