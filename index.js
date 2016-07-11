@@ -10,6 +10,8 @@ const shorthash    = require('shorthash').unique
 const corser       = require('corser')
 const compression  = require('compression')
 const nocache      = require('nocache')
+const path         = require('path')
+const serve        = require('serve-static')
 
 const stations     = require('./lib/stations')
 const station      = require('./lib/station')
@@ -41,6 +43,9 @@ api.use(compression())
 const noCache = nocache()
 
 
+
+const logosDir = path.dirname(require.resolve('vbb-logos/package.json'))
+api.use('/logos', serve(logosDir, {index: false}))
 
 api.get('/stations', stations)
 api.get('/stations/nearby', nearby)

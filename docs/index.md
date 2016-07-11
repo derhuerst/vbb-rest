@@ -201,3 +201,14 @@ Redirects to PDF public transport maps. `type` may be one of these:
 ```shell
 curl -L -o bvg-tram-map.pdf 'https://transport.rest/maps/bvg-tram'
 ```
+
+
+## `GET /logos/:type`
+
+Serves the [logos from `derhuers/vbb-logos#v2`](https://github.com/derhuerst/vbb-logos/blob/v2/readme.md#available-logos).
+
+### examples
+
+```shell
+curl -L -o tram.svg 'https://transport.rest/logos/tram.svg'
+```
