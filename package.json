@@ -34,6 +34,9 @@
 		"serve-static": "^1.11.1",
 		"vbb-logos": "derhuerst/vbb-logos#v2"
 	},
+	"peerDependencies": {
+		"forever": "^0.15"
+	},
 	"scripts": {
 		"start":    "forever start --uid vbb-rest -a index.js",
 		"stop":     "forever stop vbb-rest",

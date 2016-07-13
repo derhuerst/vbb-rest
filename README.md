@@ -19,6 +19,8 @@ npm install --production
 npm start
 ```
 
+*Note*: [*forever*](https://github.com/foreverjs/forever#readme) actually isn't  required to run `vbb-rest`, but listed as a [peer dependency](https://docs.npmjs.com/files/package.json#peerdependencies). The `npm start` script calls *forever* for production usage, so to run `npm start`, you need to `npm install [-g] forever` before.
+
 
 ## Contributing
 
