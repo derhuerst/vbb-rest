@@ -14,10 +14,6 @@ If you want to use transport information on a web site/app, [CORS](https://devel
 
 The official API has hourly request limits and doesn't [properly tell](http://stackoverflow.com/questions/16022624/examples-of-http-api-rate-limiting-http-response-headers) that. **This API doesn't have any limits.**
 
-## GZIP support
-
-Especially on cellular connections, gzipped responses improve the performance a lot.
-
 ## Sane Markup
 
 Compare the official API:
@@ -90,6 +86,14 @@ and this one:
 ```
 
 VBB also has a mobile API (which this API uses under the hood) with an even more verbose output.
+
+## GZIP support
+
+Especially on cellular connections, gzipped responses improve the performance a lot.
+
+## HTTP/2
+
+[HTTP/2](https://http2.github.io/) allows multiple requests at a time, efficiently pipelines sequential requests and compresses headers. See [Cloudflare's HTTP/2 page](https://blog.cloudflare.com/http-2-for-web-developers/).
 
 ## More Features
 

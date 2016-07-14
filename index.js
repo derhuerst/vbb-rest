@@ -3,7 +3,7 @@
 const config       = require('config')
 const fs           = require('fs')
 const express      = require('express')
-const https        = require('https')
+const spdy         = require('spdy')
 const hsts         = require('hsts')
 const morgan       = require('morgan')
 const shorthash    = require('shorthash').unique
@@ -32,7 +32,7 @@ const ssl = {
 
 
 const api = express()
-const server = https.createServer(ssl, api)
+const server = spdy.createServer(ssl, api)
 
 api.use(hsts({maxAge: 24 * 60 * 60 * 1000}))
 morgan.token('id', (req, res) => req.headers['x-identifier'] || shorthash(req.ip))
@@ -70,4 +70,7 @@ api.use((err, req, res, next) => {
 
 
 
-server.listen(config.port, () => console.log(`Listening on ${config.port}.`))
+server.listen(config.port, (e) => {
+	if (e) return console.error(e)
+	console.log(`Listening on ${config.port}.`)
+})
