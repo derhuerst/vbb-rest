@@ -31,7 +31,7 @@
 		"vbb-lines-at": "^1.0.1",
 		"vbb-lines": "^1",
 		"parse-messy-time": "^2",
-		"vbb-hafas": "^0.14",
+		"vbb-hafas": "^0.15",
 		"serve-static": "^1.11.1",
 		"vbb-logos": "derhuerst/vbb-logos#v2"
 	},
