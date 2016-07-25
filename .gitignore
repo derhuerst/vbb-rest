@@ -5,7 +5,6 @@ Thumbs.db
 node_modules
 npm-debug.log
 
-.digital-ocean
 .scaleway
 config/*
 !config/default.json
