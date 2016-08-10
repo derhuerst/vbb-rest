@@ -58,6 +58,7 @@ api.get('/locations', locations)
 api.get('/maps/:type', maps)
 
 api.use((err, req, res, next) => {
+	if (res.headersSent) return next()
 	// todo: move this to vbb-util?
 	     if (err.code === 'R5000') err.statusCode = 401
 	else if (err.code === 'R0002') err.statusCode = 400

@@ -101,4 +101,4 @@ This API enhances the functionality of their API with static data, which is used
 
 ## Proper HTTP, Proper REST
 
-All methods in this API strongly comply with the [REST principles](https://en.wikipedia.org/wiki/Representational_state_transfer#Applied_to_web_services) and use proper [HTTP methods](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). [HTTP2](https://en.wikipedia.org/wiki/HTTP/2#Differences_from_HTTP_1.1) will be supported soon.
+All methods in this API strongly comply with the [REST principles](https://en.wikipedia.org/wiki/Representational_state_transfer#Applied_to_web_services) and use proper [HTTP methods](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html).
