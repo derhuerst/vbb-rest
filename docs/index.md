@@ -212,3 +212,22 @@ Serves the [logos from `derhuers/vbb-logos#v2`](https://github.com/derhuerst/vbb
 ```shell
 curl -L -o tram.svg 'https://transport.rest/logos/tram.svg'
 ```
+
+
+## `GET /radar`
+
+- `north`: **Required.** Northern latitude.
+- `west`: **Required.** Western longtidue.
+- `south`: **Required.** Southern latitude.
+- `east`: **Required.** Eastern longtidue.
+- `results`: How many vehicles shall be shown? Default: `256`.
+- `duration`: Compute frames for how many seconds? Default: `30`.
+- `frames`: Number of frames to compute. Default: `3`.
+
+`Content-Type`: `application/json`
+
+### examples
+
+```shell
+curl 'https://transport.rest/radar?north=52.52411&west=13.41002&south=52.51942&east=13.41709'
+```
