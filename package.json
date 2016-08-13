@@ -3,7 +3,7 @@
 	"description":  "A sane public transport API for Berlin.",
 	"version":      "0.3.0",
 	"main":         "index.js",
-	"files":        ["index.js"],
+	"files":        ["index.js", "api.js", "lib", "docs"],
 	"author":       "Jannis R <mail@jannisr.de>",
 	"homepage":     "https://github.com/derhuerst/vbb-rest",
 	"repository":   "derhuerst/vbb-rest",
