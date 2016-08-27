@@ -1,4 +1,4 @@
-# API
+# Berlin & Brandenburg Public Transport API
 
 **The public endpoint is [`transport.rest`](`https://transport.rest`).**
 
