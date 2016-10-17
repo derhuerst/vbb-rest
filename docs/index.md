@@ -2,7 +2,7 @@
 
 **The public endpoint is [`transport.rest`](`https://transport.rest`).**
 
-*Note:* During development and test runs using this API, please send an **`X-Identifier` header (e.g. `my-module-testing`) to let me know the request is not from a production system**. For all other requests, a hash of the client IP will be logged.
+*Note:* During development and test runs using this API, please send an **`X-Identifier` header (e.g. `my-module-testing`) to let me know the request is not from a production system**. For all other requests, a hash of the client IP will be logged. (To do this with [`vbb-client`](https://github.com/derhuerst/vbb-client), pass an `identifier` key in the query object.)
 
 ## `GET /stations?query=…`
 
