@@ -1,6 +1,6 @@
 #!/bin/sh
 
-rsync -rav --delete -e 'ssh -i ./.scaleway' \
+rsync -rav --delete \
 	--exclude '.*' \
 	--exclude node_modules \
 	. 'root@transport.rest:~/vbb-rest/'
