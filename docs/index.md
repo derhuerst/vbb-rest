@@ -2,6 +2,8 @@
 
 **The public endpoint is [`transport.rest`](`https://transport.rest`).**
 
+In December of 2016, VBB changed all station ids, e.g. `9012103` -> `900000012103`. **This API accepts both by trying to translate old ids into new ones**, using [`vbb-translate-ids`](https://github.com/derhuerst/vbb-translate-ids). Unfortunately they only use the the new ids for *static* data (of stations), but not for POIs and in their API. **As they plan to fully migrate to the new ids, please us them from now on.**
+
 *Note:* During development and test runs using this API, please send an **`X-Identifier` header (e.g. `my-module-testing`) to let me know the request is not from a production system**. For all other requests, a hash of the client IP will be logged. (To do this with [`vbb-client`](https://github.com/derhuerst/vbb-client), pass an `identifier` key in the query object.)
 
 ## `GET /stations?query=…`
