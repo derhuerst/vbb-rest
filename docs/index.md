@@ -114,6 +114,19 @@ curl 'https://transport.rest/lines/531'
 ```
 
 
+## `GET /shapes/:id`
+
+`Content-Type`: `application/json`
+
+Output from [`require('vbb-shapes')(id)`](https://github.com/derhuerst/vbb-shapes#usage).
+
+### examples
+
+```shell
+curl 'https://transport.rest/shapes/1269'
+```
+
+
 ## `GET /routes`
 
 Output from [`require('vbb-hafas').routes(…)`](https://github.com/derhuerst/vbb-hafas#getting-started). Start location and end location must be either in [station format](#station-format) or in [POI/address format](#poiaddress-format) (you can mix them).
