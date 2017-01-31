@@ -11,7 +11,7 @@ const server = spdy.createServer({
 	, ca:   fs.readFileSync(config.ca)
 }, api)
 
-server.listen(config.port, (e) => {
+server.listen(process.env.PORT || config.port, (e) => {
 	if (e) return console.error(e)
 	console.log(`Listening on ${config.port}.`)
 })

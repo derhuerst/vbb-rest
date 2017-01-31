@@ -38,6 +38,19 @@ curl 'https://transport.rest/stations?weight=33660'
 ```
 
 
+## `GET /stations/all`
+
+Dumps `data.json` from [`vbb-stations`](https://github.com/derhuerst/vbb-stations).
+
+`Content-Type`: `application/json`
+
+### examples
+
+```shell
+curl 'https://transport.rest/stations/all'
+```
+
+
 ## `GET /stations/nearby`
 
 - `latitude`: **Required.**
