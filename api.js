@@ -10,6 +10,7 @@ const nocache      = require('nocache')
 const path         = require('path')
 const serve        = require('serve-static')
 
+const pkg = require('./package.json')
 const stations     = require('./lib/stations')
 const allStations  = require('./lib/all-stations')
 const station      = require('./lib/station')
@@ -37,6 +38,12 @@ const allowed = corser.simpleRequestHeaders.concat(['User-Agent', 'X-Identifier'
 api.use(corser.create({requestHeaders: allowed})) // CORS
 
 api.use(compression())
+
+api.use((req, res, next) => {
+	if (!res.headersSent)
+		res.setHeader('X-Powered-By', pkg.name + ' ' + pkg.homepage)
+	next()
+})
 
 
 

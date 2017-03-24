@@ -76,7 +76,7 @@ curl 'https://transport.rest/stations/nearby?latitude=52.52725&longitude=13.4123
 ### examples
 
 ```shell
-curl 'https://transport.rest/stations/9013102'
+curl 'https://transport.rest/stations/900000013102'
 ```
 
 
@@ -93,7 +93,7 @@ Output from [`require('vbb-hafas').departures(…)`](https://github.com/derhuers
 ### examples
 
 ```shell
-curl 'https://transport.rest/stations/9013102/departures?when=tomorrow%206pm'
+curl 'https://transport.rest/stations/900000013102/departures?when=tomorrow%206pm'
 ```
 
 
@@ -146,8 +146,8 @@ Output from [`require('vbb-hafas').routes(…)`](https://github.com/derhuerst/vb
 
 ## station format
 
-- `from`: **Required.** Station ID (e.g. `9023201`).
-- `to`: **Required.** Station ID (e.g. `9023201`).
+- `from`: **Required.** Station ID (e.g. `900000023201`).
+- `to`: **Required.** Station ID (e.g. `900000023201`).
 
 ## POI/address format
 
@@ -180,8 +180,8 @@ Output from [`require('vbb-hafas').routes(…)`](https://github.com/derhuerst/vb
 ### examples
 
 ```shell
-curl 'https://transport.rest/routes?from=9017104&to=9017101'
-curl 'https://transport.rest/routes?from=9023201&to.name=ATZE%20Musiktheater&to.latitude=52.543333&to.longitude=13.351686'
+curl 'https://transport.rest/routes?from=900000017104&to=900000017101'
+curl 'https://transport.rest/routes?from=900000023201&to.name=ATZE%20Musiktheater&to.latitude=52.543333&to.longitude=13.351686'
 curl 'https://transport.rest/routes?from=…&to=…&results=3&bus=false'
 ```
 
