@@ -3,9 +3,9 @@
 rsync -rav --delete \
 	--exclude '.*' \
 	--exclude node_modules \
-	. 'root@transport.rest:~/vbb-rest/'
+	. 'root@vbb.transport.rest:~/vbb-rest/'
 
-ssh -i ./.scaleway 'root@transport.rest' "\
+ssh -i ./.scaleway 'root@vbb.transport.rest' "\
 cd ~/vbb-rest
 npm i
 export NODE_ENV=production

@@ -45,7 +45,7 @@
 	"scripts": {
 		"start":    "forever start --uid vbb-rest -a index.js",
 		"stop":     "forever stop vbb-rest",
-		"ssh":      "ssh root@transport.rest",
+		"ssh":      "ssh root@vbb.transport.rest",
 		"deploy":   "./deploy"
 	}
 }

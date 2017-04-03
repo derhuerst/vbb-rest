@@ -1,6 +1,6 @@
 # Berlin & Brandenburg Public Transport API
 
-**The public endpoint is [`transport.rest`](`https://transport.rest`).**
+**The public endpoint is [`vbb.transport.rest`](`https://vbb.transport.rest`).**
 
 In December of 2016, VBB changed all station ids, e.g. `9012103` -> `900000012103`. **This API accepts both by trying to translate old ids into new ones**, using [`vbb-translate-ids`](https://github.com/derhuerst/vbb-translate-ids). Unfortunately they only use the the new ids for *static* data (of stations), but not for POIs and in their API. **As they plan to fully migrate to the new ids, please us them from now on.**
 
@@ -15,8 +15,8 @@ Otherwise, [`vbb-find-stations`](https://github.com/derhuerst/vbb-find-stations)
 ### examples
 
 ```shell
-curl 'https://transport.rest/stations?completion=true&query=jungfernhei'
-curl 'https://transport.rest/stations?query=jungfernheide'
+curl 'https://vbb.transport.rest/stations?completion=true&query=jungfernhei'
+curl 'https://vbb.transport.rest/stations?query=jungfernheide'
 ```
 
 
@@ -34,7 +34,7 @@ Passes all parameters into [`vbb-stations`](https://github.com/derhuerst/vbb-sta
 ### examples
 
 ```shell
-curl 'https://transport.rest/stations?weight=33660'
+curl 'https://vbb.transport.rest/stations?weight=33660'
 ```
 
 
@@ -47,7 +47,7 @@ Dumps `data.json` from [`vbb-stations`](https://github.com/derhuerst/vbb-station
 ### examples
 
 ```shell
-curl 'https://transport.rest/stations/all'
+curl 'https://vbb.transport.rest/stations/all'
 ```
 
 
@@ -65,7 +65,7 @@ curl 'https://transport.rest/stations/all'
 ### examples
 
 ```shell
-curl 'https://transport.rest/stations/nearby?latitude=52.52725&longitude=13.4123'
+curl 'https://vbb.transport.rest/stations/nearby?latitude=52.52725&longitude=13.4123'
 ```
 
 
@@ -76,7 +76,7 @@ curl 'https://transport.rest/stations/nearby?latitude=52.52725&longitude=13.4123
 ### examples
 
 ```shell
-curl 'https://transport.rest/stations/900000013102'
+curl 'https://vbb.transport.rest/stations/900000013102'
 ```
 
 
@@ -93,7 +93,7 @@ Output from [`require('vbb-hafas').departures(…)`](https://github.com/derhuers
 ### examples
 
 ```shell
-curl 'https://transport.rest/stations/900000013102/departures?when=tomorrow%206pm'
+curl 'https://vbb.transport.rest/stations/900000013102/departures?when=tomorrow%206pm'
 ```
 
 
@@ -112,7 +112,7 @@ Passes these parameters into [`vbb-lines`](https://github.com/derhuerst/vbb-line
 ### examples
 
 ```shell
-curl 'https://transport.rest/lines?agencyId=BVT'
+curl 'https://vbb.transport.rest/lines?agencyId=BVT'
 ```
 
 
@@ -123,7 +123,7 @@ curl 'https://transport.rest/lines?agencyId=BVT'
 ### examples
 
 ```shell
-curl 'https://transport.rest/lines/531'
+curl 'https://vbb.transport.rest/lines/531'
 ```
 
 
@@ -136,7 +136,7 @@ Output from [`require('vbb-shapes')(id)`](https://github.com/derhuerst/vbb-shape
 ### examples
 
 ```shell
-curl 'https://transport.rest/shapes/1269'
+curl 'https://vbb.transport.rest/shapes/1269'
 ```
 
 
@@ -180,9 +180,9 @@ Output from [`require('vbb-hafas').routes(…)`](https://github.com/derhuerst/vb
 ### examples
 
 ```shell
-curl 'https://transport.rest/routes?from=900000017104&to=900000017101'
-curl 'https://transport.rest/routes?from=900000023201&to.name=ATZE%20Musiktheater&to.latitude=52.543333&to.longitude=13.351686'
-curl 'https://transport.rest/routes?from=…&to=…&results=3&bus=false'
+curl 'https://vbb.transport.rest/routes?from=900000017104&to=900000017101'
+curl 'https://vbb.transport.rest/routes?from=900000023201&to.name=ATZE%20Musiktheater&to.latitude=52.543333&to.longitude=13.351686'
+curl 'https://vbb.transport.rest/routes?from=…&to=…&results=3&bus=false'
 ```
 
 
@@ -201,8 +201,8 @@ Output from [`require('vbb-hafas').locations(…)`](https://github.com/derhuerst
 ### examples
 
 ```shell
-curl 'https://transport.rest/locations?query=Alexanderplatz'
-curl 'https://transport.rest/locations?query=Pestalozzistra%C3%9Fe%2082%2C%20Berlin&poi=false&stations=false'
+curl 'https://vbb.transport.rest/locations?query=Alexanderplatz'
+curl 'https://vbb.transport.rest/locations?query=Pestalozzistra%C3%9Fe%2082%2C%20Berlin&poi=false&stations=false'
 ```
 
 
@@ -227,7 +227,7 @@ Redirects to PDF public transport maps. `type` may be one of these:
 ### examples
 
 ```shell
-curl -L -o bvg-tram-map.pdf 'https://transport.rest/maps/bvg-tram'
+curl -L -o bvg-tram-map.pdf 'https://vbb.transport.rest/maps/bvg-tram'
 ```
 
 
@@ -238,7 +238,7 @@ Serves the [logos from `derhuers/vbb-logos#v2`](https://github.com/derhuerst/vbb
 ### examples
 
 ```shell
-curl -L -o tram.svg 'https://transport.rest/logos/tram.svg'
+curl -L -o tram.svg 'https://vbb.transport.rest/logos/tram.svg'
 ```
 
 
@@ -257,5 +257,5 @@ curl -L -o tram.svg 'https://transport.rest/logos/tram.svg'
 ### examples
 
 ```shell
-curl 'https://transport.rest/radar?north=52.52411&west=13.41002&south=52.51942&east=13.41709'
+curl 'https://vbb.transport.rest/radar?north=52.52411&west=13.41002&south=52.51942&east=13.41709'
 ```
