@@ -8,15 +8,19 @@ In December of 2016, VBB changed all station ids, e.g. `9012103` -> `90000001210
 
 ## `GET /stations?query=…`
 
-If `completion=true`, [`vbb-stations-autocomplete`](https://github.com/derhuerst/vbb-stations-autocomplete) will be used. The `Content-Type` will be `application/json`.
+Passes all parameters into [`vbb-stations-autocomplete`](https://github.com/derhuerst/vbb-stations-autocomplete).
 
-Otherwise, [`vbb-find-stations`](https://github.com/derhuerst/vbb-find-stations) will be used. The `Content-Type` will be `application/x-ndjson`.
+- `completion`: `true`/`false` – Default is `true`
+- `fuzzy`: `true`/`false` – Default is `false`
+
+`Content-Type`: `application/json`
 
 ### examples
 
 ```shell
-curl 'https://vbb.transport.rest/stations?completion=true&query=jungfernhei'
 curl 'https://vbb.transport.rest/stations?query=jungfernheide'
+# note the typo
+curl 'https://vbb.transport.rest/stations?query=mehrigndamm&fuzzy=true'
 ```
 
 
