@@ -10,6 +10,7 @@ In December of 2016, VBB changed all station ids, e.g. `9012103` -> `90000001210
 
 Passes all parameters into [`vbb-stations-autocomplete`](https://github.com/derhuerst/vbb-stations-autocomplete).
 
+- `query`: **Required.**
 - `completion`: `true`/`false` – Default is `true`
 - `fuzzy`: `true`/`false` – Default is `false`
 
