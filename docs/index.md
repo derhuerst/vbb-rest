@@ -44,7 +44,7 @@ curl 'https://vbb.transport.rest/stations?weight=33660'
 
 ## `GET /stations/all`
 
-Dumps `data.json` from [`vbb-stations`](https://github.com/derhuerst/vbb-stations).
+Dumps `full.json` from [`vbb-stations`](https://github.com/derhuerst/vbb-stations).
 
 `Content-Type`: `application/json`
 
