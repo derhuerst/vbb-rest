@@ -28,17 +28,18 @@ curl 'https://vbb.transport.rest/stations?query=mehrigndamm&fuzzy=true'
 
 Passes all parameters into [`vbb-stations`](https://github.com/derhuerst/vbb-stations).
 
+- `id`: Filter by ID.
 - `name`: Filter by name.
-- `latitude`: Filter by latitude.
-- `longitude`: Filter by longitude.
+- `coordinates.latitude`: Filter by latitude.
+- `coordinates.longitude`: Filter by longitude.
 - `weight`: Filter by weight.
 
-`Content-Type`: `application/x-ndjson`
+`Content-Type`: `application/json`
 
 ### examples
 
 ```shell
-curl 'https://vbb.transport.rest/stations?weight=33660'
+curl 'https://vbb.transport.rest/stations?weight=9120&coordinates.latitude=52.493575'
 ```
 
 

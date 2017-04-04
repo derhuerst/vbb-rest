@@ -36,7 +36,7 @@
 		"vbb-logos": "derhuerst/vbb-logos#v2",
 		"vbb-translate-ids": "^2.0.0",
 		"vbb-shapes": "^2.0.0",
-		"vbb-stations": "^4.1.0"
+		"vbb-stations": "^5.0.0"
 	},
 	"peerDependencies": {
 		"forever": "^0.15.3"
