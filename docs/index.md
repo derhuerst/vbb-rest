@@ -106,18 +106,20 @@ curl 'https://vbb.transport.rest/stations/900000013102/departures?when=tomorrow%
 
 - `variants`: Wether to return stations of the line. Default: `false`.
 
-Passes these parameters into [`vbb-lines`](https://github.com/derhuerst/vbb-lines):
+Passes all parameters into [`vbb-lines`](https://github.com/derhuerst/vbb-lines):
 
+- `id`: Filter by ID.
 - `name`: Filter by name.
-- `agencyId`: Filter by agency id. See [`vbb-gtfs`](https://github.com/derhuerst/vbb-gtfs/blob/master/agency.txt).
-- `type`: Filter by type. See [`vbb-util`](https://github.com/derhuerst/vbb-util/blob/cd0c74f8a851549cfb9cf561d1fcf366248557c3/products.js#L116-L125).
+- `operator`: Filter by operator id. See [`agency.txt`](https://vbb-gtfs.jannisr.de/latest/agency.txt).
+- `mode`: Filter by mode of transport as in [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format).
+- `product`: See [`vbb-util`](https://github.com/derhuerst/vbb-util/blob/cd0c74f8a851549cfb9cf561d1fcf366248557c3/products.js#L116-L125).
 
 `Content-Type`: `application/x-ndjson`
 
 ### examples
 
 ```shell
-curl 'https://vbb.transport.rest/lines?agencyId=BVT'
+curl 'https://vbb.transport.rest/lines?operator=796&variants=true'
 ```
 
 
