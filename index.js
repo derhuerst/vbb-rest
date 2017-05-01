@@ -1,17 +1,17 @@
 'use strict'
 
-const spdy = require('spdy')
-const fs = require('fs')
-const config = require('config')
+const http = require('http')
 
 const api = require('./api')
-const server = spdy.createServer({
-	  key:  fs.readFileSync(config.key)
-	, cert: fs.readFileSync(config.cert)
-	, ca:   fs.readFileSync(config.ca)
-}, api)
+const server = http.createServer(api)
 
-server.listen(process.env.PORT || config.port, (e) => {
-	if (e) return console.error(e)
-	console.log(`Listening on ${config.port}.`)
+const port = process.env.PORT || 3000
+const hostname = process.env.HOSTNAME || ''
+
+server.listen(port, (err) => {
+	if (err) {
+		console.error(err)
+		process.exit(1)
+	}
+	console.info(`Listening on ${hostname}:${port}.`)
 })
