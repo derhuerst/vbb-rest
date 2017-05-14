@@ -148,9 +148,9 @@ curl 'https://vbb.transport.rest/shapes/1269'
 ```
 
 
-## `GET /routes`
+## `GET /journeys`
 
-Output from [`require('vbb-hafas').routes(…)`](https://github.com/derhuerst/vbb-hafas#getting-started). Start location and end location must be either in [station format](#station-format) or in [POI/address format](#poiaddress-format) (you can mix them).
+Output from [`require('vbb-hafas').journeys(…)`](https://github.com/derhuerst/vbb-hafas#getting-started). Start location and end location must be either in [station format](#station-format) or in [POI/address format](#poiaddress-format) (you can mix them).
 
 ## station format
 
@@ -173,7 +173,7 @@ Output from [`require('vbb-hafas').routes(…)`](https://github.com/derhuerst/vb
 - `transfers`: Maximum number of transfers. Default: `5`.
 - `transferTime`: Minimum time in minutes for a single transfer. Default: `0`.
 - `accessibility`: Possible values: `partial`, `complete`. Default: `none`.
-- `bike`: Return only bike-friendly routes. Default: `false`.
+- `bike`: Return only bike-friendly journeys. Default: `false`.
 
 - `suburban`: Include [S-Bahn trains](https://en.wikipedia.org/wiki/Berlin_S-Bahn)? Default: `true`.
 - `subway`: Include [U-Bahn trains](https://en.wikipedia.org/wiki/Berlin_U-Bahn)? Default: `true`.
@@ -188,9 +188,9 @@ Output from [`require('vbb-hafas').routes(…)`](https://github.com/derhuerst/vb
 ### examples
 
 ```shell
-curl 'https://vbb.transport.rest/routes?from=900000017104&to=900000017101'
-curl 'https://vbb.transport.rest/routes?from=900000023201&to.name=ATZE%20Musiktheater&to.latitude=52.543333&to.longitude=13.351686'
-curl 'https://vbb.transport.rest/routes?from=…&to=…&results=3&bus=false'
+curl 'https://vbb.transport.rest/journeys?from=900000017104&to=900000017101'
+curl 'https://vbb.transport.rest/journeys?from=900000023201&to.name=ATZE%20Musiktheater&to.latitude=52.543333&to.longitude=13.351686'
+curl 'https://vbb.transport.rest/journeys?from=…&to=…&results=3&bus=false'
 ```
 
 

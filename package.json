@@ -30,7 +30,7 @@
 		"from2-array": "^0.0.4",
 		"vbb-lines-at": "^3.0.0",
 		"parse-messy-time": "^2.1.0",
-		"vbb-hafas": "^1.0.0",
+		"vbb-hafas": "^2.0.0",
 		"serve-static": "^1.11.1",
 		"vbb-lines": "^3.0.0",
 		"vbb-logos": "derhuerst/vbb-logos#v2",
