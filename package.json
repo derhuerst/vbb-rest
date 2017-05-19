@@ -20,25 +20,24 @@
 		"compression": "^1.6.2",
 		"nocache": "^2.0.0",
 		"vbb-short-station-name": "^0.2",
-		"vbb-stations-autocomplete": "^1.0.1",
+		"vbb-stations-autocomplete": "^2.1.0",
 		"through2-map": "^3.0.0",
 		"lodash.omit": "^4.5.0",
-		"vbb-find-stations": "^1.1.0",
 		"ndjson": "^1.5.0",
 		"cli-native": "^1.0.0",
-		"vbb-stations": "^3.0.1",
 		"from2-array": "^0.0.4",
-		"vbb-lines-at": "^2.0.0",
-		"vbb-lines": "^2.0.0",
+		"vbb-lines-at": "^3.0.0",
 		"parse-messy-time": "^2.1.0",
-		"vbb-hafas": "^1.0.0",
+		"vbb-hafas": "^2.0.0",
 		"serve-static": "^1.11.1",
+		"vbb-lines": "^3.0.0",
 		"vbb-logos": "derhuerst/vbb-logos#v2",
 		"vbb-translate-ids": "^2.0.0",
-		"vbb-shapes": "^2.0.0"
+		"vbb-shapes": "^2.0.0",
+		"vbb-stations": "^5.0.0"
 	},
 	"scripts": {
 		"start": "node index.js",
-		"ssh": "ssh root@transport.rest"
+		"ssh": "ssh root@vbb.transport.rest"
 	}
 }
