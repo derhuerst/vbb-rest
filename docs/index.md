@@ -1,6 +1,6 @@
 # Berlin & Brandenburg Public Transport API
 
-**The public endpoint is [`vbb.transport.rest`](`https://vbb.transport.rest`).**
+**The public endpoint is [`vbb.transport.rest`](`https://vbb.transport.rest`).** This API returns data in the [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format).
 
 In December of 2016, VBB changed all station ids, e.g. `9012103` -> `900000012103`. **This API accepts both by trying to translate old ids into new ones**, using [`vbb-translate-ids`](https://github.com/derhuerst/vbb-translate-ids). Unfortunately they only use the the new ids for *static* data (of stations), but not for POIs and in their API. **As they plan to fully migrate to the new ids, please us them from now on.**
 
