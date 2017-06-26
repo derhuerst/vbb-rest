@@ -214,6 +214,23 @@ curl 'https://vbb.transport.rest/journeys?from=…&to=…&results=3&bus=false'
 ```
 
 
+## `GET /journeys/parts/:ref`
+
+Output from [`require('vbb-hafas').journeyPart(…)`](https://github.com/derhuerst/vbb-hafas/blob/master/docs/journey-part.md#journeypartref-linename-opt).
+
+- `lineName`: **Required.** Line name of the part's mode of transport, e.g. `RE7`.
+- `when`: A [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) or anything parsable by [`parse-messy-time`](https://github.com/substack/parse-messy-time#example). Default: now.
+
+`Content-Type`: `application/json`
+
+### examples
+
+```shell
+# this won't work, get a new ref from /journeys first
+curl 'https://vbb.transport.rest/journeys/parts/1|32082|1|86|26062017?lineName=RE7'
+```
+
+
 ## `GET /locations`
 
 Output from [`require('vbb-hafas').locations(…)`](https://github.com/derhuerst/vbb-hafas/blob/master/docs/locations.md)
