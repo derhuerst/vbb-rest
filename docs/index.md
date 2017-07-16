@@ -6,6 +6,22 @@ In December of 2016, VBB changed all station ids, e.g. `9012103` -> `90000001210
 
 *Note:* During development and test runs using this API, please send an **`X-Identifier` header (e.g. `my-module-testing`) to let me know the request is not from a production system**. For all other requests, a hash of the client IP will be logged. (To do this with [`vbb-client`](https://github.com/derhuerst/vbb-client), pass an `identifier` key in the query object.)
 
+## all routes
+
+- [`GET /stations?query=…`](#get-stationsquery)
+- [`GET /stations`](#get-stations)
+- [`GET /stations/nearby`](#get-stationsnearby)
+- [`GET /stations/:id`](#get-stationsid)
+- [`GET /stations/:id/departures`](#get-stationsiddepartures)
+- [`GET /lines`](#get-lines)
+- [`GET /lines/:id`](#get-linesid)
+- [`GET /shapes/:id`](#get-shapesid)
+- [`GET /journeys`](#get-journeys)
+- [`GET /locations`](#get-locations)
+- [`GET /maps/:type`](#get-mapstype)
+- [`GET /logos/:type`](#get-logostype)
+- [`GET /radar`](#get-radar)
+
 ## `GET /stations?query=…`
 
 Passes all parameters into [`vbb-stations-autocomplete`](https://github.com/derhuerst/vbb-stations-autocomplete).
@@ -90,6 +106,8 @@ curl 'https://vbb.transport.rest/stations/900000013102'
 
 Output from [`require('vbb-hafas').departures(…)`](https://github.com/derhuerst/vbb-hafas/blob/master/docs/departures.md).
 
+*Note:* As stated in the [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format), the returned `departure` and `arrival` times include the current delay.
+
 - `when`: A [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) or anything parsable by [`parse-messy-time`](https://github.com/substack/parse-messy-time#example). Default: now.
 - `direction`: Station ID.
 - `duration`: Show departures for the next `n` minutes. Default: `10`.
@@ -151,6 +169,8 @@ curl 'https://vbb.transport.rest/shapes/1269'
 ## `GET /journeys`
 
 Output from [`require('vbb-hafas').journeys(…)`](https://github.com/derhuerst/vbb-hafas#getting-started). Start location and end location must be either in [station format](#station-format) or in [POI/address format](#poiaddress-format) (you can mix them).
+
+*Note:* As stated in the [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format), the returned `departure` and `arrival` times include the current delay.
 
 ## station format
 
