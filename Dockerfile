@@ -3,7 +3,7 @@ FROM node
 WORKDIR /app
 ADD . /app
 
-RUN npm install
+RUN npm install --production
 
 EXPOSE 3000
 

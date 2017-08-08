@@ -68,6 +68,7 @@ api.get('/radar', noCache, radar)
 
 
 api.use((err, req, res, next) => {
+	if (process.env.NODE_ENV === 'dev') console.error(err)
 	if (res.headersSent) return next()
 	// todo: move this to vbb-util?
 	     if (err.code === 'R5000') err.statusCode = 401
