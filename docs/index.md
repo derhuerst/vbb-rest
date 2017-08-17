@@ -2,7 +2,7 @@
 
 **The public endpoint is [`vbb.transport.rest`](`https://vbb.transport.rest`).** This API returns data in the [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format). Use [`vbb-client`](https://github.com/derhuerst/vbb-client) to talk to this API from JavaScript.
 
-In December of 2016, VBB changed all station ids, e.g. `9012103` -> `900000012103`. **This API accepts both by trying to translate old ids into new ones**, using [`vbb-translate-ids`](https://github.com/derhuerst/vbb-translate-ids). Unfortunately they only use the the new ids for *static* data (of stations), but not for POIs and in their API. **As they plan to fully migrate to the new ids, please us them from now on.**
+In December of 2016, VBB changed all station ids, e.g. `9012103` -> `900000012103`. **This API accepts both by trying to translate old ids into new ones**, using [`vbb-translate-ids`](https://github.com/derhuerst/vbb-translate-ids). Unfortunately they only use the the new ids for *static* data (of stations), but not for POIs and in their API. **As they announced to fully migrate to the new ids in September, please us them from now on.**
 
 *Note:* During development and test runs using this API, please send an **`X-Identifier` header (e.g. `my-module-testing`) to let me know the request is not from a production system**. For all other requests, a hash of the client IP will be logged. (To do this with [`vbb-client`](https://github.com/derhuerst/vbb-client), pass an `identifier` key in the query object.)
 
@@ -104,19 +104,37 @@ curl 'https://vbb.transport.rest/stations/900000013102'
 
 ## `GET /stations/:id/departures`
 
-Output from [`require('vbb-hafas').departures(…)`](https://github.com/derhuerst/vbb-hafas/blob/master/docs/departures.md).
+Returns departures at a station. To maintain backwards compatibility, this route has two modes of operation (see below).
 
 *Note:* As stated in the [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format), the returned `departure` and `arrival` times include the current delay.
 
-- `when`: A [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) or anything parsable by [`parse-messy-time`](https://github.com/substack/parse-messy-time#example). Default: now.
-- `direction`: Station ID.
-- `duration`: Show departures for the next `n` minutes. Default: `10`.
-
 `Content-Type`: `application/json`
+
+### with `nextStation`
+
+**If you provide a station ID with the `nextStation` parameter, [`vbb-departures-in-direction`](https://github.com/derhuerst/vbb-departures-in-direction#usage) will be used to filter by direction.** Only departures with this station as their *next* stop will be returned.
+
+You may then add these parameters:
+
+- `when`: A [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) or anything parsable by [`parse-messy-time`](https://github.com/substack/parse-messy-time#example). Default: now.
+- `results`: The number of results. Lower means faster. Default: `10`.
+- `maxQueries`: The maximum number of queries against VBB. Default: `10`.
+
+### without `nextStation`
+
+**If you *do not* use `nextStation`, [`departures(…)` from `vbb-hafas`](https://github.com/derhuerst/vbb-hafas/blob/master/docs/departures.md) will be used to get departures in *all* directions.**
+
+You may then add these parameters:
+
+- `when`: A [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) or anything parsable by [`parse-messy-time`](https://github.com/substack/parse-messy-time#example). Default: now.
+- `duration`: Show departures for the next `n` minutes. Default: `10`.
 
 ### examples
 
 ```shell
+# at U Kottbusser Tor, in direction U Görlitzer Bahnhof
+curl 'https://vbb.transport.rest/stations/900000013102/departures?nextStation=900000014101&results=3'
+# at U Kottbusser Tor, without direction
 curl 'https://vbb.transport.rest/stations/900000013102/departures?when=tomorrow%206pm'
 ```
 
