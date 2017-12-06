@@ -212,6 +212,7 @@ Output from [`require('vbb-hafas').journeys(…)`](https://github.com/derhuerst/
 - `transferTime`: Minimum time in minutes for a single transfer. Default: `0`.
 - `accessibility`: Possible values: `partial`, `complete`. Default: `none`.
 - `bike`: Return only bike-friendly journeys. Default: `false`.
+- `tickets`: Return information about available tickets. Default: `false`.
 
 - `suburban`: Include [S-Bahn trains](https://en.wikipedia.org/wiki/Berlin_S-Bahn)? Default: `true`.
 - `subway`: Include [U-Bahn trains](https://en.wikipedia.org/wiki/Berlin_U-Bahn)? Default: `true`.
@@ -228,7 +229,7 @@ Output from [`require('vbb-hafas').journeys(…)`](https://github.com/derhuerst/
 ```shell
 curl 'https://vbb.transport.rest/journeys?from=900000017104&to=900000017101'
 curl 'https://vbb.transport.rest/journeys?from=900000023201&to.name=ATZE%20Musiktheater&to.latitude=52.543333&to.longitude=13.351686'
-curl 'https://vbb.transport.rest/journeys?from=…&to=…&results=3&bus=false'
+curl 'https://vbb.transport.rest/journeys?from=…&to=…&results=3&bus=false&tickets=true'
 ```
 
 
