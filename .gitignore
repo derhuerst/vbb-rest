@@ -5,5 +5,8 @@ Thumbs.db
 node_modules
 npm-debug.log
 
+package-lock.json
+shrinkwrap.yaml
+
 config/*
 !config/default.json

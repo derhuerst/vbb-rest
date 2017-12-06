@@ -45,7 +45,7 @@
 		"vbb-lines-at": "^3.0.0",
 		"vbb-logos": "derhuerst/vbb-logos#v2",
 		"vbb-shapes": "^2.0.0",
-		"vbb-short-station-name": "^0.3.0",
+		"vbb-short-station-name": "^0.4.0",
 		"vbb-stations": "^5.0.0",
 		"vbb-stations-autocomplete": "^2.1.0",
 		"vbb-translate-ids": "^2.0.0"

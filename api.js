@@ -73,7 +73,11 @@ api.use((err, req, res, next) => {
 	if (process.env.NODE_ENV === 'dev') console.error(err)
 	if (res.headersSent) return next()
 
-	if (err.isHafasError) err.statusCode = 502
-	res.status(err.statusCode || 500).json({error: true, msg: err.message})
+	let msg = err.message, code = null
+	if (err.isHafasError) {
+		msg = 'VBB error: ' + msg
+		code = 502
+	}
+	res.status(code || 500).json({error: true, msg})
 	next()
 })
