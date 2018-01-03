@@ -1,17 +1,22 @@
 'use strict'
 
-const http = require('http')
+const createApi = require('./api')
 
-const api = require('./api')
-const server = http.createServer(api)
+const config = {
+	hostname: process.env.HOSTNAME || 'vbb.transport.rest',
+	port: process.env.PORT || 3000,
+	name: 'vbb-rest', // todo: use pkg.name
+	homepage: 'https://github.com/derhuerst/vbb-rest', // todo: use pkg.homepage
+	logging: true
+}
 
-const port = process.env.PORT || 3000
-const hostname = process.env.HOSTNAME || ''
+const api = createApi(config)
 
-server.listen(port, (err) => {
+api.listen(config.port, (err) => {
 	if (err) {
 		console.error(err)
-		process.exit(1)
+		process.exitCode = 1
+	} else {
+		console.info(`Listening on ${config.hostname}:${config.port}.`)
 	}
-	console.info(`Listening on ${hostname}:${port}.`)
 })
