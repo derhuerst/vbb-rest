@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="200" viewBox="0 0 600 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+	<title>vbb-rest architecture</title>
+	<style>
+		.box {
+			fill: #f0f0f0;
+			stroke-width: 1px;
+			stroke: #777;
+		}
+		.arrow {
+			fill: none;
+			stroke-width: 1px;
+			stroke: #555;
+			stroke-linecap: square;
+		}
+		.monospace-text {
+			font-family: FiraCode-Retina, Fira Code, monospace;
+			font-size: 10px;
+			font-weight: 500;
+			fill: #000;
+		}
+		.normal-text {
+			font-family: HelveticaNeue-Light, Helvetica Neue, sans-serif;
+			font-size: 10px;
+			font-weight: 300;
+			fill: #000;
+		}
+		.small-text {
+			font-size: 8px;
+		}
+	</style>
+	<g transform="translate(12, 20)">
+		<rect class="box" x="0" y="0" width="74" height="20" />
+		<text class="monospace-text" x="7" y="14">vbb-client</text>
+	</g>
+	<g transform="translate(91, 16)">
+		<path class="arrow" d="M0,14 L66,14" />
+		<path class="arrow" d="M66,14 L55.7,11 L55.7,17 L66,14 Z" />
+		<text class="normal-text" x="11.35" y="10">queries</text>
+	</g>
+	<g transform="translate(164, 20)">
+		<rect class="box" x="0" y="0" width="104" height="41" />
+		<text class="monospace-text" x="26.2" y="13">vbb-rest</text>
+		<text class="normal-text small-text" x="4" y="26">deployed at</text>
+		<text class="monospace-text small-text" x="4" y="36">2.vbb.transport.rest</text>
+	</g>
+	<g transform="translate(273, 14)">
+		<path class="arrow" d="M0,14 L50,14" />
+		<path class="arrow" d="M50,14 L39.7,11 L39.7,17 L50,14 Z" />
+		<text class="normal-text" x="9.41" y="10">uses</text>
+	</g>
+	<g transform="translate(331, 20)">
+		<rect class="box" x="0" y="0" width="93" height="20" />
+		<text class="monospace-text" x="5" y="14">hafas-rest-api</text>
+	</g>
+	<g transform="translate(273, 39)">
+		<path class="arrow" d="M0,14 L50,14" />
+		<path class="arrow" d="M50,14 L39.7,11 L39.7,17 L50,14 Z" />
+		<text class="normal-text" x="1.445" y="10">exposes</text>
+	</g>
+	<g transform="translate(331, 45)">
+		<rect class="box" x="0" y="0" width="64" height="20" />
+		<text class="monospace-text" x="5" y="14">vbb-hafas</text>
+	</g>
+	<g transform="translate(429, 14)">
+		<path class="arrow" d="M0,14 L63,14" />
+		<path class="arrow" d="M63,14 L52.7,11 L52.7,17 L63,14 Z" />
+		<text class="normal-text" x="6.445" y="10">exposes</text>
+	</g>
+	<g transform="translate(398, 44)">
+		<text class="normal-text" x="38.465" y="10">extends</text>
+		<path class="arrow" d="M0,14 L114,14 L114,0" />
+		<path class="arrow" d="M114,0 L111,10.8 L117,10.8 L114,0 Z" />
+	</g>
+	<g transform="translate(498, 20)">
+		<rect class="box" x="0" y="0" width="81" height="20" />
+		<text class="monospace-text" x="5" y="14">hafas-client</text>
+	</g>
+</svg>
