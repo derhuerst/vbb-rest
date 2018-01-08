@@ -4,7 +4,7 @@
 
 Refer to the [API Documentation](docs/index.md). Use [vbb-client](https://github.com/derhuerst/vbb-client) for querying this API in the Browser or with Node.js.
 
-![vbb-rest architecture diagram](architecture.svg)
+![vbb-rest architecture diagram](https://rawgit.com/derhuerst/vbb-rest/hafas-rest-api/architecture.svg)
 
 [![dependency status](https://img.shields.io/david/derhuerst/vbb-rest.svg)](https://david-dm.org/derhuerst/vbb-rest)
 ![ISC-licensed](https://img.shields.io/github/license/derhuerst/vbb-rest.svg)
