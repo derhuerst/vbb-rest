@@ -1,10 +1,8 @@
 # Berlin & Brandenburg Public Transport API
 
-**The public endpoint is [`vbb.transport.rest`](`https://vbb.transport.rest`).** This API returns data in the [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format). Use [`vbb-client`](https://github.com/derhuerst/vbb-client) to talk to this API from JavaScript.
+**The public endpoint is [`2.vbb.transport.rest`](`https://2.vbb.transport.rest/`).** This API returns data in the [*Friendly Public Transport Format* `1.0.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md). Use [`vbb-client`](https://github.com/derhuerst/vbb-client) to talk to this API from JavaScript.
 
-In December of 2016, VBB changed all station ids, e.g. `9012103` -> `900000012103`. **This API accepts both by trying to translate old ids into new ones**, using [`vbb-translate-ids`](https://github.com/derhuerst/vbb-translate-ids). Unfortunately they only use the the new ids for *static* data (of stations), but not for POIs and in their API. **As they announced to fully migrate to the new ids in September, please us them from now on.**
-
-*Note:* During development and test runs using this API, please send an **`X-Identifier` header (e.g. `my-module-testing`) to let me know the request is not from a production system**. For all other requests, a hash of the client IP will be logged. (To do this with [`vbb-client`](https://github.com/derhuerst/vbb-client), pass an `identifier` key in the query object.)
+*Note:* In order to improve this API, I would to know which software projects use it. Please send an **`X-Identifier` header (e.g. `my-awesome-tool`) to let me know who you are**. I you don't provide it, a hash of the client IP will be logged. (To do this with [`vbb-client`](https://github.com/derhuerst/vbb-client), add an `identifier` entry to the query object.)
 
 ## all routes
 
@@ -17,10 +15,11 @@ In December of 2016, VBB changed all station ids, e.g. `9012103` -> `90000001210
 - [`GET /lines/:id`](#get-linesid)
 - [`GET /shapes/:id`](#get-shapesid)
 - [`GET /journeys`](#get-journeys)
+- [`GET /journeys/legs/:ref`](#get-journeyslegsref)
 - [`GET /locations`](#get-locations)
+- [`GET /radar`](#get-radar)
 - [`GET /maps/:type`](#get-mapstype)
 - [`GET /logos/:type`](#get-logostype)
-- [`GET /radar`](#get-radar)
 
 ## `GET /stations?query=…`
 
@@ -35,9 +34,9 @@ Passes all parameters into [`vbb-stations-autocomplete`](https://github.com/derh
 ### examples
 
 ```shell
-curl 'https://vbb.transport.rest/stations?query=jungfernheide'
+curl 'https://2.vbb.transport.rest/stations?query=jungfernheide'
 # note the typo
-curl 'https://vbb.transport.rest/stations?query=mehrigndamm&fuzzy=true'
+curl 'https://2.vbb.transport.rest/stations?query=mehrigndamm&fuzzy=true'
 ```
 
 
@@ -56,7 +55,7 @@ Passes all parameters into [`vbb-stations`](https://github.com/derhuerst/vbb-sta
 ### examples
 
 ```shell
-curl 'https://vbb.transport.rest/stations?weight=9120&coordinates.latitude=52.493575'
+curl 'https://2.vbb.transport.rest/stations?weight=9120&coordinates.latitude=52.493575'
 ```
 
 
@@ -69,7 +68,7 @@ Dumps `full.json` from [`vbb-stations`](https://github.com/derhuerst/vbb-station
 ### examples
 
 ```shell
-curl 'https://vbb.transport.rest/stations/all'
+curl 'https://2.vbb.transport.rest/stations/all'
 ```
 
 
@@ -87,7 +86,7 @@ curl 'https://vbb.transport.rest/stations/all'
 ### examples
 
 ```shell
-curl 'https://vbb.transport.rest/stations/nearby?latitude=52.52725&longitude=13.4123'
+curl 'https://2.vbb.transport.rest/stations/nearby?latitude=52.52725&longitude=13.4123'
 ```
 
 
@@ -98,7 +97,7 @@ curl 'https://vbb.transport.rest/stations/nearby?latitude=52.52725&longitude=13.
 ### examples
 
 ```shell
-curl 'https://vbb.transport.rest/stations/900000013102'
+curl 'https://2.vbb.transport.rest/stations/900000013102'
 ```
 
 
@@ -106,13 +105,13 @@ curl 'https://vbb.transport.rest/stations/900000013102'
 
 Returns departures at a station. To maintain backwards compatibility, this route has two modes of operation (see below).
 
-*Note:* As stated in the [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format), the returned `departure` and `arrival` times include the current delay.
+*Note:* As stated in the [*Friendly Public Transport Format* `1.0.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md), the returned `departure` and `arrival` times include the current delay.
 
 `Content-Type`: `application/json`
 
 ### with `nextStation`
 
-**If you provide a station ID with the `nextStation` parameter, [`vbb-departures-in-direction`](https://github.com/derhuerst/vbb-departures-in-direction#usage) will be used to filter by direction.** Only departures with this station as their *next* stop will be returned.
+**If you provide a station ID with the `nextStation` parameter, [`hafas-departures-in-direction`](https://github.com/derhuerst/hafas-departures-in-direction#usage) will be used to filter by direction.** Only departures with this station as their *next* stop will be returned.
 
 You may then add these parameters:
 
@@ -122,7 +121,7 @@ You may then add these parameters:
 
 ### without `nextStation`
 
-**If you *do not* use `nextStation`, [`departures(…)` from `vbb-hafas`](https://github.com/derhuerst/vbb-hafas/blob/master/docs/departures.md) will be used to get departures in *all* directions.**
+**If you *do not* use `nextStation`, `departures(…)` from [`vbb-hafas`](https://github.com/derhuerst/vbb-hafas#vbb-hafas) (which uses [`departures(…)` from `hafas-client`](https://github.com/derhuerst/hafas-client/blob/any-endpoint/docs/departures.md#departuresstation-opt)) will be used to get departures in *all* directions.**
 
 You may then add these parameters:
 
@@ -133,30 +132,29 @@ You may then add these parameters:
 
 ```shell
 # at U Kottbusser Tor, in direction U Görlitzer Bahnhof
-curl 'https://vbb.transport.rest/stations/900000013102/departures?nextStation=900000014101&results=3'
+curl 'https://2.vbb.transport.rest/stations/900000013102/departures?nextStation=900000014101&results=3'
 # at U Kottbusser Tor, without direction
-curl 'https://vbb.transport.rest/stations/900000013102/departures?when=tomorrow%206pm'
+curl 'https://2.vbb.transport.rest/stations/900000013102/departures?when=tomorrow%206pm'
 ```
 
 
 ## `GET /lines`
-
-- `variants`: Wether to return stations of the line. Default: `false`.
 
 Passes all parameters into [`vbb-lines`](https://github.com/derhuerst/vbb-lines):
 
 - `id`: Filter by ID.
 - `name`: Filter by name.
 - `operator`: Filter by operator id. See [`agency.txt`](https://vbb-gtfs.jannisr.de/latest/agency.txt).
-- `mode`: Filter by mode of transport as in [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format).
-- `product`: See [`vbb-util`](https://github.com/derhuerst/vbb-util/blob/cd0c74f8a851549cfb9cf561d1fcf366248557c3/products.js#L116-L125).
+- `variants`: Wether to return stations of the line. Default: `false`.
+- `mode`: Filter by mode of transport as in [*Friendly Public Transport Format* `1.0.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md).
+- `product`: See [the products in `hafas-client`](https://github.com/derhuerst/hafas-client/blob/95151ccd0ef1ef7d9ce6d9a80f66a0300c67e54a/p/vbb/modes.js#L5-L75).
 
-`Content-Type`: `application/x-ndjson`
+`Content-Type`: [`application/x-ndjson`](http://ndjson.org/)
 
 ### examples
 
 ```shell
-curl 'https://vbb.transport.rest/lines?operator=796&variants=true'
+curl 'https://2.vbb.transport.rest/lines?operator=796&variants=true'
 ```
 
 
@@ -167,7 +165,7 @@ curl 'https://vbb.transport.rest/lines?operator=796&variants=true'
 ### examples
 
 ```shell
-curl 'https://vbb.transport.rest/lines/531'
+curl 'https://2.vbb.transport.rest/lines/531'
 ```
 
 
@@ -180,7 +178,7 @@ Output from [`require('vbb-shapes')(id)`](https://github.com/derhuerst/vbb-shape
 ### examples
 
 ```shell
-curl 'https://vbb.transport.rest/shapes/1269'
+curl 'https://2.vbb.transport.rest/shapes/1269'
 ```
 
 
@@ -188,7 +186,7 @@ curl 'https://vbb.transport.rest/shapes/1269'
 
 Output from [`require('vbb-hafas').journeys(…)`](https://github.com/derhuerst/vbb-hafas#getting-started). Start location and end location must be either in [station format](#station-format) or in [POI/address format](#poiaddress-format) (you can mix them).
 
-*Note:* As stated in the [*Friendly Public Transport Format*](https://github.com/public-transport/friendly-public-transport-format), the returned `departure` and `arrival` times include the current delay.
+*Note:* As stated in the [*Friendly Public Transport Format* `1.0.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md), the returned `departure` and `arrival` times include the current delay.
 
 ## station format
 
@@ -227,15 +225,15 @@ Output from [`require('vbb-hafas').journeys(…)`](https://github.com/derhuerst/
 ### examples
 
 ```shell
-curl 'https://vbb.transport.rest/journeys?from=900000017104&to=900000017101'
-curl 'https://vbb.transport.rest/journeys?from=900000023201&to.name=ATZE%20Musiktheater&to.latitude=52.543333&to.longitude=13.351686'
-curl 'https://vbb.transport.rest/journeys?from=…&to=…&results=3&bus=false&tickets=true'
+curl 'https://2.vbb.transport.rest/journeys?from=900000017104&to=900000017101'
+curl 'https://2.vbb.transport.rest/journeys?from=900000023201&to.name=ATZE%20Musiktheater&to.latitude=52.543333&to.longitude=13.351686'
+curl 'https://2.vbb.transport.rest/journeys?from=…&to=…&results=3&bus=false&tickets=true'
 ```
 
 
-## `GET /journeys/parts/:ref`
+## `GET /journeys/legs/:ref`
 
-Output from [`require('vbb-hafas').journeyPart(…)`](https://github.com/derhuerst/vbb-hafas/blob/master/docs/journey-part.md#journeypartref-linename-opt).
+Output from [`require('hafas-client').journeyLeg(…)`](https://github.com/derhuerst/hafas-client/blob/master/docs/journey-leg.md#journeylegref-linename-opt).
 
 - `lineName`: **Required.** Line name of the part's mode of transport, e.g. `RE7`.
 - `when`: A [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) or anything parsable by [`parse-messy-time`](https://github.com/substack/parse-messy-time#example). Default: now.
@@ -246,13 +244,13 @@ Output from [`require('vbb-hafas').journeyPart(…)`](https://github.com/derhuer
 
 ```shell
 # this won't work, get a new ref from /journeys first
-curl 'https://vbb.transport.rest/journeys/parts/1|32082|1|86|26062017?lineName=RE7'
+curl 'https://2.vbb.transport.rest/journeys/legs/1|32082|1|86|26062017?lineName=RE7'
 ```
 
 
 ## `GET /locations`
 
-Output from [`require('vbb-hafas').locations(…)`](https://github.com/derhuerst/vbb-hafas/blob/master/docs/locations.md)
+Output from [`require('hafas-client').locations(…)`](https://github.com/derhuerst/hafas-client/blob/master/docs/locations.md).
 
 - `query`: **Required.** (e.g. `Alexanderplatz`)
 - `results`: How many stations shall be shown? Default: `10`.
@@ -265,8 +263,27 @@ Output from [`require('vbb-hafas').locations(…)`](https://github.com/derhuerst
 ### examples
 
 ```shell
-curl 'https://vbb.transport.rest/locations?query=Alexanderplatz'
-curl 'https://vbb.transport.rest/locations?query=Pestalozzistra%C3%9Fe%2082%2C%20Berlin&poi=false&stations=false'
+curl 'https://2.vbb.transport.rest/locations?query=Alexanderplatz'
+curl 'https://2.vbb.transport.rest/locations?query=Pestalozzistra%C3%9Fe%2082%2C%20Berlin&poi=false&stations=false'
+```
+
+
+## `GET /radar`
+
+- `north`: **Required.** Northern latitude.
+- `west`: **Required.** Western longtidue.
+- `south`: **Required.** Southern latitude.
+- `east`: **Required.** Eastern longtidue.
+- `results`: How many vehicles shall be shown? Default: `256`.
+- `duration`: Compute frames for how many seconds? Default: `30`.
+- `frames`: Number of frames to compute. Default: `3`.
+
+`Content-Type`: `application/json`
+
+### examples
+
+```shell
+curl 'https://2.vbb.transport.rest/radar?north=52.52411&west=13.41002&south=52.51942&east=13.41709'
 ```
 
 
@@ -291,7 +308,7 @@ Redirects to PDF public transport maps. `type` may be one of these:
 ### examples
 
 ```shell
-curl -L -o bvg-tram-map.pdf 'https://vbb.transport.rest/maps/bvg-tram'
+curl -L -o bvg-tram-map.pdf 'https://2.vbb.transport.rest/maps/bvg-tram'
 ```
 
 
@@ -302,24 +319,5 @@ Serves the [logos from `derhuers/vbb-logos#v2`](https://github.com/derhuerst/vbb
 ### examples
 
 ```shell
-curl -L -o tram.svg 'https://vbb.transport.rest/logos/tram.svg'
-```
-
-
-## `GET /radar`
-
-- `north`: **Required.** Northern latitude.
-- `west`: **Required.** Western longtidue.
-- `south`: **Required.** Southern latitude.
-- `east`: **Required.** Eastern longtidue.
-- `results`: How many vehicles shall be shown? Default: `256`.
-- `duration`: Compute frames for how many seconds? Default: `30`.
-- `frames`: Number of frames to compute. Default: `3`.
-
-`Content-Type`: `application/json`
-
-### examples
-
-```shell
-curl 'https://vbb.transport.rest/radar?north=52.52411&west=13.41002&south=52.51942&east=13.41709'
+curl -L -o tram.svg 'https://2.vbb.transport.rest/logos/tram.svg'
 ```
