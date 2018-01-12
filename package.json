@@ -1,7 +1,7 @@
 {
 	"name": "vbb-rest",
 	"description": "A sane public transport API for Berlin.",
-	"version": "0.3.0",
+	"version": "0.4.0",
 	"main": "index.js",
 	"files": [
 		"index.js",
@@ -27,7 +27,7 @@
 	"dependencies": {
 		"cli-native": "^1.0.0",
 		"corser": "^2.0.1",
-		"hafas-rest-api": "0.1.0-alpha.11",
+		"hafas-rest-api": "^0.2.0",
 		"lodash.omit": "^4.5.0",
 		"ndjson": "^1.5.0",
 		"nocache": "^2.0.0",
@@ -39,8 +39,8 @@
 		"vbb-logos": "github:derhuerst/vbb-logos#v2",
 		"vbb-shapes": "^2.0.0",
 		"vbb-short-station-name": "^0.4.0",
-		"vbb-stations": "^5.0.0",
-		"vbb-stations-autocomplete": "^2.1.0",
+		"vbb-stations": "^6.1.0",
+		"vbb-stations-autocomplete": "^3.0.0",
 		"vbb-translate-ids": "^2.0.0"
 	},
 	"scripts": {
