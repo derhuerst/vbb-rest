@@ -44,7 +44,6 @@
 		"vbb-translate-ids": "^2.0.0"
 	},
 	"scripts": {
-		"start": "node index.js",
-		"ssh": "ssh root@vbb.transport.rest"
+		"start": "node index.js"
 	}
 }
