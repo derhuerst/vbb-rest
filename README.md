@@ -2,6 +2,8 @@
 
 ***vbb-rest* is a public transport REST API**, a clean alternative to the [VBB HAFAS API](https://github.com/derhuerst/vbb-hafas). [It has lots of advantages over their API.](docs/why.md)
 
+*Note*: This version of the API is deprecated. **Please use the [new version at `2.vbb.transport.rest`](https://github.com/derhuerst/vbb-rest/tree/2)** to make sure everything keeps working.
+
 Refer to the [API Documentation](docs/index.md). Use [vbb-client](https://github.com/derhuerst/vbb-client) for querying this API in the Browser or with Node.js.
 
 [![npm version](https://img.shields.io/npm/v/vbb-rest.svg)](https://www.npmjs.com/package/vbb-rest)
