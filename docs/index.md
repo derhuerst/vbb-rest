@@ -1,14 +1,15 @@
 # Berlin & Brandenburg Public Transport API
 
-**The public endpoint is [`2.vbb.transport.rest`](`https://2.vbb.transport.rest/`).** This API returns data in the [*Friendly Public Transport Format* `1.0.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md). Use [`vbb-client`](https://github.com/derhuerst/vbb-client) to talk to this API from JavaScript.
+**The public endpoint is [`2.vbb.transport.rest`](`https://2.vbb.transport.rest/`).** This API returns data in the [*Friendly Public Transport Format* `1.0.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md). Use [`vbb-client@3`](https://github.com/derhuerst/vbb-client) to talk to this API from JavaScript.
 
-*Note:* In order to improve this API, I would to know which software projects use it. Please send an **`X-Identifier` header (e.g. `my-awesome-tool`) to let me know who you are**. I you don't provide it, a hash of the client IP will be logged. (To do this with [`vbb-client`](https://github.com/derhuerst/vbb-client), add an `identifier` entry to the query object.)
+*Note:* In order to improve this API, I would to know which software projects use it. Please send an **`X-Identifier` header (e.g. `my-awesome-tool`) to let me know who you are**.
 
 ## all routes
 
 - [`GET /stations?query=…`](#get-stationsquery)
 - [`GET /stations`](#get-stations)
 - [`GET /stations/nearby`](#get-stationsnearby)
+- [`GET /stations/all`](#get-stationsall)
 - [`GET /stations/:id`](#get-stationsid)
 - [`GET /stations/:id/departures`](#get-stationsiddepartures)
 - [`GET /lines`](#get-lines)
