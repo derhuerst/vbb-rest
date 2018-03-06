@@ -11,6 +11,7 @@ const path         = require('path')
 const serve        = require('serve-static')
 
 const pkg = require('./package.json')
+const deprecationWarning = require('./lib/deprecation-warning')
 const stations     = require('./lib/stations')
 const allStations  = require('./lib/all-stations')
 const station      = require('./lib/station')
@@ -45,6 +46,8 @@ api.use((req, res, next) => {
 		res.setHeader('X-Powered-By', pkg.name + ' ' + pkg.homepage)
 	next()
 })
+
+api.use(deprecationWarning)
 
 
 
