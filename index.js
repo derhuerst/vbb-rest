@@ -1,13 +1,17 @@
 'use strict'
 
+const pkg = require('./package.json')
 const createApi = require('./api')
 
 const config = {
 	hostname: process.env.HOSTNAME || '2.vbb.transport.rest',
 	port: process.env.PORT || 3000,
-	name: 'vbb-rest', // todo: use pkg.name
-	homepage: 'https://github.com/derhuerst/vbb-rest', // todo: use pkg.homepage
-	logging: true
+	name: pkg.name,
+	description: pkg.description,
+	homepage: pkg.homepage,
+	docsLink: 'https://github.com/derhuerst/vbb-rest/blob/2/docs/index.md',
+	logging: true,
+	aboutPage: true
 }
 
 const api = createApi(config)
