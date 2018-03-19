@@ -122,7 +122,7 @@ You may then add these parameters:
 
 ### without `nextStation`
 
-**If you *do not* use `nextStation`, `departures(…)` from [`vbb-hafas`](https://github.com/derhuerst/vbb-hafas#vbb-hafas) (which uses [`departures(…)` from `hafas-client`](https://github.com/derhuerst/hafas-client/blob/any-endpoint/docs/departures.md#departuresstation-opt)) will be used to get departures in *all* directions.**
+**If you *do not* use `nextStation`, `departures(…)` from [`vbb-hafas`](https://github.com/derhuerst/vbb-hafas#vbb-hafas) (which uses [`departures(…)` from `hafas-client`](https://github.com/public-transport/hafas-client/blob/any-endpoint/docs/departures.md#departuresstation-opt)) will be used to get departures in *all* directions.**
 
 You may then add these parameters:
 
@@ -148,7 +148,7 @@ Passes all parameters into [`vbb-lines`](https://github.com/derhuerst/vbb-lines)
 - `operator`: Filter by operator id. See [`agency.txt`](https://vbb-gtfs.jannisr.de/latest/agency.txt).
 - `variants`: Wether to return stations of the line. Default: `false`.
 - `mode`: Filter by mode of transport as in [*Friendly Public Transport Format* `1.0.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md).
-- `product`: See [the products in `hafas-client`](https://github.com/derhuerst/hafas-client/blob/95151ccd0ef1ef7d9ce6d9a80f66a0300c67e54a/p/vbb/modes.js#L5-L75).
+- `product`: See [the products in `hafas-client`](https://github.com/public-transport/hafas-client/blob/95151ccd0ef1ef7d9ce6d9a80f66a0300c67e54a/p/vbb/modes.js#L5-L75).
 
 `Content-Type`: [`application/x-ndjson`](http://ndjson.org/)
 
@@ -234,7 +234,7 @@ curl 'https://2.vbb.transport.rest/journeys?from=…&to=…&results=3&bus=false&
 
 ## `GET /journeys/legs/:ref`
 
-Output from [`require('hafas-client').journeyLeg(…)`](https://github.com/derhuerst/hafas-client/blob/master/docs/journey-leg.md#journeylegref-linename-opt).
+Output from [`require('hafas-client').journeyLeg(…)`](https://github.com/public-transport/hafas-client/blob/master/docs/journey-leg.md#journeylegref-linename-opt).
 
 - `lineName`: **Required.** Line name of the part's mode of transport, e.g. `RE7`.
 - `when`: A [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) or anything parsable by [`parse-messy-time`](https://github.com/substack/parse-messy-time#example). Default: now.
@@ -251,7 +251,7 @@ curl 'https://2.vbb.transport.rest/journeys/legs/1|32082|1|86|26062017?lineName=
 
 ## `GET /locations`
 
-Output from [`require('hafas-client').locations(…)`](https://github.com/derhuerst/hafas-client/blob/master/docs/locations.md).
+Output from [`require('hafas-client').locations(…)`](https://github.com/public-transport/hafas-client/blob/master/docs/locations.md).
 
 - `query`: **Required.** (e.g. `Alexanderplatz`)
 - `results`: How many stations shall be shown? Default: `10`.
