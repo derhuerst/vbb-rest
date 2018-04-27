@@ -1,7 +1,15 @@
 'use strict'
 
+const parse  = require('cli-native').to
+
 const pkg = require('./package.json')
 const createApi = require('./api')
+
+const addHafasOpts = (opt, method, req) => {
+	if (method === 'journeys' && ('transferInfo' in req.query)) {
+		opt.transferInfo = parse(req.query.transferInfo)
+	}
+}
 
 const config = {
 	hostname: process.env.HOSTNAME || '2.vbb.transport.rest',
@@ -11,7 +19,8 @@ const config = {
 	homepage: pkg.homepage,
 	docsLink: 'https://github.com/derhuerst/vbb-rest/blob/2/docs/index.md',
 	logging: true,
-	aboutPage: true
+	aboutPage: true,
+	addHafasOpts
 }
 
 const api = createApi(config)
