@@ -218,6 +218,7 @@ Output from [`require('vbb-hafas').journeys(…)`](https://github.com/derhuerst/
 - `accessibility`: Possible values: `partial`, `complete`. Default: `none`.
 - `bike`: Return only bike-friendly journeys. Default: `false`.
 - `tickets`: Return information about available tickets. Default: `false`.
+- `transferInfo`: Try to add transfer information from [`vbb-change-positions`](https://github.com/juliuste/vbb-change-positions) to journey legs? [more details](https://github.com/derhuerst/vbb-hafas/blob/master/README.md#transfer-information-for-journeys) Default: `false`.
 
 - `suburban`: Include [S-Bahn trains](https://en.wikipedia.org/wiki/Berlin_S-Bahn)? Default: `true`.
 - `subway`: Include [U-Bahn trains](https://en.wikipedia.org/wiki/Berlin_U-Bahn)? Default: `true`.
