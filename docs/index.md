@@ -194,12 +194,18 @@ Output from [`require('vbb-hafas').journeys(…)`](https://github.com/derhuerst/
 - `from`: **Required.** Station ID (e.g. `900000023201`).
 - `to`: **Required.** Station ID (e.g. `900000023201`).
 
-## POI/address format
+## POI format
 
 - `from.latitude`/`to.latitude`: **Required.** Latitude (e.g. `52.543333`).
 - `from.longitude`/`to.longitude`: **Required.** Longitude (e.g. `13.351686`).
-- `from.name`/`to.name`: Name of the locality (e.g. `ATZE Musiktheater`).
-- `from.id`/`to.id`: POI ID (e.g. `9980720`).
+- `from.name`/`to.name`: Name of the locality (e.g. `Atze Musiktheater`).
+- `from.id`/`to.id`: **Required.** POI ID (e.g. `9980720`).
+
+## address format
+
+- `from.latitude`/`to.latitude`: **Required.** Latitude (e.g. `52.543333`).
+- `from.longitude`/`to.longitude`: **Required.** Longitude (e.g. `13.351686`).
+- `from.address`/`to.address`: **Required.** Address (e.g. `Voltastr. 17`).
 
 ## other parameters
 
