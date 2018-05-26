@@ -34,11 +34,11 @@
 		"serve-static": "^1.13.2",
 		"through2-map": "^3.0.0",
 		"vbb-hafas": "^4.2.0",
-		"vbb-lines": "^3.0.0",
+		"vbb-lines": "^4.0.0",
 		"vbb-lines-at": "^3.11.0",
 		"vbb-logos": "github:derhuerst/vbb-logos#v2",
 		"vbb-shapes": "^2.13.0",
-		"vbb-short-station-name": "^0.4.0",
+		"vbb-short-station-name": "^1.0.1",
 		"vbb-stations": "^6.2.1",
 		"vbb-stations-autocomplete": "^3.1.0",
 		"vbb-translate-ids": "^2.0.0"
