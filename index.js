@@ -11,7 +11,14 @@ const addHafasOpts = (opt, method, req) => {
 	}
 }
 
+let hafasClientNodes = null
+if (process.env.HAFAS_CLIENT_NODES) {
+	hafasClientNodes = process.env.HAFAS_CLIENT_NODES.split(',')
+	console.info('Using these hafas-client-rpc nodes:', hafasClientNodes)
+}
+
 const config = {
+	hafasClientNodes,
 	hostname: process.env.HOSTNAME || '2.vbb.transport.rest',
 	port: process.env.PORT || 3000,
 	name: pkg.name,
@@ -23,13 +30,16 @@ const config = {
 	addHafasOpts
 }
 
-const api = createApi(config)
+const showError = (err) => {
+	console.error(err)
+	process.exitCode = 1
+}
 
-api.listen(config.port, (err) => {
-	if (err) {
-		console.error(err)
-		process.exitCode = 1
-	} else {
-		console.info(`Listening on ${config.hostname}:${config.port}.`)
-	}
+createApi(config, (err, api) => {
+	if (err) return showError(err)
+
+	api.listen(config.port, (err) => {
+		if (err) return showError(err)
+		else console.info(`Listening on ${config.hostname}:${config.port}.`)
+	})
 })
