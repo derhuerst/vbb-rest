@@ -3,7 +3,9 @@ FROM node:alpine
 WORKDIR /app
 ADD . /app
 
-RUN npm install --production
+RUN apk add --update git && \
+	npm install --production && \
+	rm -rf /tmp/* /var/cache/apk/*
 
 EXPOSE 3000
 

@@ -22,6 +22,8 @@ npm install --production
 npm start
 ```
 
+[A Docker image is available as `derhuerst/vbb-rest`.](https://hub.docker.com/r/derhuerst/vbb-rest)
+
 
 ## Contributing
 
