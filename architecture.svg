@@ -39,10 +39,8 @@
 		<text class="normal-text" x="11.35" y="10">queries</text>
 	</g>
 	<g transform="translate(164, 20)">
-		<rect class="box" x="0" y="0" width="104" height="41" />
+		<rect class="box" x="0" y="0" width="104" height="20" />
 		<text class="monospace-text" x="26.2" y="13">vbb-rest</text>
-		<text class="normal-text small-text" x="4" y="26">deployed at</text>
-		<text class="monospace-text small-text" x="4" y="36">2.vbb.transport.rest</text>
 	</g>
 	<g transform="translate(273, 14)">
 		<path class="arrow" d="M0,14 L50,14" />
@@ -53,10 +51,10 @@
 		<rect class="box" x="0" y="0" width="93" height="20" />
 		<text class="monospace-text" x="5" y="14">hafas-rest-api</text>
 	</g>
-	<g transform="translate(273, 39)">
-		<path class="arrow" d="M0,14 L50,14" />
-		<path class="arrow" d="M50,14 L39.7,11 L39.7,17 L50,14 Z" />
-		<text class="normal-text" x="1.445" y="10">exposes</text>
+	<g transform="translate(253, 39)">
+		<path class="arrow" d="M0,4 L0,16 L70,16" />
+		<path class="arrow" d="M70,16 L59.7,13 L59.7,19 L70,16 Z" />
+		<text class="normal-text" x="20" y="12">exposes</text>
 	</g>
 	<g transform="translate(331, 45)">
 		<rect class="box" x="0" y="0" width="64" height="20" />
