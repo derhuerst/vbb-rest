@@ -1,8 +1,8 @@
 # Berlin & Brandenburg Public Transport API
 
-**The public endpoint is [`2.vbb.transport.rest`](`https://2.vbb.transport.rest/`).** This API returns data in the [*Friendly Public Transport Format* `1.0.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md). Use [`vbb-client@3`](https://github.com/derhuerst/vbb-client) to talk to this API from JavaScript.
+This API returns data in the [*Friendly Public Transport Format* `1.0.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md).
 
-*Note:* In order to improve this API, I would to know which software projects use it. Please send an **`X-Identifier` header (e.g. `my-awesome-tool`) to let me know who you are**.
+~~The public endpoint is [`2.vbb.transport.rest`](`https://2.vbb.transport.rest/`). Use [`vbb-client@3`](https://github.com/derhuerst/vbb-client) to talk to this API from JavaScript.~~ VBB has blocked our API servers' IP addresses, so we can't provide a public endpoint for now. **If you use JavaScript to process the data, use [`vbb-hafas`](https://github.com/derhuerst/vbb-hafas) directly, otherwise host your `vbb-rest` instance for now.**
 
 ## all routes
 
@@ -35,9 +35,9 @@ Passes all parameters into [`vbb-stations-autocomplete`](https://github.com/derh
 ### examples
 
 ```shell
-curl 'https://2.vbb.transport.rest/stations?query=jungfernheide'
+curl 'https://your-api-endpoint/stations?query=jungfernheide'
 # note the typo
-curl 'https://2.vbb.transport.rest/stations?query=mehrigndamm&fuzzy=true'
+curl 'https://your-api-endpoint/stations?query=mehrigndamm&fuzzy=true'
 ```
 
 
@@ -56,7 +56,7 @@ Passes all parameters into [`vbb-stations`](https://github.com/derhuerst/vbb-sta
 ### examples
 
 ```shell
-curl 'https://2.vbb.transport.rest/stations?weight=9120&coordinates.latitude=52.493575'
+curl 'https://your-api-endpoint/stations?weight=9120&coordinates.latitude=52.493575'
 ```
 
 
@@ -69,7 +69,7 @@ Dumps `full.json` from [`vbb-stations`](https://github.com/derhuerst/vbb-station
 ### examples
 
 ```shell
-curl 'https://2.vbb.transport.rest/stations/all'
+curl 'https://your-api-endpoint/stations/all'
 ```
 
 
@@ -87,7 +87,7 @@ curl 'https://2.vbb.transport.rest/stations/all'
 ### examples
 
 ```shell
-curl 'https://2.vbb.transport.rest/stations/nearby?latitude=52.52725&longitude=13.4123'
+curl 'https://your-api-endpoint/stations/nearby?latitude=52.52725&longitude=13.4123'
 ```
 
 
@@ -98,7 +98,7 @@ curl 'https://2.vbb.transport.rest/stations/nearby?latitude=52.52725&longitude=1
 ### examples
 
 ```shell
-curl 'https://2.vbb.transport.rest/stations/900000013102'
+curl 'https://your-api-endpoint/stations/900000013102'
 ```
 
 
@@ -133,9 +133,9 @@ You may then add these parameters:
 
 ```shell
 # at U Kottbusser Tor, in direction U Görlitzer Bahnhof
-curl 'https://2.vbb.transport.rest/stations/900000013102/departures?nextStation=900000014101&results=3'
+curl 'https://your-api-endpoint/stations/900000013102/departures?nextStation=900000014101&results=3'
 # at U Kottbusser Tor, without direction
-curl 'https://2.vbb.transport.rest/stations/900000013102/departures?when=tomorrow%206pm'
+curl 'https://your-api-endpoint/stations/900000013102/departures?when=tomorrow%206pm'
 ```
 
 
@@ -155,7 +155,7 @@ Passes all parameters into [`vbb-lines`](https://github.com/derhuerst/vbb-lines)
 ### examples
 
 ```shell
-curl 'https://2.vbb.transport.rest/lines?operator=796&variants=true'
+curl 'https://your-api-endpoint/lines?operator=796&variants=true'
 ```
 
 
@@ -166,7 +166,7 @@ curl 'https://2.vbb.transport.rest/lines?operator=796&variants=true'
 ### examples
 
 ```shell
-curl 'https://2.vbb.transport.rest/lines/531'
+curl 'https://your-api-endpoint/lines/531'
 ```
 
 
@@ -179,7 +179,7 @@ Output from [`require('vbb-shapes')(id)`](https://github.com/derhuerst/vbb-shape
 ### examples
 
 ```shell
-curl 'https://2.vbb.transport.rest/shapes/1269'
+curl 'https://your-api-endpoint/shapes/1269'
 ```
 
 
@@ -233,9 +233,9 @@ Output from [`require('vbb-hafas').journeys(…)`](https://github.com/derhuerst/
 ### examples
 
 ```shell
-curl 'https://2.vbb.transport.rest/journeys?from=900000017104&to=900000017101'
-curl 'https://2.vbb.transport.rest/journeys?from=900000023201&to.name=ATZE%20Musiktheater&to.latitude=52.543333&to.longitude=13.351686'
-curl 'https://2.vbb.transport.rest/journeys?from=…&to=…&results=3&bus=false&tickets=true'
+curl 'https://your-api-endpoint/journeys?from=900000017104&to=900000017101'
+curl 'https://your-api-endpoint/journeys?from=900000023201&to.name=ATZE%20Musiktheater&to.latitude=52.543333&to.longitude=13.351686'
+curl 'https://your-api-endpoint/journeys?from=…&to=…&results=3&bus=false&tickets=true'
 ```
 
 
@@ -252,7 +252,7 @@ Output from [`require('hafas-client').journeyLeg(…)`](https://github.com/publi
 
 ```shell
 # this won't work, get a new ref from /journeys first
-curl 'https://2.vbb.transport.rest/journeys/legs/1|32082|1|86|26062017?lineName=RE7'
+curl 'https://your-api-endpoint/journeys/legs/1|32082|1|86|26062017?lineName=RE7'
 ```
 
 
@@ -271,8 +271,8 @@ Output from [`require('hafas-client').locations(…)`](https://github.com/public
 ### examples
 
 ```shell
-curl 'https://2.vbb.transport.rest/locations?query=Alexanderplatz'
-curl 'https://2.vbb.transport.rest/locations?query=Pestalozzistra%C3%9Fe%2082%2C%20Berlin&poi=false&stations=false'
+curl 'https://your-api-endpoint/locations?query=Alexanderplatz'
+curl 'https://your-api-endpoint/locations?query=Pestalozzistra%C3%9Fe%2082%2C%20Berlin&poi=false&stations=false'
 ```
 
 
@@ -291,7 +291,7 @@ curl 'https://2.vbb.transport.rest/locations?query=Pestalozzistra%C3%9Fe%2082%2C
 ### examples
 
 ```shell
-curl 'https://2.vbb.transport.rest/radar?north=52.52411&west=13.41002&south=52.51942&east=13.41709'
+curl 'https://your-api-endpoint/radar?north=52.52411&west=13.41002&south=52.51942&east=13.41709'
 ```
 
 
@@ -316,7 +316,7 @@ Redirects to PDF public transport maps. `type` may be one of these:
 ### examples
 
 ```shell
-curl -L -o bvg-tram-map.pdf 'https://2.vbb.transport.rest/maps/bvg-tram'
+curl -L -o bvg-tram-map.pdf 'https://your-api-endpoint/maps/bvg-tram'
 ```
 
 
@@ -327,5 +327,5 @@ Serves the [logos from `derhuers/vbb-logos#v2`](https://github.com/derhuerst/vbb
 ### examples
 
 ```shell
-curl -L -o tram.svg 'https://2.vbb.transport.rest/logos/tram.svg'
+curl -L -o tram.svg 'https://your-api-endpoint/logos/tram.svg'
 ```

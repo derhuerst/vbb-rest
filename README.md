@@ -4,7 +4,7 @@
 
 **[API documentation](docs/index.md)**
 
-Use [`vbb-client@3`](https://github.com/derhuerst/vbb-client) for querying this API in browsers or with Node.
+~~Use [`vbb-client@3`](https://github.com/derhuerst/vbb-client) for querying this API in browsers or with Node.~~ VBB has blocked our API servers' IP addresses, so we can't provide a public endpoint for now. **If you use JavaScript to process the data, use [`vbb-hafas`](https://github.com/derhuerst/vbb-hafas) directly, otherwise host your `vbb-rest` instance for now.**
 
 ![vbb-rest architecture diagram](https://rawgit.com/derhuerst/vbb-rest/master/architecture.svg)
 
@@ -13,16 +13,27 @@ Use [`vbb-client@3`](https://github.com/derhuerst/vbb-client) for querying this 
 [![chat on gitter](https://badges.gitter.im/derhuerst.svg)](https://gitter.im/derhuerst)
 
 
-## Installing
+## installing & running
 
+### via Docker
+
+A Docker image [is available as `derhuerst/vbb-rest`](https://hub.docker.com/r/derhuerst/vbb-rest).
+
+```shell
+docker run -d -p 3000:3000 derhuerst/vbb-rest
 ```
+
+### manually
+
+```shell
 git clone https://github.com/derhuerst/vbb-rest.git
 cd vbb-rest
+git checkout 2
 npm install --production
 npm start
 ```
 
-[A Docker image is available as `derhuerst/vbb-rest`.](https://hub.docker.com/r/derhuerst/vbb-rest)
+To keep the API running permanently, use tools like [`forever`](https://github.com/foreverjs/forever#forever), [`pm2`](http://pm2.keymetrics.io) or [`systemd`](https://wiki.debian.org/systemd).
 
 
 ## Contributing
