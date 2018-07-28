@@ -2,7 +2,7 @@
 
 const path = require('path')
 const serve = require('serve-static')
-const hafas = require('vbb-hafas')
+const createHafas = require('vbb-hafas')
 const createBaseApi = require('hafas-rest-api')
 
 const stations = require('./lib/stations')
@@ -26,8 +26,30 @@ const attachMiddleware = (api) => {
 	api.get('/maps/:type', maps)
 }
 
-const createApi = (config) => {
-	return createBaseApi(hafas, config, attachMiddleware)
+const createApi = (config, cb) => {
+	if (config && config.hafasClientNodes) {
+		const {RoundRobin} = require('square-batman')
+		const createRpcClient = require('hafas-client-rpc/client')
+
+		// square-batman is not abstract-scheduler-compatible yet
+		const createScheduler = (urls) => {
+			const scheduler = new RoundRobin(urls)
+			scheduler.get = scheduler.next
+			return scheduler
+		}
+
+		const pool = createRpcClient(createScheduler, config.hafasClientNodes, (err, rpcHafas) => {
+			if (err) return cb(err)
+			rpcHafas.profile = hafas.profile
+			config = Object.assign({}, config)
+			config.hafas = rpcHafas
+			cb(null, createBaseApi(rpcHafas, config, attachMiddleware))
+		})
+		pool.on('error', console.error)
+	} else {
+		const hafas = createHafas('hafas-rest-api: ' + config.name)
+		setImmediate(cb, null, createBaseApi(hafas, config, attachMiddleware))
+	}
 }
 
 module.exports = createApi
