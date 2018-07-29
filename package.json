@@ -18,6 +18,8 @@
 		"public",
 		"transport",
 		"api",
+		"vbb",
+		"berlin",
 		"http",
 		"rest"
 	],
