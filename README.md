@@ -2,9 +2,10 @@
 
 ***vbb-rest* is a public transport REST API**, a clean alternative to the [VBB HAFAS API](https://github.com/derhuerst/vbb-hafas). [It has lots of advantages over theirs.](docs/why.md)
 
-**[API documentation](docs/index.md)**
+~~Use [`vbb-client@3`](https://github.com/derhuerst/vbb-client) for querying this API in browsers or with Node.~~ VBB has blocked our API servers' IP addresses, so **[the public `2.vbb.transport.rest` endpoint](https://2.vbb.transport.rest/) [is down](https://status.transport.rest/779961406)**. For the time being, you have two choices:
 
-~~Use [`vbb-client@3`](https://github.com/derhuerst/vbb-client) for querying this API in browsers or with Node.~~ VBB has blocked our API servers' IP addresses, so we can't provide a public endpoint for now. **If you use JavaScript to process the data, use [`vbb-hafas`](https://github.com/derhuerst/vbb-hafas) directly, otherwise host your `vbb-rest` instance for now.**
+- Use the [`1.bvg.transport.rest`](https://1.bvg.transport.rest/) endpoint. It returns data from the BVG HAFAS API, which is almost exactly the same. Check the docs at [`derhuerst/bvg-rest`](https://github.com/derhuerst/bvg-rest/blob/master/readme.md)!
+- Host your `vbb-rest` instance. See below for instructions.
 
 ![vbb-rest architecture diagram](https://rawgit.com/derhuerst/vbb-rest/master/architecture.svg)
 
