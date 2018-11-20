@@ -27,6 +27,7 @@
 		"node": ">=6"
 	},
 	"dependencies": {
+		"@derhuerst/round-robin-scheduler": "^1.0.1",
 		"cli-native": "^1.0.0",
 		"corser": "^2.0.1",
 		"hafas-client-rpc": "^2.2.1",

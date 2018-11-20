@@ -1,9 +1,30 @@
 'use strict'
 
 const parse  = require('cli-native').to
+const createHafas = require('vbb-hafas')
+const createApi = require('hafas-rest-api')
 
 const pkg = require('./package.json')
-const createApi = require('./api')
+const attachMiddleware = require('./api')
+
+const pHafas = (() => {
+	const hafas = createHafas('hafas-rest-api: ' + pkg.name)
+	if (!process.env.HAFAS_CLIENT_NODES) return Promise.resolve(hafas)
+
+	const createRoundRobin = require('@derhuerst/round-robin-scheduler')
+	const createRpcClient = require('hafas-client-rpc/client')
+
+	const nodes = process.env.HAFAS_CLIENT_NODES.split(',')
+	console.info('Using these hafas-client-rpc nodes:', nodes)
+
+	return new Promise((resolve, reject) => {
+		createRpcClient(createRoundRobin, nodes, (err, rpcHafas) => {
+			if (err) return reject(err)
+			rpcHafas.profile = hafas.profile
+			resolve(rpcHafas)
+		})
+	})
+})()
 
 const addHafasOpts = (opt, method, req) => {
 	if (method === 'journeys' && ('transferInfo' in req.query)) {
@@ -25,11 +46,13 @@ const config = {
 
 const api = createApi(config)
 
-api.listen(config.port, (err) => {
-	if (err) {
-		console.error(err)
-		process.exitCode = 1
-	} else {
-		console.info(`Listening on ${config.hostname}:${config.port}.`)
-	}
+pHafas
+.then((hafas) => {
+	const api = createApi(hafas, config, attachMiddleware)
+
+	api.listen(config.port, (err) => {
+		if (err) return showError(err)
+		else console.info(`Listening on ${config.hostname}:${config.port}.`)
+	})
 })
+.catch(showError)
