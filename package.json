@@ -30,6 +30,7 @@
 		"@derhuerst/round-robin-scheduler": "^1.0.1",
 		"cli-native": "^1.0.0",
 		"corser": "^2.0.1",
+		"hafas-client-health-check": "^1.0.1",
 		"hafas-client-rpc": "^2.2.1",
 		"hafas-rest-api": "^1.0.2",
 		"lodash.omit": "^4.5.0",
