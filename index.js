@@ -52,8 +52,6 @@ const config = {
 }
 const berlinFriedrichstr = '900000100001'
 
-const api = createApi(config)
-
 pHafas
 .then((hafas) => {
 	const cfg = Object.assign(Object.create(null), config)
@@ -61,8 +59,13 @@ pHafas
 
 	const api = createApi(hafas, cfg, attachMiddleware)
 	api.listen(config.port, (err) => {
-		if (err) return showError(err)
-		else console.info(`Listening on ${config.hostname}:${config.port}.`)
+		if (err) {
+			api.locals.logger.error(err)
+			process.exitCode = 1
+		} else api.locals.logger.info(`Listening on ${config.hostname}:${config.port}.`)
 	})
 })
-.catch(showError)
+.catch((err) => {
+	console.error(err)
+	process.exitCode = 1
+})

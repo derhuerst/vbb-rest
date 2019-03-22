@@ -4,12 +4,12 @@
 
 ## all routes
 
-- [`GET /stations?query=…`](#get-stationsquery)
-- [`GET /stations`](#get-stations)
-- [`GET /stations/nearby`](#get-stationsnearby)
-- [`GET /stations/all`](#get-stationsall)
-- [`GET /stations/:id`](#get-stationsid)
-- [`GET /stations/:id/departures`](#get-stationsiddepartures)
+- [`GET /stops?query=…`](#get-stopsquery)
+- [`GET /stops`](#get-stops)
+- [`GET /stops/nearby`](#get-stopsnearby)
+- [`GET /stops/all`](#get-stopsall)
+- [`GET /stops/:id`](#get-stopsid)
+- [`GET /stops/:id/departures`](#get-stopsiddepartures)
 - [`GET /lines`](#get-lines)
 - [`GET /lines/:id`](#get-linesid)
 - [`GET /shapes/:id`](#get-shapesid)
@@ -20,7 +20,7 @@
 - [`GET /maps/:type`](#get-mapstype)
 - [`GET /logos/:type`](#get-logostype)
 
-## `GET /stations?query=…`
+## `GET /stops?query=…`
 
 Passes all parameters into [`vbb-stations-autocomplete`](https://github.com/derhuerst/vbb-stations-autocomplete).
 
@@ -33,13 +33,13 @@ Passes all parameters into [`vbb-stations-autocomplete`](https://github.com/derh
 ### examples
 
 ```shell
-curl 'https://your-api-endpoint/stations?query=jungfernheide'
+curl 'https://2.vbb.transport.rest/stops?query=jungfernheide'
 # note the typo
-curl 'https://your-api-endpoint/stations?query=mehrigndamm&fuzzy=true'
+curl 'https://2.vbb.transport.rest/stops?query=mehrigndamm&fuzzy=true'
 ```
 
 
-## `GET /stations`
+## `GET /stops`
 
 Passes all parameters into [`vbb-stations`](https://github.com/derhuerst/vbb-stations).
 
@@ -54,11 +54,11 @@ Passes all parameters into [`vbb-stations`](https://github.com/derhuerst/vbb-sta
 ### examples
 
 ```shell
-curl 'https://your-api-endpoint/stations?weight=9120&coordinates.latitude=52.493575'
+curl 'https://2.vbb.transport.rest/stops?weight=9120&coordinates.latitude=52.493575'
 ```
 
 
-## `GET /stations/all`
+## `GET /stops/all`
 
 Dumps `full.json` from [`vbb-stations`](https://github.com/derhuerst/vbb-stations).
 
@@ -67,11 +67,11 @@ Dumps `full.json` from [`vbb-stations`](https://github.com/derhuerst/vbb-station
 ### examples
 
 ```shell
-curl 'https://your-api-endpoint/stations/all'
+curl 'https://2.vbb.transport.rest/stops/all'
 ```
 
 
-## `GET /stations/nearby`
+## `GET /stops/nearby`
 
 - `latitude`: **Required.**
 - `longitude`: **Required.**
@@ -85,22 +85,22 @@ curl 'https://your-api-endpoint/stations/all'
 ### examples
 
 ```shell
-curl 'https://your-api-endpoint/stations/nearby?latitude=52.52725&longitude=13.4123'
+curl 'https://2.vbb.transport.rest/stops/nearby?latitude=52.52725&longitude=13.4123'
 ```
 
 
-## `GET /stations/:id`
+## `GET /stops/:id`
 
 `Content-Type`: `application/json`
 
 ### examples
 
 ```shell
-curl 'https://your-api-endpoint/stations/900000013102'
+curl 'https://2.vbb.transport.rest/stops/900000013102'
 ```
 
 
-## `GET /stations/:id/departures`
+## `GET /stops/:id/departures`
 
 Returns departures at a stop/station. Output from `require('vbb-hafas').journeys(…)`.
 
@@ -116,9 +116,9 @@ Returns departures at a stop/station. Output from `require('vbb-hafas').journeys
 
 ```shell
 # at U Kottbusser Tor, in direction U Görlitzer Bahnhof
-curl 'https://2.vbb.transport.rest/stations/900000013102/departures?direction=900000014101'
+curl 'https://2.vbb.transport.rest/stops/900000013102/departures?direction=900000014101'
 # at U Kottbusser Tor, without direction
-curl 'https://2.vbb.transport.rest/stations/900000013102/departures?when=tomorrow%206pm&results=3'
+curl 'https://2.vbb.transport.rest/stops/900000013102/departures?when=tomorrow%206pm&results=3'
 ```
 
 
@@ -222,9 +222,9 @@ curl 'https://your-api-endpoint/journeys?from=…&to=…&results=3&bus=false&tic
 ```
 
 
-## `GET /journeys/legs/:ref`
+## `GET /trips/:id`
 
-Output from [`require('hafas-client').journeyLeg(…)`](https://github.com/public-transport/hafas-client/blob/4/docs/journey-leg.md#journeylegref-linename-opt).
+Output from [`require('hafas-client').trip(…)`](https://github.com/public-transport/hafas-client/blob/4/docs/trip.md#tripid-linename-opt).
 
 - `lineName`: **Required.** Line name of the part's mode of transport, e.g. `RE7`.
 - `when`: A [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) or anything parsable by [`parse-messy-time`](https://github.com/substack/parse-messy-time#example). Default: now.
@@ -234,8 +234,8 @@ Output from [`require('hafas-client').journeyLeg(…)`](https://github.com/publi
 ### examples
 
 ```shell
-# this won't work, get a new ref from /journeys first
-curl 'https://your-api-endpoint/journeys/legs/1|32082|1|86|26062017?lineName=RE7'
+# This won't work, get a new trip ID from a journey leg first.
+curl 'https://your-api-endpoint/trips/1|32082|1|86|26062017?lineName=RE7'
 ```
 
 
