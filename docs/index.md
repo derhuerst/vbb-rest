@@ -234,7 +234,7 @@ Output from [`require('vbb-hafas').journeys(…)`](https://github.com/derhuerst/
 
 ```shell
 curl 'https://your-api-endpoint/journeys?from=900000017104&to=900000017101'
-curl 'https://your-api-endpoint/journeys?from=900000023201&to.name=ATZE%20Musiktheater&to.latitude=52.543333&to.longitude=13.351686'
+curl 'https://your-api-endpoint/journeys?from=900000023201&to.id=900980720&to.name=ATZE%20Musiktheater&to.latitude=52.543333&to.longitude=13.351686'
 curl 'https://your-api-endpoint/journeys?from=…&to=…&results=3&bus=false&tickets=true'
 ```
 
