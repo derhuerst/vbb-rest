@@ -1,5 +1,9 @@
 # Berlin & Brandenburg Public Transport API
 
+**Deprecated. Please use the [latest version](https://github.com/derhuerst/vbb-rest) of this API.**
+
+---
+
 This API returns data in the [*Friendly Public Transport Format* `1.0.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md).
 
 ~~The public endpoint is [`2.vbb.transport.rest`](`https://2.vbb.transport.rest/`). Use [`vbb-client@3`](https://github.com/derhuerst/vbb-client) to talk to this API from JavaScript.~~ VBB has blocked our API servers' IP addresses, so we can't provide a public endpoint for now. **If you use JavaScript to process the data, use [`vbb-hafas`](https://github.com/derhuerst/vbb-hafas) directly, otherwise host your `vbb-rest` instance for now.**

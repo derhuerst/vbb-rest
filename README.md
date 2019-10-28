@@ -1,5 +1,9 @@
 # vbb-rest
 
+**Deprecated. Please use the [latest version](https://github.com/derhuerst/vbb-rest) of this API.**
+
+---
+
 ***vbb-rest* is a public transport REST API**, a clean alternative to the [VBB HAFAS API](https://github.com/derhuerst/vbb-hafas).
 
 ~~Use [`vbb-client@3`](https://github.com/derhuerst/vbb-client) for querying this API in browsers or with Node.~~ VBB has blocked our API servers' IP addresses, so **[the public `2.vbb.transport.rest` endpoint](https://2.vbb.transport.rest/) [is down](https://status.transport.rest/779961406)**. For the time being, you have two choices:
