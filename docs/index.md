@@ -15,6 +15,7 @@
 - [`GET /shapes/:id`](#get-shapesid)
 - [`GET /journeys`](#get-journeys)
 - [`GET /journeys/legs/:ref`](#get-journeyslegsref)
+- [`GET /trips/:id`](#get-tripsid)
 - [`GET /locations`](#get-locations)
 - [`GET /radar`](#get-radar)
 - [`GET /maps/:type`](#get-mapstype)
@@ -236,6 +237,25 @@ Output from [`require('hafas-client').trip(…)`](https://github.com/public-tran
 ```shell
 # This won't work, get a new trip ID from a journey leg first.
 curl 'https://3.vbb.transport.rest/trips/1|32082|1|86|26062017?lineName=RE7'
+```
+
+
+## `GET /trips/:id`
+
+Output from [`hafas.trip(…)`](https://github.com/public-transport/hafas-client/blob/4/docs/trip.md).
+
+- `lineName`: **Required.** Line name of the part's mode of transport, e.g. `RE7`.
+- `stopovers`: Return stations on the way? Default: `true`.
+- `remarks`: Parse & expose hints & warnings? Default: `true`.
+- `polyline`: Return a shape for the trip? Default: `false`.
+- `language`: Language of the results. Default: `en`.
+
+`Content-Type`: `application/json`
+
+### examples
+
+```shell
+curl 'https://your-api-endpoint/trips/1|32082|1|86|26062017?lineName=RE7'
 ```
 
 
