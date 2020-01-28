@@ -2,8 +2,6 @@
 
 const path = require('path')
 const serve = require('serve-static')
-const hafas = require('vbb-hafas')
-const createBaseApi = require('hafas-rest-api')
 
 const stations = require('./lib/stations')
 const allStations  = require('./lib/all-stations')
@@ -26,8 +24,4 @@ const attachMiddleware = (api) => {
 	api.get('/maps/:type', maps)
 }
 
-const createApi = (config) => {
-	return createBaseApi(hafas, config, attachMiddleware)
-}
-
-module.exports = createApi
+module.exports = attachMiddleware

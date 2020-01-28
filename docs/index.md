@@ -1,28 +1,27 @@
 # Berlin & Brandenburg Public Transport API
 
-This API returns data in the [*Friendly Public Transport Format* `1.0.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md).
-
-~~The public endpoint is [`2.vbb.transport.rest`](`https://2.vbb.transport.rest/`). Use [`vbb-client@3`](https://github.com/derhuerst/vbb-client) to talk to this API from JavaScript.~~ VBB has blocked our API servers' IP addresses, so we can't provide a public endpoint for now. **If you use JavaScript to process the data, use [`vbb-hafas`](https://github.com/derhuerst/vbb-hafas) directly, otherwise host your `vbb-rest` instance for now.**
+**The public endpoint is [`3.vbb.transport.rest`](`https://3.vbb.transport.rest/`).** This API returns data in the [*Friendly Public Transport Format* `1.2.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.2.1/spec/readme.md). Use [`vbb-client@3`](https://github.com/derhuerst/vbb-client) to talk to this API from JavaScript.
 
 ## all routes
 
-- [`GET /stations?query=…`](#get-stationsquery)
-- [`GET /stations`](#get-stations)
-- [`GET /stations/nearby`](#get-stationsnearby)
-- [`GET /stations/all`](#get-stationsall)
-- [`GET /stations/:id`](#get-stationsid)
-- [`GET /stations/:id/departures`](#get-stationsiddepartures)
+- [`GET /stops?query=…`](#get-stopsquery)
+- [`GET /stops`](#get-stops)
+- [`GET /stops/nearby`](#get-stopsnearby)
+- [`GET /stops/all`](#get-stopsall)
+- [`GET /stops/:id`](#get-stopsid)
+- [`GET /stops/:id/departures`](#get-stopsiddepartures)
 - [`GET /lines`](#get-lines)
 - [`GET /lines/:id`](#get-linesid)
 - [`GET /shapes/:id`](#get-shapesid)
 - [`GET /journeys`](#get-journeys)
 - [`GET /journeys/legs/:ref`](#get-journeyslegsref)
+- [`GET /trips/:id`](#get-tripsid)
 - [`GET /locations`](#get-locations)
 - [`GET /radar`](#get-radar)
 - [`GET /maps/:type`](#get-mapstype)
 - [`GET /logos/:type`](#get-logostype)
 
-## `GET /stations?query=…`
+## `GET /stops?query=…`
 
 Passes all parameters into [`vbb-stations-autocomplete`](https://github.com/derhuerst/vbb-stations-autocomplete).
 
@@ -35,13 +34,13 @@ Passes all parameters into [`vbb-stations-autocomplete`](https://github.com/derh
 ### examples
 
 ```shell
-curl 'https://your-api-endpoint/stations?query=jungfernheide'
+curl 'https://3.vbb.transport.rest/stops?query=jungfernheide'
 # note the typo
-curl 'https://your-api-endpoint/stations?query=mehrigndamm&fuzzy=true'
+curl 'https://3.vbb.transport.rest/stops?query=mehrigndamm&fuzzy=true'
 ```
 
 
-## `GET /stations`
+## `GET /stops`
 
 Passes all parameters into [`vbb-stations`](https://github.com/derhuerst/vbb-stations).
 
@@ -56,11 +55,11 @@ Passes all parameters into [`vbb-stations`](https://github.com/derhuerst/vbb-sta
 ### examples
 
 ```shell
-curl 'https://your-api-endpoint/stations?weight=9120&coordinates.latitude=52.493575'
+curl 'https://3.vbb.transport.rest/stops?weight=9120&coordinates.latitude=52.493575'
 ```
 
 
-## `GET /stations/all`
+## `GET /stops/all`
 
 Dumps `full.json` from [`vbb-stations`](https://github.com/derhuerst/vbb-stations).
 
@@ -69,17 +68,17 @@ Dumps `full.json` from [`vbb-stations`](https://github.com/derhuerst/vbb-station
 ### examples
 
 ```shell
-curl 'https://your-api-endpoint/stations/all'
+curl 'https://3.vbb.transport.rest/stops/all'
 ```
 
 
-## `GET /stations/nearby`
+## `GET /stops/nearby`
 
 - `latitude`: **Required.**
 - `longitude`: **Required.**
-- `results`: How many stations shall be shown? Default: `8`.
+- `results`: How many stops/stations shall be shown? Default: `8`.
 - `distance`: Maximum distance in meters. Default: `null`.
-- `stations`: Show stations around. Default: `true`.
+- `stops`: Show stops/stations around. Default: `true`.
 - `poi`: Show points of interest around. Default: `false`.
 
 `Content-Type`: `application/json`
@@ -87,55 +86,40 @@ curl 'https://your-api-endpoint/stations/all'
 ### examples
 
 ```shell
-curl 'https://your-api-endpoint/stations/nearby?latitude=52.52725&longitude=13.4123'
+curl 'https://3.vbb.transport.rest/stops/nearby?latitude=52.52725&longitude=13.4123'
 ```
 
 
-## `GET /stations/:id`
+## `GET /stops/:id`
 
 `Content-Type`: `application/json`
 
 ### examples
 
 ```shell
-curl 'https://your-api-endpoint/stations/900000013102'
+curl 'https://3.vbb.transport.rest/stops/900000013102'
 ```
 
 
-## `GET /stations/:id/departures`
+## `GET /stops/:id/departures`
 
-Returns departures at a station. To maintain backwards compatibility, this route has two modes of operation (see below).
+Returns departures at a stop/station. Output from `require('vbb-hafas').journeys(…)`.
 
-*Note:* As stated in the [*Friendly Public Transport Format* `1.0.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md), the returned `departure` and `arrival` times include the current delay.
+*Note:* As stated in the [*Friendly Public Transport Format* `1.2.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.2.1/spec/readme.md), the returned `departure` and `arrival` times include the current delay.
+
+- `when`: A [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) or anything parsable by [`parse-messy-time`](https://github.com/substack/parse-messy-time#example). Default: now.
+- `direction`: Stop/station ID with a direction. Default: `null`.
+- `duration`: Show departures for the next `n` minutes. Default: `10`.
 
 `Content-Type`: `application/json`
-
-### with `nextStation`
-
-**If you provide a station ID with the `nextStation` parameter, [`hafas-departures-in-direction`](https://github.com/derhuerst/hafas-departures-in-direction#usage) will be used to filter by direction.** Only departures with this station as their *next* stop will be returned.
-
-You may then add these parameters:
-
-- `when`: A [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) or anything parsable by [`parse-messy-time`](https://github.com/substack/parse-messy-time#example). Default: now.
-- `results`: The number of results. Lower means faster. Default: `10`.
-- `maxQueries`: The maximum number of queries against VBB. Default: `10`.
-
-### without `nextStation`
-
-**If you *do not* use `nextStation`, `departures(…)` from [`vbb-hafas`](https://github.com/derhuerst/vbb-hafas#vbb-hafas) (which uses [`departures(…)` from `hafas-client`](https://github.com/public-transport/hafas-client/blob/any-endpoint/docs/departures.md#departuresstation-opt)) will be used to get departures in *all* directions.**
-
-You may then add these parameters:
-
-- `when`: A [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) or anything parsable by [`parse-messy-time`](https://github.com/substack/parse-messy-time#example). Default: now.
-- `duration`: Show departures for the next `n` minutes. Default: `10`.
 
 ### examples
 
 ```shell
 # at U Kottbusser Tor, in direction U Görlitzer Bahnhof
-curl 'https://your-api-endpoint/stations/900000013102/departures?nextStation=900000014101&results=3'
+curl 'https://3.vbb.transport.rest/stops/900000013102/departures?direction=900000014101'
 # at U Kottbusser Tor, without direction
-curl 'https://your-api-endpoint/stations/900000013102/departures?when=tomorrow%206pm'
+curl 'https://3.vbb.transport.rest/stops/900000013102/departures?when=tomorrow%206pm&results=3'
 ```
 
 
@@ -146,16 +130,16 @@ Passes all parameters into [`vbb-lines`](https://github.com/derhuerst/vbb-lines)
 - `id`: Filter by ID.
 - `name`: Filter by name.
 - `operator`: Filter by operator id. See [`agency.txt`](https://vbb-gtfs.jannisr.de/latest/agency.txt).
-- `variants`: Wether to return stations of the line. Default: `false`.
-- `mode`: Filter by mode of transport as in [*Friendly Public Transport Format* `1.0.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md).
-- `product`: See [the products in `hafas-client`](https://github.com/public-transport/hafas-client/blob/95151ccd0ef1ef7d9ce6d9a80f66a0300c67e54a/p/vbb/modes.js#L5-L75).
+- `variants`: Wether to return stops/stations of the line. Default: `false`.
+- `mode`: Filter by mode of transport as in [*Friendly Public Transport Format* `1.2.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.2.1/spec/readme.md).
+- `product`: See [the products in `hafas-client`](https://github.com/public-transport/hafas-client/blob/4/p/vbb/products.js).
 
 `Content-Type`: [`application/x-ndjson`](http://ndjson.org/)
 
 ### examples
 
 ```shell
-curl 'https://your-api-endpoint/lines?operator=796&variants=true'
+curl 'https://3.vbb.transport.rest/lines?operator=796&variants=true'
 ```
 
 
@@ -166,7 +150,7 @@ curl 'https://your-api-endpoint/lines?operator=796&variants=true'
 ### examples
 
 ```shell
-curl 'https://your-api-endpoint/lines/531'
+curl 'https://3.vbb.transport.rest/lines/531'
 ```
 
 
@@ -179,20 +163,20 @@ Output from [`require('vbb-shapes')(id)`](https://github.com/derhuerst/vbb-shape
 ### examples
 
 ```shell
-curl 'https://your-api-endpoint/shapes/1269'
+curl 'https://3.vbb.transport.rest/shapes/1269'
 ```
 
 
 ## `GET /journeys`
 
-Output from [`require('vbb-hafas').journeys(…)`](https://github.com/derhuerst/vbb-hafas#getting-started). Start location and end location must be either in [station format](#station-format) or in [POI/address format](#poiaddress-format) (you can mix them).
+Output from [`require('vbb-hafas').journeys(…)`](https://github.com/derhuerst/vbb-hafas#getting-started). Start location and end location must be either in [stop format](#stop-format) or in [POI/address format](#poiaddress-format) (you can mix them).
 
-*Note:* As stated in the [*Friendly Public Transport Format* `1.0.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.0.1/spec/readme.md), the returned `departure` and `arrival` times include the current delay.
+*Note:* As stated in the [*Friendly Public Transport Format* `1.2.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.2.1/spec/readme.md), the returned `departure` and `arrival` times include the current delay.
 
-## station format
+## stop format
 
-- `from`: **Required.** Station ID (e.g. `900000023201`).
-- `to`: **Required.** Station ID (e.g. `900000023201`).
+- `from`: **Required.** stop/station ID (e.g. `900000023201`).
+- `to`: **Required.** stop/station ID (e.g. `900000023201`).
 
 ## POI format
 
@@ -211,8 +195,8 @@ Output from [`require('vbb-hafas').journeys(…)`](https://github.com/derhuerst/
 
 - `when`: A [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) or anything parsable by [`parse-messy-time`](https://github.com/substack/parse-messy-time#example). Default: now.
 - `results`: Maximum number of results. Default: `5`.
-- `via`: Station ID. Default: `null`.
-- `passedStations`: Return stations on the way? Default: `false`.
+- `via`: stop/station ID. Default: `null`.
+- `passedStations`: Return stops/stations on the way? Default: `false`.
 - `transfers`: Maximum number of transfers. Default: `5`.
 - `transferTime`: Minimum time in minutes for a single transfer. Default: `0`.
 - `accessibility`: Possible values: `partial`, `complete`. Default: `none`.
@@ -233,15 +217,15 @@ Output from [`require('vbb-hafas').journeys(…)`](https://github.com/derhuerst/
 ### examples
 
 ```shell
-curl 'https://your-api-endpoint/journeys?from=900000017104&to=900000017101'
-curl 'https://your-api-endpoint/journeys?from=900000023201&to.name=ATZE%20Musiktheater&to.latitude=52.543333&to.longitude=13.351686'
-curl 'https://your-api-endpoint/journeys?from=…&to=…&results=3&bus=false&tickets=true'
+curl 'https://3.vbb.transport.rest/journeys?from=900000017104&to=900000017101'
+curl 'https://3.vbb.transport.rest/journeys?from=900000023201&to.id=900980720&to.name=ATZE%20Musiktheater&to.latitude=52.543333&to.longitude=13.351686'
+curl 'https://3.vbb.transport.rest/journeys?from=…&to=…&results=3&bus=false&tickets=true'
 ```
 
 
-## `GET /journeys/legs/:ref`
+## `GET /trips/:id`
 
-Output from [`require('hafas-client').journeyLeg(…)`](https://github.com/public-transport/hafas-client/blob/master/docs/journey-leg.md#journeylegref-linename-opt).
+Output from [`require('hafas-client').trip(…)`](https://github.com/public-transport/hafas-client/blob/4/docs/trip.md#tripid-linename-opt).
 
 - `lineName`: **Required.** Line name of the part's mode of transport, e.g. `RE7`.
 - `when`: A [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) or anything parsable by [`parse-messy-time`](https://github.com/substack/parse-messy-time#example). Default: now.
@@ -251,18 +235,37 @@ Output from [`require('hafas-client').journeyLeg(…)`](https://github.com/publi
 ### examples
 
 ```shell
-# this won't work, get a new ref from /journeys first
-curl 'https://your-api-endpoint/journeys/legs/1|32082|1|86|26062017?lineName=RE7'
+# This won't work, get a new trip ID from a journey leg first.
+curl 'https://3.vbb.transport.rest/trips/1|32082|1|86|26062017?lineName=RE7'
+```
+
+
+## `GET /trips/:id`
+
+Output from [`hafas.trip(…)`](https://github.com/public-transport/hafas-client/blob/4/docs/trip.md).
+
+- `lineName`: **Required.** Line name of the part's mode of transport, e.g. `RE7`.
+- `stopovers`: Return stations on the way? Default: `true`.
+- `remarks`: Parse & expose hints & warnings? Default: `true`.
+- `polyline`: Return a shape for the trip? Default: `false`.
+- `language`: Language of the results. Default: `en`.
+
+`Content-Type`: `application/json`
+
+### examples
+
+```shell
+curl 'https://your-api-endpoint/trips/1|32082|1|86|26062017?lineName=RE7'
 ```
 
 
 ## `GET /locations`
 
-Output from [`require('hafas-client').locations(…)`](https://github.com/public-transport/hafas-client/blob/master/docs/locations.md).
+Output from [`require('hafas-client').locations(…)`](https://github.com/public-transport/hafas-client/blob/4/docs/locations.md).
 
 - `query`: **Required.** (e.g. `Alexanderplatz`)
-- `results`: How many stations shall be shown? Default: `10`.
-- `stations`: Show stations? Default: `true`.
+- `results`: How many stops/stations shall be shown? Default: `10`.
+- `stops`: Show stops/stations? Default: `true`.
 - `poi`: Show points of interest? Default: `true`.
 - `addresses`: Show addresses? Default: `true`.
 
@@ -271,8 +274,8 @@ Output from [`require('hafas-client').locations(…)`](https://github.com/public
 ### examples
 
 ```shell
-curl 'https://your-api-endpoint/locations?query=Alexanderplatz'
-curl 'https://your-api-endpoint/locations?query=Pestalozzistra%C3%9Fe%2082%2C%20Berlin&poi=false&stations=false'
+curl 'https://3.vbb.transport.rest/locations?query=Alexanderplatz'
+curl 'https://3.vbb.transport.rest/locations?query=Pestalozzistra%C3%9Fe%2082%2C%20Berlin&poi=false&stops=false'
 ```
 
 
@@ -291,7 +294,7 @@ curl 'https://your-api-endpoint/locations?query=Pestalozzistra%C3%9Fe%2082%2C%20
 ### examples
 
 ```shell
-curl 'https://your-api-endpoint/radar?north=52.52411&west=13.41002&south=52.51942&east=13.41709'
+curl 'https://3.vbb.transport.rest/radar?north=52.52411&west=13.41002&south=52.51942&east=13.41709'
 ```
 
 
@@ -316,7 +319,7 @@ Redirects to PDF public transport maps. `type` may be one of these:
 ### examples
 
 ```shell
-curl -L -o bvg-tram-map.pdf 'https://your-api-endpoint/maps/bvg-tram'
+curl -L -o bvg-tram-map.pdf 'https://3.vbb.transport.rest/maps/bvg-tram'
 ```
 
 
@@ -327,5 +330,5 @@ Serves the [logos from `derhuers/vbb-logos#v2`](https://github.com/derhuerst/vbb
 ### examples
 
 ```shell
-curl -L -o tram.svg 'https://your-api-endpoint/logos/tram.svg'
+curl -L -o tram.svg 'https://3.vbb.transport.rest/logos/tram.svg'
 ```
