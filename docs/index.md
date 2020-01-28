@@ -193,7 +193,8 @@ Output from [`require('vbb-hafas').journeys(…)`](https://github.com/derhuerst/
 
 ## other parameters
 
-- `when`: A [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) or anything parsable by [`parse-messy-time`](https://github.com/substack/parse-messy-time#example). Default: now.
+- `arrival`: A [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) or anything parsable by [`parse-messy-time`](https://github.com/substack/parse-messy-time#example). Default: now.
+- `departure`: A [UNIX timestamp](https://en.wikipedia.org/wiki/Unix_time) or anything parsable by [`parse-messy-time`](https://github.com/substack/parse-messy-time#example). Default: now.
 - `results`: Maximum number of results. Default: `5`.
 - `via`: stop/station ID. Default: `null`.
 - `passedStations`: Return stops/stations on the way? Default: `false`.
