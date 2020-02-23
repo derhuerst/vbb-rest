@@ -55,7 +55,7 @@ Passes all parameters into [`vbb-stations`](https://github.com/derhuerst/vbb-sta
 ### examples
 
 ```shell
-curl 'https://3.vbb.transport.rest/stops?weight=9120&coordinates.latitude=52.493575'
+curl 'https://3.vbb.transport.rest/stops?weight=60'
 ```
 
 
@@ -73,6 +73,8 @@ curl 'https://3.vbb.transport.rest/stops/all'
 
 
 ## `GET /stops/nearby`
+
+Output from [`hafas.nearby(…)`](https://github.com/public-transport/hafas-client/blob/4/docs/nearby.md).
 
 - `latitude`: **Required.**
 - `longitude`: **Required.**
@@ -103,7 +105,7 @@ curl 'https://3.vbb.transport.rest/stops/900000013102'
 
 ## `GET /stops/:id/departures`
 
-Returns departures at a stop/station. Output from `require('vbb-hafas').journeys(…)`.
+Returns departures at a stop/station. Output from `require('vbb-hafas').departures(…)`.
 
 *Note:* As stated in the [*Friendly Public Transport Format* `1.2.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.2.1/spec/readme.md), the returned `departure` and `arrival` times include the current delay.
 
@@ -220,6 +222,7 @@ Output from [`require('vbb-hafas').journeys(…)`](https://github.com/derhuerst/
 ```shell
 curl 'https://3.vbb.transport.rest/journeys?from=900000017104&to=900000017101'
 curl 'https://3.vbb.transport.rest/journeys?from=900000023201&to.id=900980720&to.name=ATZE%20Musiktheater&to.latitude=52.543333&to.longitude=13.351686'
+curl 'https://3.vbb.transport.rest/journeys?from=900000023201&to.latitude=52.540673&to.longitude=13.386673&to.address=13355%20Berlin-Gesundbrunnen%2C%20Voltastr.%2017%22'
 curl 'https://3.vbb.transport.rest/journeys?from=…&to=…&results=3&bus=false&tickets=true'
 ```
 
@@ -281,6 +284,8 @@ curl 'https://3.vbb.transport.rest/locations?query=Pestalozzistra%C3%9Fe%2082%2C
 
 
 ## `GET /radar`
+
+Output from [`hafas.radar(…)`](https://github.com/public-transport/hafas-client/blob/4/docs/radar.md).
 
 - `north`: **Required.** Northern latitude.
 - `west`: **Required.** Western longtidue.
