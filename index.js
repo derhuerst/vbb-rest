@@ -38,7 +38,7 @@ const addHafasOpts = (opt, method, req) => {
 }
 
 const config = {
-	hostname: process.env.HOSTNAME || '3.vbb.transport.rest',
+	hostname: process.env.HOSTNAME || 'localhost',
 	port: process.env.PORT ? parseInt(process.env.PORT) : 3000,
 	name: pkg.name,
 	description: pkg.description,
