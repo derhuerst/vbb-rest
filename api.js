@@ -15,6 +15,12 @@ const logosDir = path.dirname(require.resolve('vbb-logos/package.json'))
 
 const attachMiddleware = (api) => {
 	api.use('/logos', serve(logosDir, {index: false}))
+
+	// for compatibility with old docs & other APIs
+	// todo: remove
+	api.get('/stops', stations)
+	api.get('/stops/all', allStations)
+
 	api.get('/stations', stations)
 	api.get('/stations/all', allStations)
 	api.get('/stations/:id', station)
