@@ -171,7 +171,7 @@ curl 'https://3.vbb.transport.rest/shapes/1269'
 
 ## `GET /journeys`
 
-Output from [`require('vbb-hafas').journeys(…)`](https://github.com/derhuerst/vbb-hafas#getting-started). Start location and end location must be either in [stop format](#stop-format) or in [POI/address format](#poiaddress-format) (you can mix them).
+Output from [`require('vbb-hafas').journeys(…)`](https://github.com/public-transport/vbb-hafas#getting-started). Start location and end location must be either in [stop format](#stop-format) or in [POI/address format](#poiaddress-format) (you can mix them).
 
 *Note:* As stated in the [*Friendly Public Transport Format* `1.2.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.2.1/spec/readme.md), the returned `departure` and `arrival` times include the current delay.
 
@@ -205,7 +205,7 @@ Output from [`require('vbb-hafas').journeys(…)`](https://github.com/derhuerst/
 - `accessibility`: Possible values: `partial`, `complete`. Default: `none`.
 - `bike`: Return only bike-friendly journeys. Default: `false`.
 - `tickets`: Return information about available tickets. Default: `false`.
-- `transferInfo`: Try to add transfer information from [`vbb-change-positions`](https://github.com/juliuste/vbb-change-positions) to journey legs? [more details](https://github.com/derhuerst/vbb-hafas/blob/master/README.md#transfer-information-for-journeys) Default: `false`.
+- `transferInfo`: Try to add transfer information from [`vbb-change-positions`](https://github.com/juliuste/vbb-change-positions) to journey legs? [more details](https://github.com/public-transport/vbb-hafas/blob/master/README.md#transfer-information-for-journeys) Default: `false`.
 
 - `suburban`: Include [S-Bahn trains](https://en.wikipedia.org/wiki/Berlin_S-Bahn)? Default: `true`.
 - `subway`: Include [U-Bahn trains](https://en.wikipedia.org/wiki/Berlin_U-Bahn)? Default: `true`.
