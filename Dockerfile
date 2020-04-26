@@ -12,4 +12,4 @@ EXPOSE 3000
 ENV HOSTNAME 3.vbb.transport.rest
 ENV PORT 3000
 
-CMD ["/bin/sh", "docker-entrypoint.sh"]
+CMD ["node", "index.js"]
