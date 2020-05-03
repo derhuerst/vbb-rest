@@ -1,10 +1,8 @@
 # vbb-rest
 
-***vbb-rest* is a public transport REST API**, a clean alternative to the [VBB HAFAS API](https://github.com/public-transport/hafas-client/blob/master/p/vbb/readme.md).
+***vbb-rest* is a public transport REST API**, a clean alternative to the [VBB HAFAS API](https://github.com/public-transport/hafas-client/blob/e02a20b1de59bda3cd380445b6105e4c46036636/p/vbb/readme.md).
 
-~~Use [`vbb-client@4`](https://github.com/derhuerst/vbb-client) for querying this API in browsers or with Node.~~
-
-[API Documentation](docs/index.md) | [Why?](docs/why.md)
+[**documentation**](docs/readme.md)
 
 ![vbb-rest architecture diagram](architecture.svg)
 
@@ -35,6 +33,15 @@ npm start
 ```
 
 To keep the API running permanently, use tools like [`forever`](https://github.com/foreverjs/forever#forever) or [`systemd`](https://wiki.debian.org/systemd).
+
+
+## Related Projects
+
+- [`bvg-rest`](https://github.com/derhuerst/bvg-rest) – A clean REST API wrapping around the BVG API.
+- [`db-rest`](https://github.com/derhuerst/db-rest) – A clean REST API wrapping around the *Deutsche Bahn* API.
+- [`hvv-rest`](https://github.com/derhuerst/hvv-rest) – A clean REST API wrapping around the HVV API.
+- [`hafas-rest-api`](https://github.com/public-transport/hafas-rest-api) – Expose a HAFAS client via an HTTP REST API.
+- [`hafas-client`](https://github.com/public-transport/hafas-client) – JavaScript client for HAFAS public transport APIs.
 
 
 ## Contributing

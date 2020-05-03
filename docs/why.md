@@ -1,22 +1,18 @@
 # Why use this API?
 
-The public transport agency of Berlin and Brandenburg (VBB) itself provides an API. Why use this one? (And what could VBB do better?)
+The public transport agency *Verkehrsverbund Berlin-Brandenburg* (VBB) itself provides two APIs: [an official one](https://www.vbb.de/unsere-themen/vbbdigital/api-entwicklerinfos/api-fahrplaninfo), and [an unofficial API called *HAFAS*](https://github.com/public-transport/hafas-client/blob/e02a20b1de59bda3cd380445b6105e4c46036636/p/vbb/readme.md) (this API wraps the unofficial one). Why use `v5.vbb.transport.rest`? (And what could VBB do better?)
 
 ## No API Key
 
-Especially on web sites/apps, it isn't feasable to the send API keys to the client. Also, you have to obtain these keys manually and cannot automatically revoke them. **This API doesn't require a key.**
+The underlying HAFAS API has been designed to be *private*: It has only 1 static API key, which is valid for an unlimited time, and which can't easily be revoked/renewed. **This API doesn't require a key.**
 
 ## CORS
 
-If you want to use transport information on a web site/app, [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS) must be enabled. Otherwise, you would have to send all requests through your own proxy server. **This API has CORS enabled.**
+If you want to use transport information on a web site/app, [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS) must be enabled. Otherwise, you would have to send all requests through your own proxy server. **This API has CORS enabled**, the underyling HAFAS API does not.
 
-## No Rate Limits
+## Readable Markup
 
-The official API has hourly request limits and doesn't [properly tell](http://stackoverflow.com/questions/16022624/examples-of-http-api-rate-limiting-http-response-headers) that. **This API doesn't have any limits.**
-
-## Sane Markup
-
-Compare the official API:
+Compare their official API:
 
 ```js
 Origin: {
@@ -59,7 +55,7 @@ to this one:
 }
 ```
 
-Again, the official API:
+Again, the HAFAS API:
 
 ```js
 {
@@ -85,20 +81,14 @@ and this one:
 }
 ```
 
-VBB also has a mobile API (which this API uses under the hood) with an even more verbose output.
+## Caching-friendly
 
-## GZIP support
-
-Especially on cellular connections, gzipped responses improve the performance a lot.
+This API sends [`ETag`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag) & [`Cache-Control`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control) headers, allowing clients to refresh their state efficiently.
 
 ## HTTP/2
 
 [HTTP/2](https://http2.github.io/) allows multiple requests at a time, efficiently pipelines sequential requests and compresses headers. See [Cloudflare's HTTP/2 page](https://blog.cloudflare.com/http-2-for-web-developers/).
 
-## More Features
-
-This API enhances the functionality of their API with static data, which is used in e.g. `GET /stations` and `GET /lines`.
-
 ## Proper HTTP, Proper REST
 
-All methods in this API strongly comply with the [REST principles](https://en.wikipedia.org/wiki/Representational_state_transfer#Applied_to_web_services) and use proper [HTTP methods](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html).
+This wrapper API follows [REST-ful design principles](https://restfulapi.net), it uses `GET`, and proper paths & headers.

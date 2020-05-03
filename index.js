@@ -1,7 +1,5 @@
 'use strict'
 
-const {readFileSync} = require('fs')
-const {join} = require('path')
 const parse  = require('cli-native').to
 const createHafas = require('vbb-hafas')
 const createApi = require('hafas-rest-api')
@@ -16,8 +14,6 @@ const shape = require('./routes/shape')
 const maps = require('./routes/maps')
 
 const berlinFriedrichstr = '900000100001'
-
-const docsAsMarkdown = readFileSync(join(__dirname, 'docs', 'index.md'), {encoding: 'utf8'})
 
 const hafas = createHafas('hafas-rest-api: ' + pkg.name)
 
@@ -44,10 +40,9 @@ const config = {
 	description: pkg.description,
 	version: pkg.version,
 	homepage: pkg.homepage,
-	docsLink: '/docs',
+	docsLink: 'https://github.com/derhuerst/bvg-rest/blob/5/docs/readme.md',
 	logging: true,
 	aboutPage: true,
-	docsAsMarkdown,
 	addHafasOpts,
 	etags: 'strong',
 	modifyRoutes,
