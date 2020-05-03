@@ -16,7 +16,7 @@ const noVariants = (line) => omit(line, ['variants'])
 
 
 
-const route = (req, res, next) => {
+const linesRoute = (req, res, next) => {
 	const q = omit(req.query, ['variants'])
 	const showVariants = parse(req.query.variants)
 
@@ -30,4 +30,12 @@ const route = (req, res, next) => {
 	.on('finish', () => next())
 }
 
-module.exports = route
+linesRoute.queryParameters = {
+	'variants': {
+		description: 'Return line variants?',
+		type: 'boolean',
+		default: true,
+	},
+}
+
+module.exports = linesRoute

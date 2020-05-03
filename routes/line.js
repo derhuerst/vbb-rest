@@ -10,7 +10,7 @@ const err400 = (msg) => {
 
 
 
-const route = (req, res, next) => {
+const linesRoute = (req, res, next) => {
 	const id = req.params.id.trim()
 
 	lines(true, id)
@@ -26,4 +26,4 @@ const route = (req, res, next) => {
 	})
 }
 
-module.exports = route
+module.exports = linesRoute

@@ -4,7 +4,7 @@ const shapes = require('vbb-shapes')
 
 
 
-const route = (req, res, next) => {
+const shapeRoute = (req, res, next) => {
 	const id = req.params.id
 
 	shapes(id)
@@ -19,4 +19,4 @@ const route = (req, res, next) => {
 	})
 }
 
-module.exports = route
+module.exports = shapeRoute

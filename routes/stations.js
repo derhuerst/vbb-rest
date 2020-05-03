@@ -41,9 +41,6 @@ const filter = (req, res, next) => {
 
 	const props = Object.create(null)
 	for (let prop in req.query) {
-		if (prop.slice(0, 12) === 'coordinates.') { // derhuerst/vbb-rest#20
-			prop = 'location.' + prop.slice(12)
-		}
 		props[prop] = parse(req.query[prop])
 	}
 	const results = stations(props)
@@ -59,9 +56,32 @@ const filter = (req, res, next) => {
 	out.end()
 }
 
-const route = (req, res, next) => {
+const stationsRoute = (req, res, next) => {
 	if (req.query.query) complete(req, res, next)
 	else filter(req, res, next)
 }
 
-module.exports = route
+stationsRoute.queryParameters = {
+	query: {
+		description: 'Find stations by name using [`vbb-stations-autocomplete`](https://npmjs.com/package/vbb-stations-autocomplete).',
+		type: 'string',
+		defaultStr: '–',
+	},
+	limit: {
+		description: '*If `query` is used:* Return at most `n` stations.',
+		type: 'number',
+		default: 3,
+	},
+	fuzzy: {
+		description: '*If `query` is used:* Find stations despite typos.',
+		type: 'boolean',
+		default: false,
+	},
+	completion: {
+		description: '*If `query` is used:* Autocomplete stations.',
+		type: 'boolean',
+		default: true,
+	},
+}
+
+module.exports = stationsRoute

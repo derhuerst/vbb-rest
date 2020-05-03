@@ -8,28 +8,30 @@ const createApi = require('hafas-rest-api')
 const createHealthCheck = require('hafas-client-health-check')
 
 const pkg = require('./package.json')
-const attachMiddleware = require('./api')
+const stations = require('./routes/stations')
+const allStations  = require('./routes/all-stations')
+const station = require('./routes/station')
+const lines = require('./routes/lines')
+const line = require('./routes/line')
+const shape = require('./routes/shape')
+const maps = require('./routes/maps')
+
+const berlinFriedrichstr = '900000100001'
 
 const docsAsMarkdown = readFileSync(join(__dirname, 'docs', 'index.md'), {encoding: 'utf8'})
 
-const pHafas = (() => {
-	const hafas = createHafas('hafas-rest-api: ' + pkg.name)
-	if (!process.env.HAFAS_CLIENT_NODES) return Promise.resolve(hafas)
+const hafas = createHafas('hafas-rest-api: ' + pkg.name)
 
-	const createRoundRobin = require('@derhuerst/round-robin-scheduler')
-	const createRpcClient = require('hafas-client-rpc/client')
-
-	const nodes = process.env.HAFAS_CLIENT_NODES.split(',')
-	console.info('Using these hafas-client-rpc nodes:', nodes)
-
-	return new Promise((resolve, reject) => {
-		createRpcClient(createRoundRobin, nodes, (err, rpcHafas) => {
-			if (err) return reject(err)
-			rpcHafas.profile = hafas.profile
-			resolve(rpcHafas)
-		})
-	})
-})()
+const modifyRoutes = (routes) => ({
+	...routes,
+	'/stations': stations,
+	'/stations/all': allStations,
+	'/stations/:id': station,
+	'/lines': lines,
+	'/lines/:id': line,
+	'/shapes/:id': shape,
+	'/maps/:type': maps,
+})
 
 const addHafasOpts = (opt, method, req) => {
 	if (method === 'journeys' && ('transferInfo' in req.query)) {
@@ -48,24 +50,17 @@ const config = {
 	logging: true,
 	aboutPage: true,
 	docsAsMarkdown,
-	addHafasOpts
+	addHafasOpts,
+	etags: 'strong',
+	modifyRoutes,
+	healthCheck: createHealthCheck(hafas, berlinFriedrichstr),
 }
-const berlinFriedrichstr = '900000100001'
 
-pHafas
-.then((hafas) => {
-	const cfg = Object.assign(Object.create(null), config)
-	cfg.healthCheck = createHealthCheck(hafas, berlinFriedrichstr)
-
-	const api = createApi(hafas, cfg, attachMiddleware)
-	api.listen(config.port, (err) => {
-		if (err) {
-			api.locals.logger.error(err)
-			process.exitCode = 1
-		} else api.locals.logger.info(`Listening on ${config.hostname}:${config.port}.`)
-	})
-})
-.catch((err) => {
-	console.error(err)
-	process.exitCode = 1
+const api = createApi(hafas, config, () => {})
+api.listen(config.port, (err) => {
+	const {logger} = api.locals
+	if (err) {
+		logger.error(err)
+		process.exitCode = 1
+	} else logger.info(`Listening on ${config.hostname}:${config.port}.`)
 })
