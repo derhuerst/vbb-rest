@@ -38,6 +38,8 @@
 		"vbb-stations-autocomplete": "^4.3.0"
 	},
 	"scripts": {
+		"docs": "node api-docs.js >docs/api.md",
+		"build": "npm run docs",
 		"start": "node index.js"
 	},
 	"devDependencies": {

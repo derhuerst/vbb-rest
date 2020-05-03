@@ -58,10 +58,35 @@ const linesRoute = (req, res, next) => {
 }
 
 linesRoute.queryParameters = {
+	'id': {
+		description: 'Filter by ID.',
+		type: 'string',
+		defaultStr: '–',
+	},
+	'name': {
+		description: 'Filter by name.',
+		type: 'string',
+		defaultStr: '–',
+	},
+	'operator': {
+		description: 'Filter by operator id. See [`agency.txt`](https://vbb-gtfs.jannisr.de/latest/agency.txt).',
+		type: 'string',
+		defaultStr: '–',
+	},
 	'variants': {
-		description: 'Return line variants?',
+		description: 'Return stops/stations along the line?',
 		type: 'boolean',
 		default: true,
+	},
+	'mode': {
+		description: 'Filter by mode of transport as in [*Friendly Public Transport Format* `1.2.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.2.1/spec/readme.md).',
+		type: 'string',
+		defaultStr: '–',
+	},
+	'product': {
+		description: 'Filter by [product](https://github.com/public-transport/hafas-client/blob/5/p/vbb/products.js).',
+		type: 'string',
+		defaultStr: '–',
 	},
 }
 

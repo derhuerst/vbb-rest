@@ -12,4 +12,6 @@ EXPOSE 3000
 ENV HOSTNAME v5.vbb.transport.rest
 ENV PORT 3000
 
+RUN npm run build
+
 CMD ["node", "index.js"]
