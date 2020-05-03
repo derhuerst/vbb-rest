@@ -14,6 +14,8 @@
 
 ## installing & running
 
+`vbb-rest` expects a [Redis](https://redis.io/) server running on `127.0.0.1:6379` (default port), but you can set the `REDIS_URL` environment variable to change this.
+
 ### via Docker
 
 A Docker image [is available as `derhuerst/vbb-rest:5`](https://hub.docker.com/r/derhuerst/vbb-rest:5).
@@ -22,6 +24,8 @@ A Docker image [is available as `derhuerst/vbb-rest:5`](https://hub.docker.com/r
 docker run -d -p 3000:3000 derhuerst/vbb-rest:5
 ```
 
+*Note:* The Docker image does not contain the Redis server.
+
 ### manually
 
 ```shell
@@ -29,6 +33,8 @@ git clone https://github.com/derhuerst/vbb-rest.git
 cd vbb-rest
 git checkout 5
 npm install --production
+
+redis-server &
 npm start
 ```
 
