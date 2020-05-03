@@ -24,11 +24,13 @@
 	"dependencies": {
 		"cli-native": "^1.0.0",
 		"corser": "^2.0.1",
+		"etag": "^1.8.1",
 		"hafas-client-health-check": "^2.1.1",
 		"hafas-rest-api": "^3.3.1",
 		"lodash.omit": "^4.5.0",
 		"ndjson": "^1.5.0",
 		"nocache": "^2.0.0",
+		"serve-buffer": "^2.0.0",
 		"through2-map": "^3.0.0",
 		"vbb-hafas": "^7.0.2",
 		"vbb-lines": "^4.0.0",

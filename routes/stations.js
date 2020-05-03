@@ -1,64 +1,87 @@
 'use strict'
 
-const parse = require('cli-native').to
+const computeEtag = require('etag')
+const serveBuffer = require('serve-buffer')
 const autocomplete = require('vbb-stations-autocomplete')
-const stations = require('vbb-stations')
-const map = require('through2-map')
-const ndjson       = require('ndjson')
+const parse = require('cli-native').to
+const {filterByKeys: createFilter} = require('vbb-stations')
+const {data: stations, timeModified} = require('../lib/vbb-stations')
+const toNdjsonBuf = require('../lib/to-ndjson-buf')
 
-const err400 = (msg) => {
+const JSON_MIME = 'application/json'
+const NDJSON_MIME = 'application/x-ndjson'
+
+const asJson = Buffer.from(JSON.stringify(stations), 'utf8')
+const asJsonEtag = computeEtag(asJson)
+const asNdjson = toNdjsonBuf(Object.entries(stations))
+const asNdjsonEtag = computeEtag(asNdjson)
+
+const err = (msg, statusCode = 500) => {
 	const err = new Error(msg)
-	err.statusCode = 400
+	err.statusCode = statusCode
 	return err
 }
 
-const allStations = stations()
-
-// todo: merge this with db-rest#new-hafas-client/lib/stations
-const complete = (req, res, next) => {
-	const limit = req.query.results && parseInt(req.query.results) || 3
-	const fuzzy = parse(req.query.fuzzy) === true
-	const completion = parse(req.query.completion) !== false
-	const results = autocomplete(req.query.query, limit, fuzzy, completion)
+const complete = (req, res, next, q, onStation, onEnd) => {
+	const limit = q.results && parseInt(q.results) || 3
+	const fuzzy = parse(q.fuzzy) === true
+	const completion = parse(q.completion) !== false
+	const results = autocomplete(q.query, limit, fuzzy, completion)
 
 	const data = []
-	for (let result of results) {
-		// todo: make this more efficient
-		const [station] = stations(result.id)
+	for (const result of results) {
+		const station = stations[result.id]
 		if (!station) continue
 
-		data.push(Object.assign({}, result, station))
+		Object.assign(result, station)
+		onStation(result)
 	}
-
-	res.json(data)
-	next()
+	onEnd()
 }
 
-const filter = (req, res, next) => {
-	if (Object.keys(req.query).length === 0) {
-		return next(err400('Missing properties.'))
+const filter = (req, res, next, q, onStation, onEnd) => {
+	const selector = Object.create(null)
+	for (const prop in q) selector[prop] = parse(q[prop])
+	const filter = createFilter(selector)
+
+	for (const station of Object.values(stations)) {
+		if (filter(station)) onStation(station)
 	}
-
-	const props = Object.create(null)
-	for (let prop in req.query) {
-		props[prop] = parse(req.query[prop])
-	}
-	const results = stations(props)
-
-	res.type('application/x-ndjson')
-	const out = ndjson.stringify()
-	out
-	.once('error', next)
-	.pipe(res)
-	.once('finish', () => next())
-
-	for (const station of results) out.write(station)
-	out.end()
+	onEnd()
 }
 
 const stationsRoute = (req, res, next) => {
-	if (req.query.query) complete(req, res, next)
-	else filter(req, res, next)
+	const t = req.accepts([JSON_MIME, NDJSON_MIME])
+	if (t !== JSON_MIME && t !== NDJSON_MIME) {
+		return next(err(JSON + ' or ' + NDJSON_MIME, 406))
+	}
+
+	res.setHeader('Last-Modified', timeModified.toUTCString())
+
+	const head = t === JSON_MIME ? '{\n' : ''
+	const sep = t === JSON_MIME ? ',\n' : '\n'
+	const tail = t === JSON_MIME ? '\n}\n' : '\n'
+	let i = 0
+	const onStation = (s) => {
+		const j = JSON.stringify(s)
+		const field = t === JSON_MIME ? `"${s.id}":` : ''
+		res.write(`${i++ === 0 ? head : sep}${field}${j}`)
+	}
+	const onEnd = () => {
+		if (i > 0) res.end(tail)
+		else res.end(head + tail)
+	}
+
+	const q = req.query
+	if (Object.keys(q).length === 0) {
+		const data = t === JSON_MIME ? asJson : asNdjson
+		const etag = t === JSON_MIME ? asJsonEtag : asNdjsonEtag
+		serveBuffer(req, res, data, {timeModified, etag})
+	} else if (q.query) {
+		complete(req, res, next, q, onStation, onEnd)
+	} else {
+		filter(req, res, next, q, onStation, onEnd)
+	}
 }
 
 stationsRoute.queryParameters = {

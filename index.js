@@ -9,7 +9,6 @@ const createHealthCheck = require('hafas-client-health-check')
 
 const pkg = require('./package.json')
 const stations = require('./routes/stations')
-const allStations  = require('./routes/all-stations')
 const station = require('./routes/station')
 const lines = require('./routes/lines')
 const line = require('./routes/line')
@@ -25,7 +24,6 @@ const hafas = createHafas('hafas-rest-api: ' + pkg.name)
 const modifyRoutes = (routes) => ({
 	...routes,
 	'/stations': stations,
-	'/stations/all': allStations,
 	'/stations/:id': station,
 	'/lines': lines,
 	'/lines/:id': line,
