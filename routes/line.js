@@ -1,6 +1,6 @@
 'use strict'
 
-const lines  = require('vbb-lines')
+const {data: lines, timeModified} = require('../lib/vbb-lines')
 
 const err400 = (msg) => {
 	const err = new Error(msg)
@@ -8,22 +8,16 @@ const err400 = (msg) => {
 	return err
 }
 
-
-
-const linesRoute = (req, res, next) => {
+const lineRoute = (req, res, next) => {
 	const id = req.params.id.trim()
+	const line = lines.find(l => l.id === id)
+	if (!line) return next(err400('Line not found.'))
 
-	lines(true, id)
-	.then((results) => {
-		const line = results[0]
-		if (!line) return next(err400('Line not found.'))
-		res.json(line)
-		next()
-	})
+	res.json(line)
 	.catch((err) => {
 		next(err)
 		throw err
 	})
 }
 
-module.exports = linesRoute
+module.exports = lineRoute
