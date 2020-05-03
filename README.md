@@ -1,6 +1,6 @@
 # vbb-rest
 
-***vbb-rest* is a public transport REST API**, a clean alternative to the [VBB HAFAS API](https://github.com/public-transport/vbb-hafas).
+***vbb-rest* is a public transport REST API**, a clean alternative to the [VBB HAFAS API](https://github.com/public-transport/hafas-client/blob/master/p/vbb/readme.md).
 
 ~~Use [`vbb-client@4`](https://github.com/derhuerst/vbb-client) for querying this API in browsers or with Node.~~
 
@@ -18,10 +18,10 @@
 
 ### via Docker
 
-A Docker image [is available as `derhuerst/vbb-rest`](https://hub.docker.com/r/derhuerst/vbb-rest).
+A Docker image [is available as `derhuerst/vbb-rest:5`](https://hub.docker.com/r/derhuerst/vbb-rest:5).
 
 ```shell
-docker run -d -p 3000:3000 derhuerst/vbb-rest
+docker run -d -p 3000:3000 derhuerst/vbb-rest:5
 ```
 
 ### manually
@@ -29,7 +29,7 @@ docker run -d -p 3000:3000 derhuerst/vbb-rest
 ```shell
 git clone https://github.com/derhuerst/vbb-rest.git
 cd vbb-rest
-git checkout 3
+git checkout 5
 npm install --production
 npm start
 ```

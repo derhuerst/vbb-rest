@@ -2,16 +2,10 @@
 	"private": true,
 	"name": "vbb-rest",
 	"description": "An HTTP API for Berlin & Brandenburg public transport.",
-	"version": "3.0.0",
+	"version": "5.0.0",
 	"main": "index.js",
-	"files": [
-		"index.js",
-		"api.js",
-		"lib",
-		"docs"
-	],
 	"author": "Jannis R <mail@jannisr.de>",
-	"homepage": "https://github.com/derhuerst/vbb-rest",
+	"homepage": "https://github.com/derhuerst/vbb-rest/tree/5",
 	"repository": "derhuerst/vbb-rest",
 	"bugs": "https://github.com/derhuerst/vbb-rest/issues",
 	"license": "ISC",
@@ -37,17 +31,14 @@
 		"lodash.omit": "^4.5.0",
 		"ndjson": "^1.5.0",
 		"nocache": "^2.0.0",
-		"serve-static": "^1.13.2",
 		"through2-map": "^3.0.0",
 		"vbb-hafas": "^6.0.0",
 		"vbb-lines": "^4.0.0",
 		"vbb-lines-at": "^3.11.0",
-		"vbb-logos": "github:derhuerst/vbb-logos#v2",
 		"vbb-shapes": "^2.13.0",
 		"vbb-short-station-name": "^1.0.1",
 		"vbb-stations": "^6.2.1",
-		"vbb-stations-autocomplete": "^3.1.0",
-		"vbb-translate-ids": "^2.0.0"
+		"vbb-stations-autocomplete": "^3.1.0"
 	},
 	"scripts": {
 		"start": "node index.js"

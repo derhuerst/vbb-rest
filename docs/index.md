@@ -19,7 +19,6 @@
 - [`GET /locations`](#get-locations)
 - [`GET /radar`](#get-radar)
 - [`GET /maps/:type`](#get-mapstype)
-- [`GET /logos/:type`](#get-logostype)
 
 ## `GET /stops?query=…`
 
@@ -326,15 +325,4 @@ Redirects to PDF public transport maps. `type` may be one of these:
 
 ```shell
 curl -L -o bvg-tram-map.pdf 'https://3.vbb.transport.rest/maps/bvg-tram'
-```
-
-
-## `GET /logos/:type`
-
-Serves the [logos from `derhuers/vbb-logos#v2`](https://github.com/derhuerst/vbb-logos/blob/v2/readme.md#available-logos).
-
-### examples
-
-```shell
-curl -L -o tram.svg 'https://3.vbb.transport.rest/logos/tram.svg'
 ```

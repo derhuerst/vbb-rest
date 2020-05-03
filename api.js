@@ -1,26 +1,14 @@
 'use strict'
 
-const path = require('path')
-const serve = require('serve-static')
-
-const stations = require('./lib/stations')
-const allStations  = require('./lib/all-stations')
-const station = require('./lib/station')
-const lines = require('./lib/lines')
-const line = require('./lib/line')
-const shape = require('./lib/shape')
-const maps = require('./lib/maps')
-
-const logosDir = path.dirname(require.resolve('vbb-logos/package.json'))
+const stations = require('./routes/stations')
+const allStations  = require('./routes/all-stations')
+const station = require('./routes/station')
+const lines = require('./routes/lines')
+const line = require('./routes/line')
+const shape = require('./routes/shape')
+const maps = require('./routes/maps')
 
 const attachMiddleware = (api) => {
-	api.use('/logos', serve(logosDir, {index: false}))
-
-	// for compatibility with old docs & other APIs
-	// todo: remove
-	api.get('/stops', stations)
-	api.get('/stops/all', allStations)
-
 	api.get('/stations', stations)
 	api.get('/stations/all', allStations)
 	api.get('/stations/:id', station)

@@ -1,6 +1,5 @@
 'use strict'
 
-const oldToNew = require('vbb-translate-ids/old-to-new')
 const lines  = require('vbb-lines')
 
 const err400 = (msg) => {
@@ -12,8 +11,7 @@ const err400 = (msg) => {
 
 
 const route = (req, res, next) => {
-	let id = req.params.id.trim()
-	id = oldToNew[id] || id
+	const id = req.params.id.trim()
 
 	lines(true, id)
 	.then((results) => {
