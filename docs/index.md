@@ -1,6 +1,10 @@
 # Berlin & Brandenburg Public Transport API
 
-**The public endpoint is [`3.vbb.transport.rest`](`https://3.vbb.transport.rest/`).** This API returns data in the [*Friendly Public Transport Format* `1.2.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.2.1/spec/readme.md). Use [`vbb-client@3`](https://github.com/derhuerst/vbb-client) to talk to this API from JavaScript.
+**Deprecated. Please use the [latest version](https://github.com/derhuerst/vbb-rest) of this API.**
+
+---
+
+The public endpoint is [`3.vbb.transport.rest`](`https://3.vbb.transport.rest/`). This API returns data in the [*Friendly Public Transport Format* `1.2.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.2.1/spec/readme.md). Use [`vbb-client@3`](https://github.com/derhuerst/vbb-client) to talk to this API from JavaScript.
 
 ## all routes
 
