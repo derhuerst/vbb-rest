@@ -2,10 +2,11 @@
 
 ***vbb-rest* is a public transport REST API**, a clean alternative to the [VBB HAFAS API](https://github.com/public-transport/hafas-client/blob/e02a20b1de59bda3cd380445b6105e4c46036636/p/vbb/readme.md).
 
-[**documentation**](docs/readme.md)
+[**API documentation**](docs/readme.md)
 
 ![vbb-rest architecture diagram](architecture.svg)
 
+[![API status](https://badgen.net/uptime-robot/status/m784879520-16942c5a1e49ba419bcface5)](https://stats.uptimerobot.com/57wNLs39M/784879520)
 [![Docker build status](https://img.shields.io/docker/build/derhuerst/vbb-rest.svg)](https://hub.docker.com/r/derhuerst/vbb-rest/)
 [![dependency status](https://img.shields.io/david/derhuerst/vbb-rest.svg)](https://david-dm.org/derhuerst/vbb-rest)
 ![ISC-licensed](https://img.shields.io/github/license/derhuerst/vbb-rest.svg)
