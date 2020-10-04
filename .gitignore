@@ -10,3 +10,6 @@ shrinkwrap.yaml
 
 config/*
 !config/default.json
+
+/docs/*.html
+/docs/syntax.css

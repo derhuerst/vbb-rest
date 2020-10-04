@@ -32,6 +32,7 @@
 		"nocache": "^2.0.0",
 		"redis": "^3.0.2",
 		"serve-buffer": "^2.0.0",
+		"serve-static": "^1.14.1",
 		"vbb-hafas": "^7.0.2",
 		"vbb-lines": "^4.0.0",
 		"vbb-lines-at": "^4.2.0",
@@ -40,11 +41,12 @@
 		"vbb-stations-autocomplete": "^4.3.0"
 	},
 	"scripts": {
-		"docs": "node api-docs.js >docs/api.md",
+		"docs": "node api-docs.js >docs/api.md && build-technical-doc --syntax-stylesheet-url /syntax.css <docs/readme.md >docs/index.html && build-technical-doc --syntax-stylesheet-url /syntax.css <docs/getting-started.md >docs/getting-started.html && build-technical-doc --syntax-stylesheet-url /syntax.css <docs/api.md >docs/api.html && build-technical-doc --syntax-stylesheet github >docs/syntax.css",
 		"build": "npm run docs",
 		"start": "node index.js"
 	},
 	"devDependencies": {
+		"@derhuerst/technical-docs-cli": "^1.1.0",
 		"pino-pretty": "^4.0.0"
 	}
 }

@@ -1,5 +1,6 @@
 'use strict'
 
+const {join: pathJoin} = require('path')
 const parse = require('cli-native').to
 const createHafas = require('vbb-hafas')
 const createHealthCheck = require('hafas-client-health-check')
@@ -7,6 +8,7 @@ const {createClient: createRedis} = require('redis')
 const withCache = require('cached-hafas-client')
 const redisStore = require('cached-hafas-client/stores/redis')
 const createApi = require('hafas-rest-api')
+const serveStatic = require('serve-static')
 
 const pkg = require('./package.json')
 const stations = require('./routes/stations')
@@ -15,6 +17,8 @@ const lines = require('./routes/lines')
 const line = require('./routes/line')
 const shape = require('./routes/shape')
 const maps = require('./routes/maps')
+
+const docsRoot = pathJoin(__dirname, 'docs')
 
 const berlinFriedrichstr = '900000100001'
 
@@ -69,14 +73,19 @@ const config = {
 	homepage: pkg.homepage,
 	docsLink: 'https://github.com/derhuerst/vbb-rest/blob/5/docs/readme.md',
 	logging: true,
-	aboutPage: true,
+	aboutPage: false,
 	addHafasOpts,
 	etags: 'strong',
+	csp: `default-src 'none' style-src 'self' 'unsafe-inline' img-src https:`,
 	modifyRoutes,
 	healthCheck,
 }
 
-const api = createApi(hafas, config, () => {})
+const api = createApi(hafas, config, (api) => {
+	api.use('/', serveStatic(docsRoot, {
+		extensions: ['html', 'htm'],
+	}))
+})
 
 module.exports = {
 	config,
