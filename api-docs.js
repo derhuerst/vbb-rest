@@ -12,7 +12,7 @@ You can just use the API without authentication. There's a [rate limit](https://
 
 [OpenAPI playground](https://petstore.swagger.io/?url=https%3A%2F%2Fv5.vbb.transport.rest%2F.well-known%2Fservice-desc%0A)
 
-*Note:* For [URL-encoding](https://de.wikipedia.org/wiki/URL-Encoding), this documentation uses the \`url-encode\` tool of the [\`url-decode-encode-cli\` package](https://www.npmjs.com/package/url-decode-encode-cli).
+*Note:* The examples snippets in this documentation uses the \`url-encode\` CLI tool of the [\`url-decode-encode-cli\` package](https://www.npmjs.com/package/url-decode-encode-cli) for [URL-encoding](https://de.wikipedia.org/wiki/URL-Encoding).
 `
 
 const order = [

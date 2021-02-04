@@ -10,7 +10,8 @@
 [![Docker build status](https://img.shields.io/docker/build/derhuerst/vbb-rest.svg)](https://hub.docker.com/r/derhuerst/vbb-rest/)
 [![dependency status](https://img.shields.io/david/derhuerst/vbb-rest.svg)](https://david-dm.org/derhuerst/vbb-rest)
 ![ISC-licensed](https://img.shields.io/github/license/derhuerst/vbb-rest.svg)
-[![chat on gitter](https://badges.gitter.im/derhuerst.svg)](https://gitter.im/derhuerst)
+[![support me via GitHub Sponsors](https://img.shields.io/badge/support%20me-donate-fa7664.svg)](https://github.com/sponsors/derhuerst)
+[![chat with me on Twitter](https://img.shields.io/badge/chat%20with%20me-on%20Twitter-1da1f2.svg)](https://twitter.com/derhuerst)
 
 
 ## installing & running
