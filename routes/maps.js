@@ -29,4 +29,24 @@ const maps = (req, res, next) => {
 	res.end(urls[type])
 }
 
+maps.openapiPaths = {
+	'/maps/{type}': {
+		get: {
+			summary: 'Redirects to PDF public transport maps.',
+			description: `\
+**Redirects to PDF public transport maps.**`,
+			parameters: [{
+				name: 'type',
+				in: 'path',
+				description: 'map type',
+				required: true,
+				schema: {
+					type: 'string',
+					enum: Object.keys(urls),
+				},
+			}],
+		},
+	},
+}
+
 module.exports = maps

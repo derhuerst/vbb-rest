@@ -20,4 +20,36 @@ const lineRoute = (req, res, next) => {
 	})
 }
 
+lineRoute.openapiPaths = {
+	'/lines/{id}': {
+		get: {
+			summary: 'Returns a line from `vbb-lines`.',
+			description: `\
+Returns a **line from [\`vbb-lines\`](https://npmjs.com/package/vbb-lines)**.`,
+			parameters: [{
+				name: 'id',
+				in: 'path',
+				description: 'Line ID.',
+				required: true,
+				schema: {
+					type: 'string',
+				},
+			}],
+			responses: {
+				'2XX': {
+					description: 'A line, in the [`vbb-lines` format](https://github.com/derhuerst/vbb-lines/blob/master/readme.md).',
+					content: {
+						'application/json': {
+							schema: {
+								type: 'object', // todo
+							},
+							// todo: example(s)
+						},
+					},
+				},
+			},
+		},
+	},
+}
+
 module.exports = lineRoute

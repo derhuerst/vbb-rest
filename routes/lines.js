@@ -57,6 +57,76 @@ const linesRoute = (req, res, next) => {
 	}
 }
 
+linesRoute.openapiPaths = {
+	'/lines': {
+		get: {
+			summary: 'Filters the lines in `vbb-lines`.',
+			description: `\
+**Filters the lines in [\`vbb-lines\`](https://npmjs.com/package/vbb-lines).**
+
+Instead of receiving a JSON response, you can request [newline-delimited JSON](http://ndjson.org) by sending \`Accept: application/x-ndjson\`.`,
+			parameters: [{
+				name: 'id',
+				in: 'query',
+				description: 'Filter by ID.',
+				schema: {
+					type: 'string',
+				},
+			}, {
+				name: 'name',
+				in: 'query',
+				description: 'Filter by name.',
+				schema: {
+					type: 'string',
+				},
+			}, {
+				name: 'operator',
+				in: 'query',
+				description: 'Filter by operator id. See [`agency.txt`](https://vbb-gtfs.jannisr.de/latest/agency.txt).',
+				schema: {
+					type: 'string',
+				},
+			}, {
+				name: 'variants',
+				in: 'query',
+				description: 'Return stops/stations along the line?',
+				schema: {
+					type: 'boolean',
+					default: true,
+				},
+			}, {
+				name: 'mode',
+				in: 'query',
+				description: 'Filter by mode of transport as in [*Friendly Public Transport Format* `1.2.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.2.1/spec/readme.md).',
+				schema: {
+					type: 'string',
+				},
+			}, {
+				name: 'product',
+				in: 'query',
+				description: 'Filter by [product](https://github.com/public-transport/hafas-client/blob/5/p/vbb/products.js).',
+				schema: {
+					type: 'string',
+				},
+			}],
+			responses: {
+				'2XX': {
+					description: 'An array of stops/stations, in the [`vbb-stations` format](https://github.com/derhuerst/vbb-stations/blob/master/readme.md).',
+					content: {
+						'application/json': {
+							schema: {
+								type: 'array',
+								items: {type: 'object'}, // todo
+							},
+							// todo: example(s)
+						},
+					},
+				},
+			},
+		},
+	},
+}
+
 linesRoute.queryParameters = {
 	'id': {
 		description: 'Filter by ID.',

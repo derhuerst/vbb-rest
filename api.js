@@ -72,6 +72,7 @@ const config = {
 	version: pkg.version,
 	homepage: pkg.homepage,
 	docsLink: 'https://github.com/derhuerst/vbb-rest/blob/5/docs/readme.md',
+	openapiSpec: true,
 	logging: true,
 	aboutPage: false,
 	addHafasOpts,

@@ -10,6 +10,8 @@ const HEAD = `\
 
 You can just use the API without authentication. There's a [rate limit](https://apisyouwonthate.com/blog/what-is-api-rate-limiting-all-about) of 100 request/minute (burst 200 requests/minute) set up.
 
+[OpenAPI playground](https://petstore.swagger.io/?url=https%3A%2F%2Fv5.vbb.transport.rest%2F.well-known%2Fservice-desc%0A)
+
 *Note:* For [URL-encoding](https://de.wikipedia.org/wiki/URL-Encoding), this documentation uses the \`url-encode\` tool of the [\`url-decode-encode-cli\` package](https://www.npmjs.com/package/url-decode-encode-cli).
 `
 

@@ -84,6 +84,64 @@ const stationsRoute = (req, res, next) => {
 	}
 }
 
+stationsRoute.openapiPaths = {
+	'/stations': {
+		get: {
+			summary: 'Autocompletes stops/stations by name or filters stops/stations.',
+			description: `\
+If the \`query\` parameter is used, it will use [\`vbb-stations-autocomplete\`](https://npmjs.com/package/vbb-stations-autocomplete) to autocomplete stops/stations by name. Otherwise, it will filter the stops/stations in [\`vbb-stations\`](https://npmjs.com/package/vbb-stations).
+
+Instead of receiving a JSON response, you can request [newline-delimited JSON](http://ndjson.org) by sending \`Accept: application/x-ndjson\`.`,
+			parameters: [{
+				name: 'query',
+				in: 'query',
+				description: 'Find stations by name using [`vbb-stations-autocomplete`](https://npmjs.com/package/vbb-stations-autocomplete).',
+				schema: {
+					type: 'string',
+				},
+			}, {
+				name: 'limit',
+				in: 'query',
+				description: '*If `query` is used:* Return at most `n` stations.',
+				schema: {
+					type: 'integer',
+					default: 3,
+				},
+			}, {
+				name: 'fuzzy',
+				in: 'query',
+				description: '*If `query` is used:* Find stations despite typos.',
+				schema: {
+					type: 'boolean',
+					default: false,
+				},
+			}, {
+				name: 'completion',
+				in: 'query',
+				description: '*If `query` is used:* Autocomplete stations.',
+				schema: {
+					type: 'boolean',
+					default: true,
+				},
+			}],
+			responses: {
+				'2XX': {
+					description: 'An array of stops/stations, in the [`vbb-stations` format](https://github.com/derhuerst/vbb-stations/blob/master/readme.md).',
+					content: {
+						'application/json': {
+							schema: {
+								type: 'array',
+								items: {type: 'object'}, // todo
+							},
+							// todo: example(s)
+						},
+					},
+				},
+			},
+		},
+	},
+}
+
 stationsRoute.queryParameters = {
 	query: {
 		description: 'Find stations by name using [`vbb-stations-autocomplete`](https://npmjs.com/package/vbb-stations-autocomplete).',
