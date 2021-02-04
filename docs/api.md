@@ -41,7 +41,7 @@ parameter | description | type | default value
 ----------|-------------|------|--------------
 `query` | **Required.**  | string | –
 `fuzzy` | Find more than exact matches? | boolean | `true`
-`results` | How many stations shall be shown? | number | `10`
+`results` | How many stations shall be shown? | integer | `10`
 `stops` | Show stops/stations? | boolean | `true`
 `addresses` | Show points of interest? | boolean | `true`
 `poi` | Show addresses? | boolean | `true`
@@ -87,8 +87,8 @@ parameter | description | type | default value
 ----------|-------------|------|--------------
 `latitude` | **Required.**  | number | –
 `longitude` | **Required.**  | number | –
-`results` | maximum number of results | number | `8`
-`distance` | maximum walking distance in meters | number | –
+`results` | maximum number of results | integer | `8`
+`distance` | maximum walking distance in meters | integer | –
 `stops` | Return stops/stations? | boolean | `true`
 `poi` | Return points of interest? | boolean | `false`
 `linesOfStops` | Parse & expose lines at each stop/station? | boolean | `false`
@@ -141,8 +141,8 @@ parameter | description | type | default value
 `longitude` | **Required.**  | number | –
 `address` | **Required.**  | string | –
 `when` | Date & time to compute the reachability for. See [date/time parameters](#datetime-parameters). | date+time | *now*
-`maxTransfers` | Maximum number of transfers. | number | `5`
-`maxDuration` | Maximum travel duration, in minutes. | number | *infinite*
+`maxTransfers` | Maximum number of transfers. | integer | `5`
+`maxDuration` | Maximum travel duration, in minutes. | integer | *infinite*
 `language` | Language of the results. | string | `en`
 `suburban` | Include S-Bahn (S)? | boolean | `true`
 `subway` | Include U-Bahn (U)? | boolean | `true`
@@ -241,8 +241,8 @@ parameter | description | type | default value
 ----------|-------------|------|--------------
 `when` | Date & time to get departures for. See [date/time parameters](#datetime-parameters). | date+time | *now*
 `direction` | Filter departures by direction. | string |  
-`duration` | Show departures for how many minutes? | number | `10`
-`results` | Max. number of departures. | number | *whatever HAFAS wants
+`duration` | Show departures for how many minutes? | integer | `10`
+`results` | Max. number of departures. | integer | *whatever HAFAS wants
 `linesOfStops` | Parse & return lines of each stop/station? | boolean | `false`
 `remarks` | Parse & return hints & warnings? | boolean | `true`
 `language` | Language of the results. | string | `en`
@@ -309,8 +309,8 @@ parameter | description | type | default value
 ----------|-------------|------|--------------
 `when` | Date & time to get departures for. See [date/time parameters](#datetime-parameters). | date+time | *now*
 `direction` | Filter departures by direction. | string |  
-`duration` | Show departures for how many minutes? | number | `10`
-`results` | Max. number of departures. | number | *whatever HAFAS wants*
+`duration` | Show departures for how many minutes? | integer | `10`
+`results` | Max. number of departures. | integer | *whatever HAFAS wants*
 `linesOfStops` | Parse & return lines of each stop/station? | boolean | `false`
 `remarks` | Parse & return hints & warnings? | boolean | `true`
 `language` | Language of the results. | string | `en`
@@ -468,10 +468,10 @@ parameter | description | type | default value
 `arrival` | Compute journeys arriving at this date/time. Mutually exclusive with `departure`. See [date/time parameters](#datetime-parameters). | date+time | *now*
 `earlierThan` | Compute journeys "before" an `ealierRef`. | string |  
 `laterThan` | Compute journeys "after" an `laterRef`. | string |  
-`results` | Max. number of journeys. | number | `3`
+`results` | Max. number of journeys. | integer | `3`
 `stopovers` | Fetch & parse stopovers on the way? | boolean | `false`
-`transfers` | Maximum number of transfers. | number | *let HAFAS decide*
-`transferTime` | Minimum time in minutes for a single transfer. | number | `0`
+`transfers` | Maximum number of transfers. | integer | *let HAFAS decide*
+`transferTime` | Minimum time in minutes for a single transfer. | integer | `0`
 `accessibility` | `partial` or `complete`. | string | *not accessible*
 `bike` | Compute only bike-friendly journeys? | boolean | `false`
 `startWithWalking` | Consider walking to nearby stations at the beginning of a journey? | boolean | `true`
@@ -568,9 +568,9 @@ parameter | description | type | default value
 `west` | **Required.** Western longitude. | number | –
 `south` | **Required.** Southern latitude. | number | –
 `east` | **Required.** Eastern longitude. | number | –
-`results` | Max. number of vehicles. | number | `256`
-`duration` | Compute frames for the next `n` seconds. | number | `30`
-`frames` | Number of frames to compute. | number | `3`
+`results` | Max. number of vehicles. | integer | `256`
+`duration` | Compute frames for the next `n` seconds. | integer | `30`
+`frames` | Number of frames to compute. | integer | `3`
 `polylines` | Fetch & parse a geographic shape for the movement of each vehicle? | boolean | `true`
 `language` | Language of the results. | string | `en`
 
