@@ -1,4 +1,4 @@
-FROM node:alpine as builder
+FROM node:16.8.0-alpine3.13 as builder
 WORKDIR /app
 
 # install dependencies
@@ -12,7 +12,7 @@ RUN npm run build
 
 # ---
 
-FROM node:alpine
+FROM node:16.8.0-alpine3.13
 WORKDIR /app
 
 # install dependencies
