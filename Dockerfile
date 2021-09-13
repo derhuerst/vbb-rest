@@ -24,7 +24,7 @@ WORKDIR /app
 
 # install dependencies
 ADD package.json /app
-RUN npm install --production
+RUN npm install --production && npm cache clean --force
 
 # add source code
 ADD . /app
