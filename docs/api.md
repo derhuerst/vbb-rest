@@ -474,6 +474,7 @@ parameter | description | type | default value
 `stopovers` | Fetch & parse stopovers on the way? | boolean | `false`
 `transfers` | Maximum number of transfers. | integer | *let HAFAS decide*
 `transferTime` | Minimum time in minutes for a single transfer. | integer | `0`
+`transferInfo` | Add transfer information from [`vbb-change-positions`](https://github.com/juliuste/vbb-change-positions) to journey legs if possible? Requires `stopovers=true`. | boolean | `false`
 `accessibility` | `partial` or `complete`. | string | *not accessible*
 `bike` | Compute only bike-friendly journeys? | boolean | `false`
 `startWithWalking` | Consider walking to nearby stations at the beginning of a journey? | boolean | `true`

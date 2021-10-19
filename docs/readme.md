@@ -6,8 +6,6 @@
 
 Because it wraps [an API](https://github.com/public-transport/hafas-client/blob/master/readme.md#background) of VBB, it **includes all local traffic, as well as some long-distance trains running in the area**. Essentially, it returns whatever data the [VBB app](https://www.vbb.de/fahrplan/vbb-app) shows, **including realtime delays and disruptions**.
 
-You can just use the API without authentication. There's a [rate limit](https://apisyouwonthate.com/blog/what-is-api-rate-limiting-all-about) of 100 requests/minute (burst 200 requests/minute) set up.
-
 - [Getting Started](getting-started.md)
 - [API documentation](api.md)
 - [OpenAPI playground](https://petstore.swagger.io/?url=https%3A%2F%2Fv5.vbb.transport.rest%2F.well-known%2Fservice-desc%0A)

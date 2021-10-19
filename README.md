@@ -7,7 +7,6 @@
 ![vbb-rest architecture diagram](architecture.svg)
 
 [![API status](https://badgen.net/uptime-robot/status/m784879520-16942c5a1e49ba419bcface5)](https://stats.uptimerobot.com/57wNLs39M/784879520)
-[![Docker build status](https://img.shields.io/docker/build/derhuerst/vbb-rest.svg)](https://hub.docker.com/r/derhuerst/vbb-rest/)
 [![dependency status](https://img.shields.io/david/derhuerst/vbb-rest.svg)](https://david-dm.org/derhuerst/vbb-rest)
 ![ISC-licensed](https://img.shields.io/github/license/derhuerst/vbb-rest.svg)
 [![support me via GitHub Sponsors](https://img.shields.io/badge/support%20me-donate-fa7664.svg)](https://github.com/sponsors/derhuerst)
