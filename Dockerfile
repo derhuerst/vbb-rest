@@ -1,11 +1,4 @@
 FROM node:alpine as builder
-LABEL org.opencontainers.image.title="vbb-rest"
-LABEL org.opencontainers.image.description="An HTTP API for Berlin & Brandenburg public transport."
-LABEL org.opencontainers.image.authors="Jannis R <mail@jannisr.de>"
-LABEL org.opencontainers.image.documentation="https://github.com/derhuerst/vbb-rest/tree/5"
-LABEL org.opencontainers.image.source="https://github.com/derhuerst/vbb-rest"
-LABEL org.opencontainers.image.revision="5"
-LABEL org.opencontainers.image.licenses="ISC"
 WORKDIR /app
 
 # install dependencies
@@ -20,6 +13,13 @@ RUN npm run build
 # ---
 
 FROM node:alpine
+LABEL org.opencontainers.image.title="vbb-rest"
+LABEL org.opencontainers.image.description="An HTTP API for Berlin & Brandenburg public transport."
+LABEL org.opencontainers.image.authors="Jannis R <mail@jannisr.de>"
+LABEL org.opencontainers.image.documentation="https://github.com/derhuerst/vbb-rest/tree/5"
+LABEL org.opencontainers.image.source="https://github.com/derhuerst/vbb-rest"
+LABEL org.opencontainers.image.revision="5"
+LABEL org.opencontainers.image.licenses="ISC"
 WORKDIR /app
 
 # install dependencies
