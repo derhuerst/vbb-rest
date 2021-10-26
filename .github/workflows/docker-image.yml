@@ -22,3 +22,22 @@ jobs:
           tags: |
             derhuerst/vbb-rest:5
             derhuerst/vbb-rest:latest
+
+      # this is for the public-transport/infrastructure cluster
+      - name: log in to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: determine commit hash
+        id: hash
+        run: echo "::set-output name=hash::$(echo $GITHUB_SHA | head -c7)"
+      - name: determine current date and time
+        id: datetime
+        run: echo "::set-output name=datetime::$(date -u +'%Y-%m-%dT%H.%M.%SZ')"
+      - name: push Docker image to GitHub Registry
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: ghcr.io/${{github.repository}}:v5_${{steps.hash.outputs.hash}}_${{steps.datetime.outputs.datetime}}
