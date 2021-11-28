@@ -22,15 +22,15 @@
 		"node": ">=10"
 	},
 	"dependencies": {
-		"cached-hafas-client": "^3.1.1",
+		"cached-hafas-client": "^4.0.4",
 		"cli-native": "^1.0.0",
 		"corser": "^2.0.1",
 		"etag": "^1.8.1",
 		"hafas-client-health-check": "^2.1.1",
 		"hafas-rest-api": "^3.7.0",
+		"ioredis": "^4.28.1",
 		"lodash.omit": "^4.5.0",
 		"nocache": "^2.0.0",
-		"redis": "^3.0.2",
 		"serve-buffer": "^2.0.0",
 		"serve-static": "^1.14.1",
 		"vbb-hafas": "^7.0.2",

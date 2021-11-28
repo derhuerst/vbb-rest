@@ -4,7 +4,7 @@ const {join: pathJoin} = require('path')
 const parse = require('cli-native').to
 const createHafas = require('vbb-hafas')
 const createHealthCheck = require('hafas-client-health-check')
-const {createClient: createRedis} = require('redis')
+const Redis = require('ioredis')
 const withCache = require('cached-hafas-client')
 const redisStore = require('cached-hafas-client/stores/redis')
 const createApi = require('hafas-rest-api')
@@ -26,21 +26,16 @@ let hafas = createHafas('hafas-rest-api: ' + pkg.name)
 let healthCheck = createHealthCheck(hafas, berlinFriedrichstr)
 
 if (process.env.REDIS_URL) {
-	const redis = createRedis({
-		url: process.env.REDIS_URL,
-	})
-	redis.on('error', (err) => {
-		api.locals.logger.error(err)
-	})
+	const redis = new Redis(process.env.REDIS_URL || null)
 	hafas = withCache(hafas, redisStore(redis))
 
 	const checkHafas = healthCheck
 	const checkRedis = () => new Promise((resolve, reject) => {
 		setTimeout(reject, 1000, new Error('didn\'t receive a PONG'))
-		redis.ping((err, res) => {
-			if (err) reject(err)
-			else resolve(res === 'PONG')
-		})
+		redis.ping().then(
+			res => resolve(res === 'PONG'),
+			reject,
+		)
 	})
 	healthCheck = async () => (
 		(await checkHafas()) === true &&
