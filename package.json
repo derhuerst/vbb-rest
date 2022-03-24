@@ -27,7 +27,7 @@
 		"corser": "^2.0.1",
 		"etag": "^1.8.1",
 		"hafas-client-health-check": "^2.1.1",
-		"hafas-rest-api": "^3.7.0",
+		"hafas-rest-api": "^4.0.0",
 		"ioredis": "^4.28.1",
 		"lodash.omit": "^4.5.0",
 		"nocache": "^2.0.0",
