@@ -22,7 +22,13 @@ const docsRoot = pathJoin(__dirname, 'docs')
 
 const berlinFriedrichstr = '900000100001'
 
-let hafas = createHafas('hafas-rest-api: ' + pkg.name)
+let hafas = createHafas(
+	// seems like `vbb-rest` is being redirected
+	// pkg.name,
+	// seems like these are being blocked
+	// require('crypto').randomBytes(10).toString('hex'),
+	'App/4.5.1 (iPhone; iOS 15.2; Scale/3.00)',
+)
 let healthCheck = createHealthCheck(hafas, berlinFriedrichstr)
 
 if (process.env.REDIS_URL) {
