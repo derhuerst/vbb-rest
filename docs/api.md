@@ -252,8 +252,6 @@ parameter | description | type | default value
 `linesOfStops` | Parse & return lines of each stop/station? | boolean | `false`
 `remarks` | Parse & return hints & warnings? | boolean | `true`
 `language` | Language of the results. | string | `en`
-`includeRelatedStations` | Fetch departures at related stops, e.g. those that belong together on the metro map? | boolean | `true`
-`stopovers` | Fetch & parse next stopovers of each departure? | boolean | `false`
 `suburban` | Include S-Bahn (S)? | boolean | `true`
 `subway` | Include U-Bahn (U)? | boolean | `true`
 `tram` | Include Tram (T)? | boolean | `true`
@@ -321,8 +319,6 @@ parameter | description | type | default value
 `linesOfStops` | Parse & return lines of each stop/station? | boolean | `false`
 `remarks` | Parse & return hints & warnings? | boolean | `true`
 `language` | Language of the results. | string | `en`
-`includeRelatedStations` | Fetch departures at related stops, e.g. those that belong together on the metro map? | boolean | `true`
-`stopovers` | Fetch & parse next stopovers of each departure? | boolean | `false`
 `suburban` | Include S-Bahn (S)? | boolean | `true`
 `subway` | Include U-Bahn (U)? | boolean | `true`
 `tram` | Include Tram (T)? | boolean | `true`
