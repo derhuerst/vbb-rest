@@ -37,7 +37,7 @@ tape.test('/stations works', async (t) => {
 })
 
 tape.test('/stations?query=hauptbah works', async (t) => {
-	const BERLIN_HBF = '900000003201'
+	const BERLIN_HBF = 'de:11000:900003201'
 
 	{
 		const {headers, data} = await fetchWithTestApi({}, '/stations?query=hauptbah', {
