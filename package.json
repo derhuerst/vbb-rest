@@ -31,8 +31,8 @@
 		"hafas-rest-api": "^5.1.0",
 		"ioredis": "^5.0.3",
 		"lodash.omit": "^4.5.0",
-		"nocache": "^2.0.0",
-		"serve-buffer": "^2.0.0",
+		"nocache": "^3.0.4",
+		"serve-buffer": "^3.0.3",
 		"serve-static": "^1.14.1",
 		"vbb-hafas": "^8.0.1",
 		"vbb-lines": "^5.2.0",
@@ -50,11 +50,11 @@
 	},
 	"devDependencies": {
 		"@derhuerst/technical-docs-cli": "^1.1.0",
-		"axios": "^0.27.2",
+		"axios": "~1.1",
 		"eslint": "^8.28.0",
-		"get-port": "^5.1.1",
+		"get-port": "^6.1.2",
 		"ndjson": "^2.0.0",
-		"pino-pretty": "^4.0.0",
+		"pino-pretty": "^9.0.0",
 		"tap-min": "^2.0.0",
 		"tape": "^5.6.1"
 	}
