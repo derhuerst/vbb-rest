@@ -1,9 +1,7 @@
-'use strict'
-
-const tape = require('tape')
-const {parse: ndjsonParser} = require('ndjson')
-const {fetchWithTestApi} = require('./util')
-const {data: allStations} = require('../lib/vbb-stations')
+import tape from 'tape'
+import {parse as ndjsonParser} from 'ndjson'
+import {fetchWithTestApi} from './util.js'
+import {data as allStations} from '../lib/vbb-stations.js'
 
 tape.test('/stations works', async (t) => {
 	const someStationId = Object.keys(allStations)[0]

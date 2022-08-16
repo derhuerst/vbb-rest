@@ -1,6 +1,4 @@
-'use strict'
-
-const {data: lines, timeModified} = require('../lib/vbb-lines')
+import {data as lines, timeModified} from '../lib/vbb-lines.js'
 
 const err400 = (msg) => {
 	const err = new Error(msg)
@@ -52,4 +50,6 @@ Returns a **line from [\`vbb-lines\`](https://npmjs.com/package/vbb-lines)**.`,
 	},
 }
 
-module.exports = lineRoute
+export {
+	lineRoute as route,
+}

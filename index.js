@@ -1,6 +1,4 @@
-'use strict'
-
-const {api, config} = require('./api')
+import {api, config} from './api.js'
 
 api.listen(config.port, (err) => {
 	const {logger} = api.locals

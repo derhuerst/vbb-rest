@@ -3,6 +3,7 @@
 	"name": "vbb-rest",
 	"description": "An HTTP API for Berlin & Brandenburg public transport.",
 	"version": "5.0.4",
+	"type": "module",
 	"main": "index.js",
 	"author": "Jannis R <mail@jannisr.de>",
 	"homepage": "https://github.com/derhuerst/vbb-rest/tree/5",

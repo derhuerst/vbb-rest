@@ -1,7 +1,5 @@
-'use strict'
-
-const generateApiDocs = require('hafas-rest-api/tools/generate-docs')
-const {api} = require('./api')
+import generateApiDocs from 'hafas-rest-api/tools/generate-docs.js'
+import {api} from './api.js'
 
 const HEAD = `\
 # \`v5.vbb.transport.rest\` API documentation

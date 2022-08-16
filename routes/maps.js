@@ -1,5 +1,3 @@
-'use strict'
-
 const err400 = (msg) => {
 	const err = new Error(msg)
 	err.statusCode = 400
@@ -23,14 +21,14 @@ const urls = {
 
 
 
-const maps = (req, res, next) => {
+const mapsRoute = (req, res, next) => {
 	const type = req.params.type
 	if (!(type in urls)) return next(err400('Invalid type.'))
 	res.redirect(urls[type])
 	res.end(urls[type])
 }
 
-maps.openapiPaths = {
+mapsRoute.openapiPaths = {
 	'/maps/{type}': {
 		get: {
 			summary: 'Redirects to PDF public transport maps.',
@@ -50,4 +48,6 @@ maps.openapiPaths = {
 	},
 }
 
-module.exports = maps
+export {
+	mapsRoute as route,
+}

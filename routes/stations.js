@@ -1,12 +1,12 @@
-'use strict'
-
-const computeEtag = require('etag')
-const serveBuffer = require('serve-buffer')
-const autocomplete = require('vbb-stations-autocomplete')
-const parse = require('cli-native').to
-const {filterByKeys: createFilter} = require('vbb-stations')
-const {data: stations, timeModified} = require('../lib/vbb-stations')
-const toNdjsonBuf = require('../lib/to-ndjson-buf')
+import computeEtag from 'etag'
+import serveBuffer from 'serve-buffer'
+import autocomplete from 'vbb-stations-autocomplete'
+import _cliNative from 'cli-native'
+const {to: parse} = _cliNative
+import _vbbStations from 'vbb-stations'
+const {filterByKeys: createFilter} = _vbbStations
+import {data as stations, timeModified} from '../lib/vbb-stations.js'
+import {toNdjsonBuf} from '../lib/to-ndjson-buf.js'
 
 // todo: DRY with vbb-rest/routes/stations.js?
 
@@ -171,4 +171,6 @@ stationsRoute.queryParameters = {
 	},
 }
 
-module.exports = stationsRoute
+export {
+	stationsRoute as route,
+}

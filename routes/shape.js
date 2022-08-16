@@ -1,13 +1,9 @@
-'use strict'
-
-const shapes = require('vbb-shapes')
-
-
+import getShape from 'vbb-shapes'
 
 const shapeRoute = (req, res, next) => {
 	const id = req.params.id
 
-	shapes(id)
+	getShape(id)
 	.then((shape) => {
 		res.json(shape)
 		next()
@@ -51,4 +47,6 @@ Output from [\`require('vbb-shapes')(id)\`](https://github.com/derhuerst/vbb-sha
 	},
 }
 
-module.exports = shapeRoute
+export {
+	shapeRoute as route,
+}

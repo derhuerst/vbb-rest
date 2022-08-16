@@ -1,7 +1,5 @@
-'use strict'
-
-const linesAt  = require('vbb-lines-at')
-const {data: stations} = require('../lib/vbb-stations')
+import linesAt from 'vbb-lines-at'
+import {data as stations} from '../lib/vbb-stations.js'
 
 const err400 = (msg) => {
 	const err = new Error(msg)
@@ -11,7 +9,7 @@ const err400 = (msg) => {
 
 const ibnr = /^\d{6,}$/
 
-const route = (req, res, next) => {
+const stationRoute = (req, res, next) => {
 	const id = req.params.id.trim()
 	const station = stations[id]
 	if (!station) return next(err400('Station not found.'))
@@ -22,7 +20,7 @@ const route = (req, res, next) => {
 	next('/stops/:id') // this doesn't work
 }
 
-route.openapiPaths = {
+stationRoute.openapiPaths = {
 	'/stations/{id}': {
 		get: {
 			summary: 'Returns a stop/station from `vbb-stations`.',
@@ -54,4 +52,6 @@ Returns a stop/station from [\`vbb-stations@7\`](https://github.com/derhuerst/vb
 	},
 }
 
-module.exports = route
+export {
+	stationRoute as route,
+}

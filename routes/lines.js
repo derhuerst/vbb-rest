@@ -1,13 +1,13 @@
-'use strict'
-
-const {statSync} = require('fs')
-const computeEtag = require('etag')
-const omit = require('lodash.omit')
-const parse = require('cli-native').to
-const serveBuffer = require('serve-buffer')
-const {filterByKeys: createFilter} = require('vbb-lines')
-const {data: lines, timeModified} = require('../lib/vbb-lines')
-const toNdjsonBuf = require('../lib/to-ndjson-buf')
+import {statSync} from 'node:fs'
+import computeEtag from 'etag'
+import omit from 'lodash.omit'
+import _cliNative from 'cli-native'
+const {to: parse} = _cliNative
+import serveBuffer from 'serve-buffer'
+import _vbbLines from 'vbb-lines'
+const {filterByKeys: createFilter} = _vbbLines
+import {data as lines, timeModified} from '../lib/vbb-lines.js'
+import {toNdjsonBuf} from '../lib/to-ndjson-buf.js'
 
 const JSON_MIME = 'application/json'
 const NDJSON_MIME = 'application/x-ndjson'
@@ -160,4 +160,6 @@ linesRoute.queryParameters = {
 	},
 }
 
-module.exports = linesRoute
+export {
+	linesRoute as route,
+}

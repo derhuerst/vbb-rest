@@ -1,12 +1,16 @@
-'use strict'
+// todo: use import assertions once they're supported by Node.js & ESLint
+// https://github.com/tc39/proposal-import-assertions
+import {createRequire} from 'node:module'
+const require = createRequire(import.meta.url)
 
-const createApi = require('hafas-rest-api')
-const getPort = require('get-port')
-const {createServer} = require('http')
-const {promisify} = require('util')
-const axios = require('axios')
+import createApi from 'hafas-rest-api'
+import getPort from 'get-port'
+import {createServer} from 'http'
+import {promisify} from 'util'
+import axios from 'axios'
+import {config, hafas} from '../api.js'
+
 const pkg = require('../package.json')
-const {config, hafas} = require('../api')
 
 // adapted from https://github.com/derhuerst/db-rest/blob/5fc72f098e2a7b55f775ec9b1b87703f60de0d84/test/util.js#L11-L44
 const createTestApi = async (cfg) => {
@@ -48,7 +52,7 @@ const fetchWithTestApi = async (cfg, path, opt = {}) => {
 	return res
 }
 
-module.exports = {
+export {
 	createTestApi,
 	fetchWithTestApi,
 }

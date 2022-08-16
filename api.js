@@ -1,23 +1,29 @@
-'use strict'
+// todo: use import assertions once they're supported by Node.js & ESLint
+// https://github.com/tc39/proposal-import-assertions
+import {createRequire} from 'node:module'
+const require = createRequire(import.meta.url)
 
-const {join: pathJoin} = require('path')
-const parse = require('cli-native').to
-const createHafas = require('vbb-hafas')
-const createHealthCheck = require('hafas-client-health-check')
-const Redis = require('ioredis')
-const withCache = require('cached-hafas-client')
-const redisStore = require('cached-hafas-client/stores/redis')
-const createApi = require('hafas-rest-api')
-const serveStatic = require('serve-static')
+import {dirname, join as pathJoin} from 'node:path'
+import {fileURLToPath} from 'node:url'
+import _cliNative from 'cli-native'
+const {to: parse} = _cliNative
+import createHafas from 'vbb-hafas'
+import createHealthCheck from 'hafas-client-health-check'
+import Redis from 'ioredis'
+import withCache from 'cached-hafas-client'
+import redisStore from 'cached-hafas-client/stores/redis.js'
+import createApi from 'hafas-rest-api'
+import serveStatic from 'serve-static'
 
 const pkg = require('./package.json')
-const stations = require('./routes/stations')
-const station = require('./routes/station')
-const lines = require('./routes/lines')
-const line = require('./routes/line')
-const shape = require('./routes/shape')
-const maps = require('./routes/maps')
+import {route as stations} from './routes/stations.js'
+import {route as station} from './routes/station.js'
+import {route as lines} from './routes/lines.js'
+import {route as line} from './routes/line.js'
+import {route as shape} from './routes/shape.js'
+import {route as maps} from './routes/maps.js'
 
+const __dirname = dirname(fileURLToPath(import.meta.url))
 const docsRoot = pathJoin(__dirname, 'docs')
 
 const berlinFriedrichstr = '900000100001'
@@ -89,7 +95,7 @@ const api = createApi(hafas, config, (api) => {
 	}))
 })
 
-module.exports = {
+export {
 	hafas,
 	config,
 	api,
