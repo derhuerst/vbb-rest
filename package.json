@@ -19,7 +19,7 @@
 		"rest"
 	],
 	"engines": {
-		"node": ">=10"
+		"node": ">=18"
 	},
 	"dependencies": {
 		"cached-hafas-client": "^4.0.4",
