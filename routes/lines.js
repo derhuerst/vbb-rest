@@ -17,9 +17,9 @@ const asJsonEtag = computeEtag(asJson)
 const asNdjson = toNdjsonBuf(Object.entries(lines))
 const asNdjsonEtag = computeEtag(asNdjson)
 
-const err400 = (msg) => {
+const err = (msg, statusCode = 500) => {
 	const err = new Error(msg)
-	err.statusCode = 400
+	err.statusCode = statusCode
 	return err
 }
 
