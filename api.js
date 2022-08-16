@@ -7,12 +7,12 @@ import {dirname, join as pathJoin} from 'node:path'
 import {fileURLToPath} from 'node:url'
 import _cliNative from 'cli-native'
 const {to: parse} = _cliNative
-import createHafas from 'vbb-hafas'
+import {createVbbHafas as createHafas} from 'vbb-hafas'
 import createHealthCheck from 'hafas-client-health-check'
 import Redis from 'ioredis'
-import withCache from 'cached-hafas-client'
-import redisStore from 'cached-hafas-client/stores/redis.js'
-import createApi from 'hafas-rest-api'
+import {createCachedHafasClient as withCache} from 'cached-hafas-client'
+import {createRedisStore as redisStore} from 'cached-hafas-client/stores/redis.js'
+import {createHafasRestApi as createApi} from 'hafas-rest-api'
 import serveStatic from 'serve-static'
 
 const pkg = require('./package.json')
@@ -89,7 +89,7 @@ const config = {
 	healthCheck,
 }
 
-const api = createApi(hafas, config, (api) => {
+const api = await createApi(hafas, config, (api) => {
 	api.use('/', serveStatic(docsRoot, {
 		extensions: ['html', 'htm'],
 	}))

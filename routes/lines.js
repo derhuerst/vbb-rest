@@ -104,7 +104,7 @@ Instead of receiving a JSON response, you can request [newline-delimited JSON](h
 			}, {
 				name: 'product',
 				in: 'query',
-				description: 'Filter by [product](https://github.com/public-transport/hafas-client/blob/5/p/vbb/products.js).',
+				description: 'Filter by [product](https://github.com/public-transport/hafas-client/blob/6/p/vbb/products.js).',
 				schema: {
 					type: 'string',
 				},

@@ -1,6 +1,6 @@
 # vbb-rest
 
-***vbb-rest* is a public transport REST API**, a clean alternative to the [VBB HAFAS API](https://github.com/public-transport/hafas-client/blob/5.25.0/p/vbb/readme.md).
+***vbb-rest* is a public transport REST API**, a clean alternative to the [VBB HAFAS API](https://github.com/public-transport/hafas-client/blob/6/p/vbb/readme.md).
 
 [**API documentation**](docs/readme.md)
 
