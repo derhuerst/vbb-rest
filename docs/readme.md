@@ -4,7 +4,7 @@
 
 [![API status](https://badgen.net/uptime-robot/status/m784879513-ed3cc45a865db0ba57af0001)](https://stats.uptimerobot.com/57wNLs39M/784879513)
 
-Because it wraps [an API](https://github.com/public-transport/hafas-client/blob/master/readme.md#background) of VBB, it **includes all local traffic, as well as some long-distance trains running in the area**. Essentially, it returns whatever data the [VBB app](https://www.vbb.de/fahrplan/vbb-app) shows, **including realtime delays and disruptions**.
+Because it wraps [an API](https://github.com/public-transport/hafas-client/blob/5/readme.md#background) of VBB, it **includes all local traffic, as well as some long-distance trains running in the area**. Essentially, it returns whatever data the [VBB app](https://www.vbb.de/fahrplan/vbb-app) shows, **including realtime delays and disruptions**.
 
 - [Getting Started](getting-started.md)
 - [API documentation](api.md)
