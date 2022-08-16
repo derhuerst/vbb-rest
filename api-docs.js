@@ -2,13 +2,13 @@ import {generateApiDocs} from 'hafas-rest-api/tools/generate-docs.js'
 import {api} from './api.js'
 
 const HEAD = `\
-# \`v5.vbb.transport.rest\` API documentation
+# \`v6.vbb.transport.rest\` API documentation
 
-[\`v5.vbb.transport.rest\`](https://v5.vbb.transport.rest/) is a [REST API](https://restfulapi.net). Data is being returned as [JSON](https://www.json.org/).
+[\`v6.vbb.transport.rest\`](https://v6.vbb.transport.rest/) is a [REST API](https://restfulapi.net). Data is being returned as [JSON](https://www.json.org/).
 
 You can just use the API without authentication. There's a [rate limit](https://apisyouwonthate.com/blog/what-is-api-rate-limiting-all-about) of 100 request/minute (burst 200 requests/minute) set up.
 
-[OpenAPI playground](https://petstore.swagger.io/?url=https%3A%2F%2Fv5.vbb.transport.rest%2F.well-known%2Fservice-desc%0A)
+[OpenAPI playground](https://petstore.swagger.io/?url=https%3A%2F%2Fv6.vbb.transport.rest%2F.well-known%2Fservice-desc%0A)
 
 *Note:* The examples snippets in this documentation uses the \`url-encode\` CLI tool of the [\`url-decode-encode-cli\` package](https://www.npmjs.com/package/url-decode-encode-cli) for [URL-encoding](https://de.wikipedia.org/wiki/URL-Encoding).
 `
@@ -121,7 +121,7 @@ const examples = {
 ### Example
 
 \`\`\`shell
-curl 'https://v5.vbb.transport.rest/locations?query=alexanderplatz&results=1' -s | jq
+curl 'https://v6.vbb.transport.rest/locations?query=alexanderplatz&results=1' -s | jq
 \`\`\`
 
 \`\`\`js
@@ -150,7 +150,7 @@ curl 'https://v5.vbb.transport.rest/locations?query=alexanderplatz&results=1' -s
 ### Example
 
 \`\`\`shell
-curl 'https://v5.vbb.transport.rest/locations/nearby?latitude=52.52725&longitude=13.4123' -s | jq
+curl 'https://v6.vbb.transport.rest/locations/nearby?latitude=52.52725&longitude=13.4123' -s | jq
 \`\`\`
 
 \`\`\`js
@@ -185,7 +185,7 @@ curl 'https://v5.vbb.transport.rest/locations/nearby?latitude=52.52725&longitude
 ### Example
 
 \`\`\`shell
-curl 'https://v5.vbb.transport.rest/stops/reachable-from?latitude=52.52446&longitude=13.40812&address=10178+Berlin-Mitte,+Münzstr.+12' -s | jq
+curl 'https://v6.vbb.transport.rest/stops/reachable-from?latitude=52.52446&longitude=13.40812&address=10178+Berlin-Mitte,+Münzstr.+12' -s | jq
 \`\`\`
 
 \`\`\`js
@@ -231,7 +231,7 @@ curl 'https://v5.vbb.transport.rest/stops/reachable-from?latitude=52.52446&longi
 ### Example
 
 \`\`\`shell
-curl 'https://v5.vbb.transport.rest/stops/900000017101' -s | jq
+curl 'https://v6.vbb.transport.rest/stops/900000017101' -s | jq
 \`\`\`
 
 \`\`\`js
@@ -254,7 +254,7 @@ curl 'https://v5.vbb.transport.rest/stops/900000017101' -s | jq
 
 \`\`\`shell
 # at U Kottbusser Tor, in direction U Görlitzer Bahnhof
-curl 'https://v5.vbb.transport.rest/stops/900000013102/departures?direction=900000014101&duration=10' -s | jq
+curl 'https://v6.vbb.transport.rest/stops/900000013102/departures?direction=900000014101&duration=10' -s | jq
 \`\`\`
 
 \`\`\`js
@@ -297,7 +297,7 @@ curl 'https://v5.vbb.transport.rest/stops/900000013102/departures?direction=9000
 
 \`\`\`shell
 # at U Kottbusser Tor, 10 minutes
-curl 'https://v5.vbb.transport.rest/stops/900000013102/arrivals?duration=10' -s | jq
+curl 'https://v6.vbb.transport.rest/stops/900000013102/arrivals?duration=10' -s | jq
 \`\`\`
 `,
 	'/stations': `\
@@ -305,7 +305,7 @@ curl 'https://v5.vbb.transport.rest/stops/900000013102/arrivals?duration=10' -s 
 
 \`\`\`shell
 # autocomplete using vbb-stations-autocomplete
-curl 'https://v5.vbb.transport.rest/stations?query=mehringd' -s | jq
+curl 'https://v6.vbb.transport.rest/stations?query=mehringd' -s | jq
 \`\`\`
 
 \`\`\`js
@@ -340,7 +340,7 @@ curl 'https://v5.vbb.transport.rest/stations?query=mehringd' -s | jq
 
 \`\`\`shell
 # filter vbb-stations
-curl 'https://v5.vbb.transport.rest/stations?location.latitude=52.493567' -s | jq
+curl 'https://v6.vbb.transport.rest/stations?location.latitude=52.493567' -s | jq
 \`\`\`
 
 \`\`\`js
@@ -359,7 +359,7 @@ curl 'https://v5.vbb.transport.rest/stations?location.latitude=52.493567' -s | j
 
 \`\`\`shell
 # filter vbb-stations, get newline-delimited JSON
-curl 'https://v5.vbb.transport.rest/stations?location.latitude=52.493567' -H 'accept: application/x-ndjson' -s | jq
+curl 'https://v6.vbb.transport.rest/stations?location.latitude=52.493567' -H 'accept: application/x-ndjson' -s | jq
 \`\`\`
 `,
 	'/stations/:id': `\
@@ -367,7 +367,7 @@ curl 'https://v5.vbb.transport.rest/stations?location.latitude=52.493567' -H 'ac
 
 \`\`\`shell
 # lookup U Mehringdamm
-curl 'https://v5.vbb.transport.rest/stations/900000017101' -s | jq
+curl 'https://v6.vbb.transport.rest/stations/900000017101' -s | jq
 \`\`\`
 
 \`\`\`js
@@ -398,9 +398,9 @@ curl 'https://v5.vbb.transport.rest/stations/900000017101' -s | jq
 
 \`\`\`shell
 # stop/station to POI
-curl 'https://v5.vbb.transport.rest/journeys?from=900000023201&to.id=900980720&to.name=ATZE+Musiktheater&to.latitude=52.54333&to.longitude=13.35167' -s | jq
+curl 'https://v6.vbb.transport.rest/journeys?from=900000023201&to.id=900980720&to.name=ATZE+Musiktheater&to.latitude=52.54333&to.longitude=13.35167' -s | jq
 # without buses, with ticket info
-curl 'https://v5.vbb.transport.rest/journeys?from=…&to=…&bus=false&tickets=true' -s | jq
+curl 'https://v6.vbb.transport.rest/journeys?from=…&to=…&bus=false&tickets=true' -s | jq
 \`\`\`
 `,
 	'/journeys/:ref': `\
@@ -408,11 +408,11 @@ curl 'https://v5.vbb.transport.rest/journeys?from=…&to=…&bus=false&tickets=t
 
 \`\`\`shell
 # get the refreshToken of a journey
-journey=$(curl 'https://v5.vbb.transport.rest/journeys?from=…&to=…&results=1' -s | jq '.journeys[0]')
+journey=$(curl 'https://v6.vbb.transport.rest/journeys?from=…&to=…&results=1' -s | jq '.journeys[0]')
 refresh_token=$(echo $journey | jq -r '.refreshToken')
 
 # refresh the journey
-curl "https://v5.vbb.transport.rest/journeys/$(echo $refresh_token | url-encode)" -s | jq
+curl "https://v6.vbb.transport.rest/journeys/$(echo $refresh_token | url-encode)" -s | jq
 \`\`\`
 `,
 	'/trips/:id': `\
@@ -420,12 +420,12 @@ curl "https://v5.vbb.transport.rest/journeys/$(echo $refresh_token | url-encode)
 
 \`\`\`shell
 # get the trip ID of a journey leg
-journey=$(curl 'https://v5.vbb.transport.rest/journeys?from=…&to=…&results=1' -s | jq '.journeys[0]')
+journey=$(curl 'https://v6.vbb.transport.rest/journeys?from=…&to=…&results=1' -s | jq '.journeys[0]')
 journey_leg=$(echo $journey | jq -r '.legs[0]')
 trip_id=$(echo $journey_leg | jq -r '.tripId')
 
 # fetch the trip
-curl "https://v5.vbb.transport.rest/trips/$(echo $trip_id | url-encode)" -s | jq
+curl "https://v6.vbb.transport.rest/trips/$(echo $trip_id | url-encode)" -s | jq
 \`\`\`
 `,
 	'/radar': `\
@@ -433,21 +433,21 @@ curl "https://v5.vbb.transport.rest/trips/$(echo $trip_id | url-encode)" -s | jq
 
 \`\`\`shell
 bbox='north=52.52411&west=13.41002&south=52.51942&east=13.41709'
-curl "https://v5.vbb.transport.rest/radar?$bbox&results=10" -s | jq
+curl "https://v6.vbb.transport.rest/radar?$bbox&results=10" -s | jq
 \`\`\`
 `,
 	'/lines': `\
 ### Example
 
 \`\`\`shell
-curl 'https://v5.vbb.transport.rest/lines?operator=796&variants=false' -s | jq
+curl 'https://v6.vbb.transport.rest/lines?operator=796&variants=false' -s | jq
 \`\`\`
 `,
 	'/lines/:id': `\
 ### Example
 
 \`\`\`shell
-curl 'https://v5.vbb.transport.rest/lines/17442_900' -s | jq
+curl 'https://v6.vbb.transport.rest/lines/17442_900' -s | jq
 \`\`\`
 `,
 	'/maps/:type': `\

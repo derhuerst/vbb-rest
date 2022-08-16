@@ -2,7 +2,7 @@ name: build & publish Docker image
 on:
   push:
     branches:
-      - 5
+      - 6
 jobs:
   lint-test:
     name: lint & test
@@ -35,7 +35,7 @@ jobs:
         with:
           push: true
           tags: |
-            derhuerst/vbb-rest:5
+            derhuerst/vbb-rest:6
             derhuerst/vbb-rest:latest
 
       # this is for the public-transport/infrastructure cluster

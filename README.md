@@ -6,7 +6,7 @@
 
 ![vbb-rest architecture diagram](architecture.svg)
 
-[![API status](https://badgen.net/uptime-robot/status/m784879520-16942c5a1e49ba419bcface5)](https://stats.uptimerobot.com/57wNLs39M/784879520)
+[![API status](https://badgen.net/uptime-robot/status/m793274559-f7e6aec36412170133ab2b04)](https://stats.uptimerobot.com/57wNLs39M/793274559)
 ![ISC-licensed](https://img.shields.io/github/license/derhuerst/vbb-rest.svg)
 [![support me via GitHub Sponsors](https://img.shields.io/badge/support%20me-donate-fa7664.svg)](https://github.com/sponsors/derhuerst)
 [![chat with me on Twitter](https://img.shields.io/badge/chat%20with%20me-on%20Twitter-1da1f2.svg)](https://twitter.com/derhuerst)
@@ -18,10 +18,10 @@
 
 ### via Docker
 
-A Docker image [is available as `derhuerst/vbb-rest:5`](https://hub.docker.com/r/derhuerst/vbb-rest:5).
+A Docker image [is available as `derhuerst/vbb-rest:6`](https://hub.docker.com/r/derhuerst/vbb-rest:6).
 
 ```shell
-docker run -d -p 3000:3000 derhuerst/vbb-rest:5
+docker run -d -p 3000:3000 derhuerst/vbb-rest:6
 ```
 
 *Note:* The Docker image does not contain the Redis server.
@@ -31,7 +31,7 @@ docker run -d -p 3000:3000 derhuerst/vbb-rest:5
 ```shell
 git clone https://github.com/derhuerst/vbb-rest.git
 cd vbb-rest
-git checkout 5
+git checkout 6
 npm install --production
 
 redis-server &

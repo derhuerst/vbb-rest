@@ -1,4 +1,4 @@
-# Getting Started with `v5.vbb.transport.rest`
+# Getting Started with `v6.vbb.transport.rest`
 
 Let's walk through the **requests that are necessary to implement a typical basic transit app**.
 
@@ -11,7 +11,7 @@ The following code snippets use [`curl`](https://curl.haxx.se) (a versatile comm
 The `/locations?query=…` route allows you to query stops, points of interest (POIs) & addresses. We're only interested in stops though, so we filter using `poi=false&addresses=false`:
 
 ```shell
-curl 'https://v5.vbb.transport.rest/locations?poi=false&addresses=false&query=südkreuz' -s | jq
+curl 'https://v6.vbb.transport.rest/locations?poi=false&addresses=false&query=südkreuz' -s | jq
 ```
 
 ```js
@@ -48,7 +48,7 @@ curl 'https://v5.vbb.transport.rest/locations?poi=false&addresses=false&query=s�
 Let's fetch 5 of the next departures at *Berlin Südkreuz* (which has the ID `900000058101`):
 
 ```shell
-curl 'https://v5.vbb.transport.rest/stops/900000058101/departures?results=5' -s | jq
+curl 'https://v6.vbb.transport.rest/stops/900000058101/departures?results=5' -s | jq
 ```
 
 ```js
@@ -124,7 +124,7 @@ We call a connection from A to B – at a specific date & time, made up of secti
 Let's fetch 2 journeys from `900000058101` (*Südkreuz*) to `900000110005` (*Senefelderplatz*), departing tomorrow at 2pm (at the time of writing this).
 
 ```shell
-curl 'https://v5.vbb.transport.rest/journeys?from=900000058101&to=900000110005&departure=tomorrow+2pm&results=2' -s | jq
+curl 'https://v6.vbb.transport.rest/journeys?from=900000058101&to=900000110005&departure=tomorrow+2pm&results=2' -s | jq
 ```
 
 ```js
@@ -259,4 +259,4 @@ Note that `departure` includes the `departureDelay`, and `arrival` includes the 
 
 ### 4. more features
 
-These are the basics. Check the full [API docs](api.md) for all features or use the [OpenAPI playground](https://petstore.swagger.io/?url=https%3A%2F%2Fv5.vbb.transport.rest%2F.well-known%2Fservice-desc%0A) to explore the API!
+These are the basics. Check the full [API docs](api.md) for all features or use the [OpenAPI playground](https://petstore.swagger.io/?url=https%3A%2F%2Fv6.vbb.transport.rest%2F.well-known%2Fservice-desc%0A) to explore the API!

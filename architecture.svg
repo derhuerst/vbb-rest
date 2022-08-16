@@ -40,9 +40,9 @@
 	</g>
 	<g transform="translate(164, 20)">
 		<rect class="box" x="0" y="0" width="104" height="20" />
-		<text class="monospace-text" x="26.2" y="13">vbb-rest#5</text>
+		<text class="monospace-text" x="26.2" y="13">vbb-rest#6</text>
 		<text class="normal-text small-text" x="4" y="26">deployed at</text>
-		<text class="monospace-text small-text" x="4" y="36">v5.vbb.transport.rest</text>
+		<text class="monospace-text small-text" x="4" y="36">v6.vbb.transport.rest</text>
 	</g>
 	<g transform="translate(273, 14)">
 		<path class="arrow" d="M0,14 L50,14" />

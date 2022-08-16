@@ -1,6 +1,6 @@
-# `v5.vbb.transport.rest` documentation
+# `v6.vbb.transport.rest` documentation
 
-[`v5.vbb.transport.rest`](https://v5.vbb.transport.rest/) is a [REST API](https://restfulapi.net) for the public transportation system of [Berlin](https://en.wikipedia.org/wiki/Berlin) & [Brandenburg](https://en.wikipedia.org/wiki/Brandenburg), [VBB](https://en.wikipedia.org/wiki/Verkehrsverbund_Berlin-Brandenburg).
+[`v6.vbb.transport.rest`](https://v6.vbb.transport.rest/) is a [REST API](https://restfulapi.net) for the public transportation system of [Berlin](https://en.wikipedia.org/wiki/Berlin) & [Brandenburg](https://en.wikipedia.org/wiki/Brandenburg), [VBB](https://en.wikipedia.org/wiki/Verkehrsverbund_Berlin-Brandenburg).
 
 [![API status](https://badgen.net/uptime-robot/status/m784879513-ed3cc45a865db0ba57af0001)](https://stats.uptimerobot.com/57wNLs39M/784879513)
 
@@ -8,7 +8,7 @@ Because it wraps [a VBB API](https://github.com/public-transport/hafas-client/bl
 
 - [Getting Started](getting-started.md)
 - [API documentation](api.md)
-- [OpenAPI playground](https://petstore.swagger.io/?url=https%3A%2F%2Fv5.vbb.transport.rest%2F.well-known%2Fservice-desc%0A)
+- [OpenAPI playground](https://petstore.swagger.io/?url=https%3A%2F%2Fv6.vbb.transport.rest%2F.well-known%2Fservice-desc%0A)
 
 ## Why use this API?
 
