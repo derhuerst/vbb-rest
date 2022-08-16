@@ -1,7 +1,7 @@
 {
 	"name": "vbb-rest",
 	"description": "An HTTP API for Berlin & Brandenburg public transport.",
-	"version": "0.4.0",
+	"version": "2.0.1",
 	"main": "index.js",
 	"files": [
 		"index.js",
