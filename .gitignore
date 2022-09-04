@@ -8,6 +8,8 @@ npm-debug.log
 package-lock.json
 shrinkwrap.yaml
 
+dist
+
 config/*
 !config/default.json
 

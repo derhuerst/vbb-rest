@@ -1,0 +1,1 @@
+export { sendError400 } from "./error-400";
