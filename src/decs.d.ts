@@ -23,31 +23,31 @@ declare module "vbb-lines" {
 }
 
 declare module "cli-native" {
-   function to(str: string | undefined | null, delimiter: string | undefined | null, json: boolean| undefined | null): unknown
-   function from(str: unknown, delimiter: string| undefined | null, json: boolean| undefined | null): string
+   function to(str: string | undefined | null, delimiter?: string, json?: boolean): unknown
+   function from(str: unknown, delimiter?: string, json?: boolean): string
 }
 
 declare module "serve-buffer" {
 
 
 	interface ServeBufferConfig {
-		contentType: string
-		timeModified: Date
-		etag: string
+		contentType?: string
+		timeModified?: Date
+		etag?: string
 
-		gzip: boolean
-		gzipMaxSize: number
-		brotliCompress:boolean
-		brotliCompressMaxSize: number
-		unmutatedBuffers: boolean
+		gzip?: boolean
+		gzipMaxSize?: number
+		brotliCompress?: boolean
+		brotliCompressMaxSize?: number
+		unmutatedBuffers?: boolean
 
-		cacheControl: boolean
-		maxAge: number
-		immutable: boolean
+		cacheControl?: boolean
+		maxAge?: number
+		immutable?: boolean
 
 		// hook functions for modifying serve-buffer's behavior
-		beforeSend: (req: Request, res: Response, body: string, opt: unknown) => void,
+		beforeSend?: (req: Request, res: Response, body: string, opt: unknown) => void,
 	}
 
-    function serveBuffer(req, res, buf, opt: ServeBufferConfig, cb: () => void): void
+    export default function serveBuffer(req, res, buf, opt: ServeBufferConfig, cb?: () => void): void;
 }

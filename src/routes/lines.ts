@@ -7,7 +7,7 @@ import { Request, Response, NextFunction } from "express";
 import { to as parse } from "cli-native";
 import serveBuffer from "serve-buffer";
 import { filterByKeys as createFilter } from "vbb-lines";
-import { lines } from "../lib/vbb-lines";
+import { lines, timeModified } from "../lib/vbb-lines";
 import { toNdjsonBuf } from "../lib/to-ndjson-buf";
 
 const JSON_MIME = "application/json";
@@ -20,11 +20,12 @@ const asNdjsonEtag = computeEtag(asNdjson);
 
 export function linesRoute(req: Request, res: Response, next: NextFunction) {
 	const q = omit(req.query, ["variants"]);
-	const variants = req.query.variants && parse(req.query.variants);
+	const variantsString = req.query.variants as string;
+	const variants = parse(variantsString) as string[] | undefined;
 
 	const t = req.accepts([JSON_MIME, NDJSON_MIME]);
 	if (t !== JSON_MIME && t !== NDJSON_MIME) {
-		return next(err(JSON + " or " + NDJSON_MIME, 406));
+		return next(`${JSON_MIME} or ${NDJSON_MIME}`);
 	}
 
 	res.setHeader("Last-Modified", timeModified.toUTCString());
@@ -43,7 +44,7 @@ export function linesRoute(req: Request, res: Response, next: NextFunction) {
 		for (let i = 0; i < lines.length; i++) {
 			let l = lines[i];
 			if (!filter(l)) continue;
-			if (variants === false) l = {...l, variants: undefined};
+			if (!variants) l = {...l, variants: undefined};
 			const j = JSON.stringify(l);
 			res.write(`${n++ === 0 ? head : sep}${j}`);
 		}
@@ -155,4 +156,3 @@ linesRoute.queryParameters = {
 	},
 };
 
-module.exports = linesRoute;
