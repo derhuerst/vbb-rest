@@ -23,8 +23,8 @@ declare module "vbb-lines" {
 }
 
 declare module "cli-native" {
-   function to(str: string | undefined | null, delimiter?: string, json?: boolean): unknown
-   function from(str: unknown, delimiter?: string, json?: boolean): string
+   export function to(str: string | undefined | null, delimiter?: string, json?: boolean): unknown
+   export function from(str: unknown, delimiter?: string, json?: boolean): string
 }
 
 declare module "serve-buffer" {
@@ -51,3 +51,22 @@ declare module "serve-buffer" {
 
     export default function serveBuffer(req, res, buf, opt: ServeBufferConfig, cb?: () => void): void;
 }
+
+declare module "vbb-shapes" {
+
+	type Shape = Array<Array<number>>
+	
+	export default function shapes(shapeId: number, formatAsLineString?: boolean): Promise<Shape>;
+ }
+
+ declare module "vbb-stations-autocomplete" {
+
+	interface ShortStation {
+		id: string
+		relevance: number
+		score: number
+	} 
+	
+	export default function autocomplete(query: string, results?: number, fuzzy?: boolean, completion?: boolean): ShortStation[];
+ }
+ 
