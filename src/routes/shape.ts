@@ -1,7 +1,6 @@
 import shapes from "vbb-shapes";
 
-
-const shapeRoute = (req, res, next) => {
+export const shapeRoute = (req, res, next) => {
 	const id = req.params.id;
 
 	shapes(id)
@@ -46,5 +45,3 @@ Output from [`require('vbb-shapes')(id)`](https://github.com/derhuerst/vbb-shape
 		},
 	},
 };
-
-module.exports = shapeRoute;

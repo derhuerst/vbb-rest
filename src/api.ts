@@ -1,20 +1,24 @@
-const {join: pathJoin} = require("path");
-const parse = require("cli-native").to;
-const createHafas = require("vbb-hafas");
-const createHealthCheck = require("hafas-client-health-check");
-const Redis = require("ioredis");
-const withCache = require("cached-hafas-client");
-const redisStore = require("cached-hafas-client/stores/redis");
-const createApi = require("hafas-rest-api");
-const serveStatic = require("serve-static");
+import { join as pathJoin } from "path";
+import { to as parse } from "cli-native";
 
-const pkg = require("./package.json");
-const stations = require("./routes/stations");
-const station = require("./routes/station");
-const lines = require("./routes/lines");
-const line = require("./routes/line");
-const shape = require("./routes/shape");
-const maps = require("./routes/maps");
+import createHafas from "vbb-hafas";
+import createHealthCheck from "hafas-client-health-check";
+
+import Redis from "ioredis";
+import withCache from "cached-hafas-client";
+import redisStore from "cached-hafas-client/stores/redis";
+
+import createApi from "hafas-rest-api";
+import serveStatic from "serve-static";
+
+import { 
+	lineRoute,
+	linesRoute,
+	mapsRoute,
+	shapeRoute,
+	stationRoute,
+	stationsRoute  
+} from "./routes";
 
 const docsRoot = pathJoin(__dirname, "docs");
 
@@ -49,12 +53,12 @@ if (process.env.REDIS_URL) {
 
 const modifyRoutes = (routes) => ({
 	...routes,
-	"/stations": stations,
-	"/stations/:id": station,
-	"/lines": lines,
-	"/lines/:id": line,
-	"/shapes/:id": shape,
-	"/maps/:type": maps,
+	"/stations": stationsRoute,
+	"/stations/:id": stationRoute,
+	"/lines": linesRoute,
+	"/lines/:id": lineRoute,
+	"/shapes/:id": shapeRoute,
+	"/maps/:type": mapsRoute,
 });
 
 const addHafasOpts = (opt, method, req) => {
@@ -63,10 +67,16 @@ const addHafasOpts = (opt, method, req) => {
 	}
 };
 
-const config = {
-	hostname: process.env.HOSTNAME || "localhost",
-	port: process.env.PORT ? parseInt(process.env.PORT) : 3000,
-	name: pkg.name,
+const pkg = {
+	description: "My TS version of VBB transport api",
+	version: "1",
+	homepage: "transport.robin.beer/"
+};
+
+export const config = {
+	hostname: process.env.HOSTNAME || "localhost",
+	port: process.env.PORT ? parseInt(process.env.PORT) : 3000,
+	name: "test",
 	description: pkg.description,
 	version: pkg.version,
 	homepage: pkg.homepage,
@@ -81,13 +91,9 @@ const config = {
 	healthCheck,
 };
 
-const api = createApi(hafas, config, (api) => {
+export const api = createApi(hafas, config, (api) => {
 	api.use("/", serveStatic(docsRoot, {
 		extensions: ["html", "htm"],
 	}));
 });
 
-module.exports = {
-	config,
-	api,
-};

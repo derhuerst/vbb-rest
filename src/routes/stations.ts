@@ -19,19 +19,18 @@ const asNdjson = toNdjsonBuf(Object.entries(stations));
 const asNdjsonEtag = computeEtag(asNdjson);
 
 
-const complete = (req: Request, res: Response, next: NextFunction, q: , onStation, onEnd) => {
+const complete = (req: Request, res: Response, next: NextFunction, q, onStation, onEnd) => {
 
-	req.query
+	req.query;
 	let limit = 3;
 	if (q.limit) {
 		limit = parseInt(q.limit, 10);
 	}
-	const limit = q.results && parseInt(q.results) || 3;
+	limit = q.results && parseInt(q.results) || 3;
 	const fuzzy = parse(q.fuzzy) === true;
 	const completion = parse(q.completion) !== false;
 	const results = autocomplete(q.query, limit, fuzzy, completion);
 
-	const data = [];
 	for (const result of results) {
 		const station = stations[result.id];
 		if (!station) continue;

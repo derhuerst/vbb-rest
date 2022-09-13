@@ -70,3 +70,37 @@ declare module "vbb-shapes" {
 	export default function autocomplete(query: string, results?: number, fuzzy?: boolean, completion?: boolean): ShortStation[];
  }
  
+declare module "vbb-hafas" {
+
+	interface HafasClient {
+		journeys: (from: string, to: string, opt: { results: number }) => Promise<unknown[]>
+	}
+	export default function createHafas(userAgent: string): HafasClient;
+}
+
+
+
+declare module "hafas-client-health-check" {
+
+	interface HafasClient {
+		journeys: (from: string, to: string, opt: { results: number }) => Promise<unknown[]>
+	}
+	
+	export default function createHealthCheck(client: HafasClient, station: string); 
+}
+
+declare module "hafas-rest-api" {
+
+	import { Application } from "express";
+
+	interface Config {
+		hostname:	string,
+		name: 		string,
+		homepage:	string,
+		version: 	string,
+		aboutPage: 	boolean
+	}
+	export default function createApi(hafas: unknown, opt: unknown, attachMiddleware: unknown): Application;
+}
+
+declare module "cached-hafas-client";
