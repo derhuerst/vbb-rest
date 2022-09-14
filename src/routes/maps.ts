@@ -1,3 +1,5 @@
+import { Request, Response, NextFunction } from "express";
+
 const urls = {
 	"bvg": "https://www.bvg.de/de/index.php?section=downloads&cmd=58&download=399", 
 	"bvg-tram": "https://www.bvg.de/de/index.php?section=downloads&cmd=58&download=401", 
@@ -14,11 +16,10 @@ const urls = {
 
 
 
-export const mapsRoute = (req, res, next) => {
+export const mapsRoute = (req: Request, res: Response, next: NextFunction) => {
 	const type = req.params.type;
 	if (!(type in urls)) return next("Invalid type.");
 	res.redirect(urls[type]);
-	res.end(urls[type]);
 };
 
 mapsRoute.openapiPaths = {
