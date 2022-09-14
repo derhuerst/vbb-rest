@@ -1,14 +1,12 @@
 
 import computeEtag from "etag";
-import omit from "lodash.omit";
 import { Request, Response, NextFunction } from "express";
 
-// todo try to remove this
-import { to as parse } from "cli-native";
 import serveBuffer from "serve-buffer";
 import { filterByKeys as createFilter } from "vbb-lines";
 import { lines, timeModified } from "../lib/vbb-lines";
 import { toNdjsonBuf } from "../lib/to-ndjson-buf";
+import { stringToBool } from "../lib/string-to-bool";
 
 const JSON_MIME = "application/json";
 const NDJSON_MIME = "application/x-ndjson";
@@ -19,38 +17,54 @@ const asNdjson = toNdjsonBuf(Object.entries(lines));
 const asNdjsonEtag = computeEtag(asNdjson);
 
 export function linesRoute(req: Request, res: Response, next: NextFunction) {
-	const q = omit(req.query, ["variants"]);
-	const variantsString = req.query.variants as string;
-	const variants = parse(variantsString) as string[] | undefined;
+	const { variants, ...query } = req.query;
+	const includeVariants = stringToBool(variants as string | undefined | null);
 
-	const t = req.accepts([JSON_MIME, NDJSON_MIME]);
-	if (t !== JSON_MIME && t !== NDJSON_MIME) {
+	const acceptedTypes = req.accepts([JSON_MIME, NDJSON_MIME]);
+	if (acceptedTypes !== JSON_MIME && acceptedTypes !== NDJSON_MIME) {
 		return next(`${JSON_MIME} or ${NDJSON_MIME}`);
 	}
 
 	res.setHeader("Last-Modified", timeModified.toUTCString());
 
-	if (Object.keys(q).length === 0) {
-		const data = t === JSON_MIME ? asJson : asNdjson;
-		const etag = t === JSON_MIME ? asJsonEtag : asNdjsonEtag;
+	if (Object.keys(query).length === 0) {
+		const data = acceptedTypes === JSON_MIME ? asJson : asNdjson;
+		const etag = acceptedTypes === JSON_MIME ? asJsonEtag : asNdjsonEtag;
 		serveBuffer(req, res, data, {timeModified, etag});
-	} else {
-		const filter = createFilter(q);
-
-		const head = t === JSON_MIME ? "[\n" : "";
-		const sep = t === JSON_MIME ? ",\n" : "\n";
-		const tail = t === JSON_MIME ? "\n]\n" : "\n";
-		let n = 0;
-		for (let i = 0; i < lines.length; i++) {
-			let l = lines[i];
-			if (!filter(l)) continue;
-			if (!variants) l = {...l, variants: undefined};
-			const j = JSON.stringify(l);
-			res.write(`${n++ === 0 ? head : sep}${j}`);
-		}
-		if (n > 0) res.end(tail);
-		else res.end(head + tail);
+		return;
 	}
+	const fulfillsQuery = createFilter(query);
+
+	const head = acceptedTypes === JSON_MIME ? "[" : "";
+	const sep = acceptedTypes === JSON_MIME ? "," : "";
+	const tail = acceptedTypes === JSON_MIME ? "]" : "";
+
+	let isResponseEmpty = true;
+	for (let i = 0; i < lines.length; i++) {
+		let line = lines[i];
+
+		if (!fulfillsQuery(line)) continue;
+
+		if (!includeVariants) line = { ...line, variants: undefined };
+
+		const json = JSON.stringify(line);
+
+		let prefix = sep;
+
+		if(isResponseEmpty) { 
+			prefix = head;
+			isResponseEmpty = false;
+		}
+
+		res.write(`${prefix}${json}`);
+	}
+
+	if(isResponseEmpty) {
+		res.end(head + tail);
+		return;
+	}
+		
+	res.end(tail);
 }
 
 linesRoute.openapiPaths = {

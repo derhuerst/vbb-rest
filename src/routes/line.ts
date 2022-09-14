@@ -4,6 +4,9 @@ import { sendError400 } from "../error-handling";
 
 export async function lineRoute (req: Request, res: Response, next: NextFunction) {
 	const id = req.params.id.trim();
+
+	if(!id) sendError400(res, "Missing line ID");
+	
 	const line = lines.find(l => l.id === id);
 	if (!line) sendError400(res, "Line not found");
 
