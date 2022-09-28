@@ -18,7 +18,7 @@ This API returns realtime data whenever its upstream, the [API for VBB's mobile 
 
 ### No API Key
 
-You can just use the API without authentication. There's a [rate limit](https://apisyouwonthate.com/blog/what-is-api-rate-limiting-all-about) of 100 requests/minute (burst 200 requests/minute) set up.
+You can just use the API without authentication. There's a [rate limit](https://apisyouwonthate.com/blog/what-is-api-rate-limiting-all-about) of 100 requests/minute (burst 150 requests/minute) set up.
 
 ### CORS
 
