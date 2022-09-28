@@ -38,7 +38,7 @@
 		"vbb-lines-at": "^4.2.0",
 		"vbb-shapes": "^3.2.0",
 		"vbb-stations": "^7.3.0",
-		"vbb-stations-autocomplete": "^4.3.0"
+		"vbb-stations-autocomplete": ">=4.0.0 <4.4.0"
 	},
 	"scripts": {
 		"docs": "node api-docs.js >docs/api.md && build-technical-doc --syntax-stylesheet-url /syntax.css <docs/readme.md >docs/index.html && build-technical-doc --syntax-stylesheet-url /syntax.css <docs/getting-started.md >docs/getting-started.html && build-technical-doc --syntax-stylesheet-url /syntax.css <docs/api.md >docs/api.html && build-technical-doc --syntax-stylesheet github >docs/syntax.css",
