@@ -8,6 +8,8 @@ const {filterByKeys: createFilter} = require('vbb-stations')
 const {data: stations, timeModified} = require('../lib/vbb-stations')
 const toNdjsonBuf = require('../lib/to-ndjson-buf')
 
+// todo: DRY with vbb-rest/routes/stations.js?
+
 const JSON_MIME = 'application/json'
 const NDJSON_MIME = 'application/x-ndjson'
 

@@ -43,11 +43,13 @@ To keep the API running permanently, use tools like [`forever`](https://github.c
 
 ## Related Projects
 
-- [`bvg-rest`](https://github.com/derhuerst/bvg-rest) – A clean REST API wrapping around the BVG API.
-- [`db-rest`](https://github.com/derhuerst/db-rest) – A clean REST API wrapping around the *Deutsche Bahn* API.
-- [`hvv-rest`](https://github.com/derhuerst/hvv-rest) – A clean REST API wrapping around the HVV API.
-- [`hafas-rest-api`](https://github.com/public-transport/hafas-rest-api) – Expose a HAFAS client via an HTTP REST API.
-- [`hafas-client`](https://github.com/public-transport/hafas-client) – JavaScript client for HAFAS public transport APIs.
+- [`vbb-modules`](https://github.com/derhuerst/vbb-modules) – List of JavaScript modules for Berlin & Brandenburg public transport.
+- [`vbb-hafas`](https://github.com/public-transport/vbb-hafas) – JavaScript client for the BVG HAFAS API.
+- [`bvg-rest`](https://github.com/derhuerst/bvg-rest) – A clean REST API wrapping around the BVG API.
+- [`db-rest`](https://github.com/derhuerst/db-rest) – A clean REST API wrapping around the *Deutsche Bahn* API.
+- [`hvv-rest`](https://github.com/derhuerst/hvv-rest) – A clean REST API wrapping around the HVV API.
+- [`hafas-rest-api`](https://github.com/public-transport/hafas-rest-api) – Expose a HAFAS client via an HTTP REST API.
+- [`hafas-client`](https://github.com/public-transport/hafas-client) – JavaScript client for HAFAS public transport APIs.
 
 
 ## Contributing

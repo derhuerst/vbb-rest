@@ -8,5 +8,5 @@ api.listen(config.port, (err) => {
 		logger.error(err)
 		process.exit(1)
 	}
-	logger.info(`Listening on ${config.hostname}:${config.port}.`)
+	logger.info(`istening on ${config.port} (${config.hostname}).`)
 })
