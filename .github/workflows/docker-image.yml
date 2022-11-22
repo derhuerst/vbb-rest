@@ -4,8 +4,22 @@ on:
     branches:
       - 5
 jobs:
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+    - name: setup Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: 16.x
+    - run: npm install
+    - run: npm run lint
+
   build-and-publish:
     name: build & publish Docker image
+    needs: [lint]
     runs-on: ubuntu-latest
     steps:
       - name: check out the repo

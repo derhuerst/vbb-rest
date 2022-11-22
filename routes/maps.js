@@ -7,6 +7,7 @@ const err400 = (msg) => {
 }
 
 const urls = {
+	// eslint-disable-next-line no-mixed-spaces-and-tabs
 	  'bvg': 'https://www.bvg.de/de/index.php?section=downloads&cmd=58&download=399'
 	, 'bvg-tram': 'https://www.bvg.de/de/index.php?section=downloads&cmd=58&download=401'
 	, 'bvg-night': 'https://www.bvg.de/de/index.php?section=downloads&cmd=58&download=398'
