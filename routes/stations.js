@@ -56,6 +56,7 @@ const stationsRoute = (req, res, next) => {
 	}
 
 	res.setHeader('Last-Modified', timeModified.toUTCString())
+	res.setHeader('Content-Type', t)
 
 	const head = t === JSON_MIME ? '{\n' : ''
 	const sep = t === JSON_MIME ? ',\n' : '\n'
@@ -75,7 +76,11 @@ const stationsRoute = (req, res, next) => {
 	if (Object.keys(q).length === 0) {
 		const data = t === JSON_MIME ? asJson : asNdjson
 		const etag = t === JSON_MIME ? asJsonEtag : asNdjsonEtag
-		serveBuffer(req, res, data, {timeModified, etag})
+		serveBuffer(req, res, data, {
+			timeModified,
+			etag,
+			contentType: t,
+		})
 	} else if (q.query) {
 		complete(req, res, next, q, onStation, onEnd)
 	} else {

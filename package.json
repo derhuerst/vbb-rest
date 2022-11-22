@@ -44,11 +44,17 @@
 		"docs": "REDIS_URL='' node api-docs.js >docs/api.md && build-technical-doc --syntax-stylesheet-url /syntax.css <docs/readme.md >docs/index.html && build-technical-doc --syntax-stylesheet-url /syntax.css <docs/getting-started.md >docs/getting-started.html && build-technical-doc --syntax-stylesheet-url /syntax.css <docs/api.md >docs/api.html && build-technical-doc --syntax-stylesheet github >docs/syntax.css",
 		"build": "npm run docs",
 		"start": "node index.js",
-		"lint": "eslint ."
+		"lint": "eslint .",
+		"test": "node test/index.js | tap-min"
 	},
 	"devDependencies": {
 		"@derhuerst/technical-docs-cli": "^1.1.0",
+		"axios": "^0.27.2",
 		"eslint": "^8.28.0",
-		"pino-pretty": "^4.0.0"
+		"get-port": "^5.1.1",
+		"ndjson": "^2.0.0",
+		"pino-pretty": "^4.0.0",
+		"tap-min": "^2.0.0",
+		"tape": "^5.6.1"
 	}
 }

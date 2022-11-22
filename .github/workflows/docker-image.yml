@@ -4,8 +4,8 @@ on:
     branches:
       - 5
 jobs:
-  lint:
-    name: lint
+  lint-test:
+    name: lint & test
     runs-on: ubuntu-latest
     steps:
     - name: checkout
@@ -16,10 +16,11 @@ jobs:
         node-version: 16.x
     - run: npm install
     - run: npm run lint
+    - run: npm test
 
   build-and-publish:
     name: build & publish Docker image
-    needs: [lint]
+    needs: [lint-test]
     runs-on: ubuntu-latest
     steps:
       - name: check out the repo
