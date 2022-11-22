@@ -28,7 +28,6 @@ const complete = (req, res, next, q, onStation, onEnd) => {
 	const completion = parse(q.completion) !== false
 	const results = autocomplete(q.query, limit, fuzzy, completion)
 
-	const data = []
 	for (const result of results) {
 		const station = stations[result.id]
 		if (!station) continue
@@ -126,12 +125,12 @@ Instead of receiving a JSON response, you can request [newline-delimited JSON](h
 			}],
 			responses: {
 				'2XX': {
-					description: 'An array of stops/stations, in the [`vbb-stations@7` format](https://github.com/derhuerst/vbb-stations/blob/7.3.2/readme.md).',
+					description: 'An object of stops/stations in the [`vbb-stations@7` format](https://github.com/derhuerst/vbb-stations/blob/7.3.2/readme.md), with their IDs as the keys.',
 					content: {
 						'application/json': {
 							schema: {
-								type: 'array',
-								items: {type: 'object'}, // todo
+								// todo
+								type: 'object',
 							},
 							// todo: example(s)
 						},
