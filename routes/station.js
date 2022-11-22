@@ -27,7 +27,7 @@ route.openapiPaths = {
 		get: {
 			summary: 'Returns a stop/station from `vbb-stations`.',
 			description: `\
-Returns a stop/station from [\`vbb-stations\`](https://npmjs.com/package/vbb-stations).`,
+Returns a stop/station from [\`vbb-stations@7\`](https://github.com/derhuerst/vbb-stations/tree/7.3.2).`,
 			parameters: [{
 				name: 'id',
 				in: 'path',
@@ -39,7 +39,7 @@ Returns a stop/station from [\`vbb-stations\`](https://npmjs.com/package/vbb-sta
 			}],
 			responses: {
 				'2XX': {
-					description: 'A stop/station, in the [`vbb-stations` format](https://github.com/derhuerst/vbb-stations/blob/master/readme.md).',
+					description: 'A stop/station, in the [`vbb-stations@7` format](https://github.com/derhuerst/vbb-stations/blob/7.3.2/readme.md).',
 					content: {
 						'application/json': {
 							schema: {

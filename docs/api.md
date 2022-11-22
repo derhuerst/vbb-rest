@@ -338,7 +338,7 @@ curl 'https://v5.vbb.transport.rest/stops/900000013102/arrivals?duration=10' -s 
 
 ## `GET /stations`
 
-If the `query` parameter is used, it will use [`vbb-stations-autocomplete`](https://npmjs.com/package/vbb-stations-autocomplete) to autocomplete stops/stations by name. Otherwise, it will filter the stops/stations in [`vbb-stations`](https://npmjs.com/package/vbb-stations).
+If the `query` parameter is used, it will use [`vbb-stations-autocomplete@4`](https://github.com/derhuerst/vbb-stations-autocomplete/tree/4.3.0) to autocomplete stops/stations by name. Otherwise, it will filter the stops/stations in [`vbb-stations@7`](https://github.com/derhuerst/vbb-stations/tree/7.3.2).
 
 Instead of receiving a JSON response, you can request [newline-delimited JSON](http://ndjson.org) by sending `Accept: application/x-ndjson`.
 
@@ -346,7 +346,7 @@ Instead of receiving a JSON response, you can request [newline-delimited JSON](h
 
 parameter | description | type | default value
 ----------|-------------|------|--------------
-`query` | Find stations by name using [`vbb-stations-autocomplete`](https://npmjs.com/package/vbb-stations-autocomplete). | string | –
+`query` | Find stations by name using [`vbb-stations-autocomplete@4`](https://github.com/derhuerst/vbb-stations-autocomplete/tree/4.3.0). | string | –
 `limit` | *If `query` is used:* Return at most `n` stations. | number | `3`
 `fuzzy` | *If `query` is used:* Find stations despite typos. | boolean | `false`
 `completion` | *If `query` is used:* Autocomplete stations. | boolean | `true`
@@ -415,7 +415,7 @@ curl 'https://v5.vbb.transport.rest/stations?location.latitude=52.493567' -H 'ac
 
 ## `GET /stations/:id`
 
-Returns a stop/station from [`vbb-stations`](https://npmjs.com/package/vbb-stations).
+Returns a stop/station from [`vbb-stations@7`](https://github.com/derhuerst/vbb-stations/tree/7.3.2).
 
 ### Example
 

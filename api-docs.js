@@ -53,12 +53,12 @@ Uses [\`hafasClient.departures()\`](https://github.com/public-transport/hafas-cl
 Works like [\`/stops/:id/departures\`](#get-stopsiddepartures), except that it uses [\`hafasClient.arrivals()\`](https://github.com/public-transport/hafas-client/blob/5/docs/arrivals.md) to **arrivals at a stop/station**.
 `,
 	'/stations': `\
-If the \`query\` parameter is used, it will use [\`vbb-stations-autocomplete\`](https://npmjs.com/package/vbb-stations-autocomplete) to autocomplete stops/stations by name. Otherwise, it will filter the stops/stations in [\`vbb-stations\`](https://npmjs.com/package/vbb-stations).
+If the \`query\` parameter is used, it will use [\`vbb-stations-autocomplete@4\`](https://github.com/derhuerst/vbb-stations-autocomplete/tree/4.3.0) to autocomplete stops/stations by name. Otherwise, it will filter the stops/stations in [\`vbb-stations@7\`](https://github.com/derhuerst/vbb-stations/tree/7.3.2).
 
 Instead of receiving a JSON response, you can request [newline-delimited JSON](http://ndjson.org) by sending \`Accept: application/x-ndjson\`.
 `,
 	'/stations/:id': `\
-Returns a stop/station from [\`vbb-stations\`](https://npmjs.com/package/vbb-stations).
+Returns a stop/station from [\`vbb-stations@7\`](https://github.com/derhuerst/vbb-stations/tree/7.3.2).
 `,
 	'/journeys': `\
 Uses [\`hafasClient.journeys()\`](https://github.com/public-transport/hafas-client/blob/5/docs/journeys.md) to **find journeys from A (\`from\`) to B (\`to\`)**.

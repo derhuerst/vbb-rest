@@ -89,13 +89,13 @@ stationsRoute.openapiPaths = {
 		get: {
 			summary: 'Autocompletes stops/stations by name or filters stops/stations.',
 			description: `\
-If the \`query\` parameter is used, it will use [\`vbb-stations-autocomplete\`](https://npmjs.com/package/vbb-stations-autocomplete) to autocomplete stops/stations by name. Otherwise, it will filter the stops/stations in [\`vbb-stations\`](https://npmjs.com/package/vbb-stations).
+If the \`query\` parameter is used, it will use [\`vbb-stations-autocomplete@4\`](https://github.com/derhuerst/vbb-stations-autocomplete/tree/4.3.0) to autocomplete stops/stations by name. Otherwise, it will filter the stops/stations in [\`vbb-stations@7\`](https://github.com/derhuerst/vbb-stations/tree/7.3.2).
 
 Instead of receiving a JSON response, you can request [newline-delimited JSON](http://ndjson.org) by sending \`Accept: application/x-ndjson\`.`,
 			parameters: [{
 				name: 'query',
 				in: 'query',
-				description: 'Find stations by name using [`vbb-stations-autocomplete`](https://npmjs.com/package/vbb-stations-autocomplete).',
+				description: 'Find stations by name using [`vbb-stations-autocomplete@4`](https://github.com/derhuerst/vbb-stations-autocomplete/tree/4.3.0).',
 				schema: {
 					type: 'string',
 				},
@@ -126,7 +126,7 @@ Instead of receiving a JSON response, you can request [newline-delimited JSON](h
 			}],
 			responses: {
 				'2XX': {
-					description: 'An array of stops/stations, in the [`vbb-stations` format](https://github.com/derhuerst/vbb-stations/blob/master/readme.md).',
+					description: 'An array of stops/stations, in the [`vbb-stations@7` format](https://github.com/derhuerst/vbb-stations/blob/7.3.2/readme.md).',
 					content: {
 						'application/json': {
 							schema: {
@@ -144,7 +144,7 @@ Instead of receiving a JSON response, you can request [newline-delimited JSON](h
 
 stationsRoute.queryParameters = {
 	query: {
-		description: 'Find stations by name using [`vbb-stations-autocomplete`](https://npmjs.com/package/vbb-stations-autocomplete).',
+		description: 'Find stations by name using [`vbb-stations-autocomplete@4`](https://github.com/derhuerst/vbb-stations-autocomplete/tree/4.3.0).',
 		type: 'string',
 		defaultStr: '–',
 	},
