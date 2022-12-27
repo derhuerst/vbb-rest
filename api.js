@@ -26,7 +26,7 @@ import {route as maps} from './routes/maps.js'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const docsRoot = pathJoin(__dirname, 'docs')
 
-const berlinFriedrichstr = '900000100001'
+const berlinFriedrichstr = '900100001'
 
 let hafas = createHafas(
 	// seems like `vbb-rest` is being redirected
