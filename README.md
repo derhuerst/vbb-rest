@@ -32,7 +32,8 @@ docker run -d -p 3000:3000 derhuerst/vbb-rest:6
 git clone https://github.com/derhuerst/vbb-rest.git
 cd vbb-rest
 git checkout 6
-npm install --production
+npm install
+npm run build
 
 redis-server &
 npm start
