@@ -3,7 +3,7 @@
 import {createRequire} from 'node:module'
 const require = createRequire(import.meta.url)
 
-import createApi from 'hafas-rest-api'
+import {createHafasRestApi as createApi} from 'hafas-rest-api'
 import getPort from 'get-port'
 import {createServer} from 'http'
 import {promisify} from 'util'
@@ -26,7 +26,7 @@ const createTestApi = async (cfg) => {
 		...cfg,
 	}
 
-	const api = createApi(hafas, cfg, () => {})
+	const api = await createApi(hafas, cfg, () => {})
 	const server = createServer(api)
 
 	const port = await getPort()

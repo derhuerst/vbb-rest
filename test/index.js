@@ -66,6 +66,6 @@ tape.test('/stations?query=hauptbah works', async (t) => {
 		for await (const station of parser) stations.push(station)
 
 		t.ok(stations.find(s => s.id === BERLIN_HBF))
-		t.ok(Object.keys(stations).length > 0)
+		t.ok(stations.length > 0)
 	}
 })
