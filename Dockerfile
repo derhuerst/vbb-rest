@@ -1,4 +1,4 @@
-FROM node:alpine as builder
+FROM node:18-alpine as builder
 WORKDIR /app
 
 # install dependencies
@@ -12,7 +12,7 @@ RUN npm run build
 
 # ---
 
-FROM node:alpine
+FROM node:18-alpine
 LABEL org.opencontainers.image.title="vbb-rest"
 LABEL org.opencontainers.image.description="An HTTP API for Berlin & Brandenburg public transport."
 LABEL org.opencontainers.image.authors="Jannis R <mail@jannisr.de>"
