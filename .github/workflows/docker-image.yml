@@ -55,4 +55,4 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ghcr.io/${{github.repository}}:v5_${{steps.hash.outputs.hash}}_${{steps.datetime.outputs.datetime}}
+          tags: ghcr.io/${{github.repository}}:v6_${{steps.hash.outputs.hash}}_${{steps.datetime.outputs.datetime}}
