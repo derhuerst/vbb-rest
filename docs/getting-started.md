@@ -18,7 +18,7 @@ curl 'https://v6.vbb.transport.rest/locations?poi=false&addresses=false&query=s�
 [
 	{
 		"type": "stop",
-		"id": "900000058101",
+		"id": "900058101",
 		"name": "S Südkreuz",
 		"location": {
 			"type": "location",
@@ -34,7 +34,7 @@ curl 'https://v6.vbb.transport.rest/locations?poi=false&addresses=false&query=s�
 	},
 	{
 		"type": "stop",
-		"id": "900000340912",
+		"id": "900340912",
 		"name": "Hohenselchow, Kreuzung Süd",
 		"location": { /* … */ },
 		"products": { /* … */ },
@@ -45,10 +45,10 @@ curl 'https://v6.vbb.transport.rest/locations?poi=false&addresses=false&query=s�
 
 ### 2. fetch departures at a stop
 
-Let's fetch 5 of the next departures at *Berlin Südkreuz* (which has the ID `900000058101`):
+Let's fetch 5 of the next departures at *Berlin Südkreuz* (which has the ID `900058101`):
 
 ```shell
-curl 'https://v6.vbb.transport.rest/stops/900000058101/departures?results=5' -s | jq
+curl 'https://v6.vbb.transport.rest/stops/900058101/departures?results=5' -s | jq
 ```
 
 ```js
@@ -73,7 +73,7 @@ curl 'https://v6.vbb.transport.rest/stops/900000058101/departures?results=5' -s 
 
 		"stop": {
 			"type": "stop",
-			"id": "900000058100",
+			"id": "900058100",
 			"name": "S Südkreuz/Ostseite",
 			"location": { /* … */ },
 			"products": { /* … */ },
@@ -121,10 +121,10 @@ Note that `when` includes the `delay`, and `plannedWhen` does not.
 
 We call a connection from A to B – at a specific date & time, made up of sections on specific *trips* – `journey`.
 
-Let's fetch 2 journeys from `900000058101` (*Südkreuz*) to `900000110005` (*Senefelderplatz*), departing tomorrow at 2pm (at the time of writing this).
+Let's fetch 2 journeys from `900058101` (*Südkreuz*) to `900110005` (*Senefelderplatz*), departing tomorrow at 2pm (at the time of writing this).
 
 ```shell
-curl 'https://v6.vbb.transport.rest/journeys?from=900000058101&to=900000110005&departure=tomorrow+2pm&results=2' -s | jq
+curl 'https://v6.vbb.transport.rest/journeys?from=900058101&to=900110005&departure=tomorrow+2pm&results=2' -s | jq
 ```
 
 ```js
@@ -147,7 +147,7 @@ curl 'https://v6.vbb.transport.rest/journeys?from=900000058101&to=900000110005&d
 
 			"origin": {
 				"type": "stop",
-				"id": "900000058101",
+				"id": "900058101",
 				"name": "S Südkreuz",
 				"location": { /* … */ },
 				"products": { /* … */ },
@@ -160,7 +160,7 @@ curl 'https://v6.vbb.transport.rest/journeys?from=900000058101&to=900000110005&d
 
 			"destination": {
 				"type": "stop",
-				"id": "900000100020",
+				"id": "900100020",
 				"name": "S+U Potsdamer Platz",
 				"location": { /* … */ },
 				"products": { /* … */ },
@@ -178,7 +178,7 @@ curl 'https://v6.vbb.transport.rest/journeys?from=900000058101&to=900000110005&d
 
 			"origin": {
 				"type": "stop",
-				"id": "900000100020",
+				"id": "900100020",
 				"name": "S+U Potsdamer Platz",
 				"location": { /* … */ },
 				"products": { /* … */ },
@@ -189,7 +189,7 @@ curl 'https://v6.vbb.transport.rest/journeys?from=900000058101&to=900000110005&d
 
 			"destination": {
 				"type": "stop",
-				"id": "900000100720",
+				"id": "900100720",
 				"name": "S+U Potsdamer Platz [U2]",
 				"location": { /* … */ },
 				"products": { /* … */ },
@@ -213,7 +213,7 @@ curl 'https://v6.vbb.transport.rest/journeys?from=900000058101&to=900000110005&d
 
 			"origin": {
 				"type": "stop",
-				"id": "900000100720",
+				"id": "900100720",
 				"name": "S+U Potsdamer Platz [U2]",
 				"location": { /* … */ },
 				"products": { /* … */ },
@@ -226,7 +226,7 @@ curl 'https://v6.vbb.transport.rest/journeys?from=900000058101&to=900000110005&d
 
 			"destination": {
 				"type": "stop",
-				"id": "900000110005",
+				"id": "900110005",
 				"name": "U Senefelderplatz",
 				"location": { /* … */ },
 				"products": { /* … */ },
