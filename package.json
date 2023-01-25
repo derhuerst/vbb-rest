@@ -2,7 +2,7 @@
 	"private": true,
 	"name": "vbb-rest",
 	"description": "An HTTP API for Berlin & Brandenburg public transport.",
-	"version": "6.0.2",
+	"version": "6.0.3",
 	"type": "module",
 	"main": "index.js",
 	"author": "Jannis R <mail@jannisr.de>",

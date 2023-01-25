@@ -23,6 +23,7 @@ LABEL org.opencontainers.image.licenses="ISC"
 WORKDIR /app
 
 # install dependencies
+RUN apk add --update git
 ADD package.json /app
 RUN npm install --production && npm cache clean --force
 
