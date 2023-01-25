@@ -63,7 +63,7 @@ Uses [\`hafasClient.journeys()\`](https://github.com/public-transport/hafas-clie
 
 \`from\` (A), \`to\` (B), and the optional \`via\` must each have one of these formats:
 
-- as stop/station ID (e.g. \`from=900000017101\` for *U Mehringdamm*)
+- as stop/station ID (e.g. \`from=900017101\` for *U Mehringdamm*)
 - as a POI (e.g. \`from.id=900980720&from.latitude=52.54333&from.longitude=13.35167\` for *ATZE Musiktheater*)
 - as an address (e.g. \`from.latitude=52.543333&from.longitude=13.351686&from.address=Voltastr.+17\` for *Voltastr. 17*)
 
@@ -128,7 +128,7 @@ curl 'https://v6.vbb.transport.rest/locations?query=alexanderplatz&results=1' -s
 [
 	{
 		"type": "stop",
-		"id": "900000100003",
+		"id": "900100003",
 		"name": "S+U Alexanderplatz",
 		"location": {
 			"type": "location",
@@ -157,7 +157,7 @@ curl 'https://v6.vbb.transport.rest/locations/nearby?latitude=52.52725&longitude
 [
 	{
 		"type": "stop",
-		"id": "900000100016",
+		"id": "900100016",
 		"name": "U Rosa-Luxemburg-Platz",
 		"location": {
 			"type": "location",
@@ -171,7 +171,7 @@ curl 'https://v6.vbb.transport.rest/locations/nearby?latitude=52.52725&longitude
 	// …
 	{
 		"type": "stop",
-		"id": "900000110005",
+		"id": "900110005",
 		"name": "U Senefelderplatz",
 		"location": { /* … */ },
 		"products": { /* … */ },
@@ -195,7 +195,7 @@ curl 'https://v6.vbb.transport.rest/stops/reachable-from?latitude=52.52446&longi
 		"stations": [
 			{
 				"type": "stop",
-				"id": "900000100051",
+				"id": "900100051",
 				"name": "U Weinmeisterstr.",
 				"location": { /* … */ },
 				"products": { /* … */ },
@@ -208,14 +208,14 @@ curl 'https://v6.vbb.transport.rest/stops/reachable-from?latitude=52.52446&longi
 		"stations": [
 			{
 				"type": "stop",
-				"id": "900000007110",
+				"id": "900007110",
 				"name": "U Bernauer Str.",
 				"location": { /* … */ },
 				"products": { /* … */ }
 			},
 			{
 				"type": "stop",
-				"id": "900000100004",
+				"id": "900100004",
 				"name": "S+U Jannowitzbrücke",
 				"location": { /* … */ },
 				"products": { /* … */ }
@@ -231,13 +231,13 @@ curl 'https://v6.vbb.transport.rest/stops/reachable-from?latitude=52.52446&longi
 ### Example
 
 \`\`\`shell
-curl 'https://v6.vbb.transport.rest/stops/900000017101' -s | jq
+curl 'https://v6.vbb.transport.rest/stops/900017101' -s | jq
 \`\`\`
 
 \`\`\`js
 {
 	"type": "stop",
-	"id": "900000017101",
+	"id": "900017101",
 	"name": "U Mehringdamm",
 	"location": {
 		"type": "location",
@@ -254,7 +254,7 @@ curl 'https://v6.vbb.transport.rest/stops/900000017101' -s | jq
 
 \`\`\`shell
 # at U Kottbusser Tor, in direction U Görlitzer Bahnhof
-curl 'https://v6.vbb.transport.rest/stops/900000013102/departures?direction=900000014101&duration=10' -s | jq
+curl 'https://v6.vbb.transport.rest/stops/900013102/departures?direction=900014101&duration=10' -s | jq
 \`\`\`
 
 \`\`\`js
@@ -279,7 +279,7 @@ curl 'https://v6.vbb.transport.rest/stops/900000013102/departures?direction=9000
 
 		"stop": {
 			"type": "stop",
-			"id": "900000013102",
+			"id": "900013102",
 			"name": "U Kottbusser Tor",
 			"location": { /* … */ },
 			"products": { /* … */ },
@@ -297,7 +297,7 @@ curl 'https://v6.vbb.transport.rest/stops/900000013102/departures?direction=9000
 
 \`\`\`shell
 # at U Kottbusser Tor, 10 minutes
-curl 'https://v6.vbb.transport.rest/stops/900000013102/arrivals?duration=10' -s | jq
+curl 'https://v6.vbb.transport.rest/stops/900013102/arrivals?duration=10' -s | jq
 \`\`\`
 `,
 	'/stations': `\
@@ -311,16 +311,16 @@ curl 'https://v6.vbb.transport.rest/stations?query=mehringd' -s | jq
 \`\`\`js
 {
 	"type": "station",
-	"id": "900000017101",
+	"id": "de:11000:900017101",
 	"name": "U Mehringdamm (Berlin)",
 	"weight": 12994,
 	"location": { /* … */ },
 	"stops": [
 		{
 			"type": "stop",
-			"id": "070101001002",
+			"id": "de:11000:900017101::1",
 			"name": "U Mehringdamm (Berlin)",
-			"station": "900000017101",
+			"station": "de:11000:900017101",
 			"location": { /* … */ },
 		},
 		// …
@@ -345,9 +345,9 @@ curl 'https://v6.vbb.transport.rest/stations?location.latitude=52.493567' -s | j
 
 \`\`\`js
 {
-	"900000017101": {
+	"de:11000:900017101": {
 		"type": "station",
-		"id": "900000017101",
+		"id": "de:11000:900017101",
 		"name": "U Mehringdamm (Berlin)",
 		"weight": 12994,
 		"location": { /* … */ },
@@ -367,28 +367,18 @@ curl 'https://v6.vbb.transport.rest/stations?location.latitude=52.493567' -H 'ac
 
 \`\`\`shell
 # lookup U Mehringdamm
-curl 'https://v6.vbb.transport.rest/stations/900000017101' -s | jq
+curl 'https://v6.vbb.transport.rest/stations/de:11000:900017101' -s | jq
 \`\`\`
 
 \`\`\`js
 {
 	"type": "station",
-	"id": "8010159",
-	"additionalIds": ["8098159"],
-	"ril100": "LH",
-	"nr": 2498,
-	"name": "Halle (Saale) Hbf",
-	"weight": 815.6,
+	"id": "de:11000:900017101",
+	"name": "U Mehringdamm (Berlin)",
+	"weight": 6068.5,
 	"location": { /* … */ },
-	"operator": { /* … */ },
-	"address": { /* … */ },
-	"ril100Identifiers": [
-		{
-			"rilIdentifier": "LH",
-			// …
-		},
-		// …
-	],
+	"stops": [ /* … */ ],
+	"lines": [ /* … */ ],
 	// …
 }
 \`\`\`
@@ -398,7 +388,7 @@ curl 'https://v6.vbb.transport.rest/stations/900000017101' -s | jq
 
 \`\`\`shell
 # stop/station to POI
-curl 'https://v6.vbb.transport.rest/journeys?from=900000023201&to.id=900980720&to.name=ATZE+Musiktheater&to.latitude=52.54333&to.longitude=13.35167' -s | jq
+curl 'https://v6.vbb.transport.rest/journeys?from=900023201&to.id=900980720&to.name=ATZE+Musiktheater&to.latitude=52.54333&to.longitude=13.35167' -s | jq
 # without buses, with ticket info
 curl 'https://v6.vbb.transport.rest/journeys?from=…&to=…&bus=false&tickets=true' -s | jq
 \`\`\`
