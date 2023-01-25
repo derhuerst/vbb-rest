@@ -53,7 +53,7 @@ tape.test('/stations?query=berlin%20hau works', async (t) => {
 	}
 
 	{
-		const {headers, data} = await fetchWithTestApi({}, '/stations?query=hauptbah', {
+		const {headers, data} = await fetchWithTestApi({}, '/stations?query=berlin%20hau', {
 			headers: {
 				'accept': 'application/x-ndjson',
 			},
