@@ -6,6 +6,9 @@
 	"type": "module",
 	"main": "index.js",
 	"author": "Jannis R <mail@jannisr.de>",
+	"contributors": [
+		"Sophia Mersmann <sophia.mersmann1@gmail.com>"
+	],
 	"homepage": "https://github.com/derhuerst/vbb-rest/tree/6",
 	"repository": "derhuerst/vbb-rest",
 	"bugs": "https://github.com/derhuerst/vbb-rest/issues",
