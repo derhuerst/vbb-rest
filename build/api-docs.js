@@ -1,5 +1,5 @@
 import {generateApiDocs} from 'hafas-rest-api/tools/generate-docs.js'
-import {api} from './api.js'
+import {api} from '../api.js'
 
 const HEAD = `\
 # \`v6.vbb.transport.rest\` API documentation
@@ -449,42 +449,44 @@ curl -L -o bvg-tram-map.pdf 'https://3.vbb.transport.rest/maps/bvg-tram'
 `,
 }
 
-const {
-	listOfRoutes,
-	routes,
-	tail,
-} = generateApiDocs(api.routes)
+const generateMarkdownApiDocs = async function* (dest) {
+	const {
+		listOfRoutes,
+		routes,
+		tail,
+	} = generateApiDocs(api.routes)
 
-const sortedRoutes = Object.entries(routes)
-.sort(([routeA], [routeB]) => {
-	const iA = order.indexOf(routeA)
-	const iB = order.indexOf(routeB)
-	if (iA >= 0 && iB >= 0) return iA - iB
-	if (iA < 0 && iB >= 0) return 1
-	if (iB < 0 && iA >= 0) return -1
-	return 0
-})
+	const sortedRoutes = Object.entries(routes)
+	.sort(([routeA], [routeB]) => {
+		const iA = order.indexOf(routeA)
+		const iB = order.indexOf(routeB)
+		if (iA >= 0 && iB >= 0) return iA - iB
+		if (iA < 0 && iB >= 0) return 1
+		if (iB < 0 && iA >= 0) return -1
+		return 0
+	})
 
-const write = process.stdout.write.bind(process.stdout)
+	yield HEAD
+	yield `\n\n`
 
-write(HEAD)
-write(`\n\n`)
+	yield listOfRoutes
+	yield `\n\n`
 
-write(listOfRoutes)
-write(`\n\n`)
-
-for (const [route, params] of sortedRoutes) {
-	write(`## \`GET ${route}\`\n\n`)
-	write(descriptions[route] || '')
-	if (params) {
-		write(`
-### Query Parameters
-`)
-		write(params)
+	for (const [route, params] of sortedRoutes) {
+		yield `## \`GET ${route}\`\n\n`
+		yield descriptions[route] || ''
+		if (params) {
+			yield `\n### Query Parameters\n`
+			yield params
+		}
+		if (examples[route]) {
+			yield '\n' + examples[route]
+		}
+		yield `\n\n`
 	}
-	if (examples[route]) {
-		write('\n' + examples[route])
-	}
-	write(`\n\n`)
+	yield tail
 }
-write(tail)
+
+export {
+	generateMarkdownApiDocs,
+}
