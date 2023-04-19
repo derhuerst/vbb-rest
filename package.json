@@ -59,5 +59,6 @@
 		"pino-pretty": "^9.0.0",
 		"tap-min": "^2.0.0",
 		"tape": "^5.6.1"
-	}
+	},
+	"goatCounterUrl": "https://72afc0822cce0642af90.goatcounter.com/count"
 }

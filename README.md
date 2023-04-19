@@ -33,6 +33,8 @@ git clone https://github.com/derhuerst/vbb-rest.git
 cd vbb-rest
 git checkout 6
 npm install
+
+export HOSTNAME='my-vbb-rest-api.example.org'
 npm run build
 
 redis-server &

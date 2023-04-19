@@ -1,15 +1,23 @@
 #!/usr/bin/env node
 
+// todo: use import assertions once they're supported by Node.js & ESLint
+// https://github.com/tc39/proposal-import-assertions
+import {createRequire} from 'module'
+const require = createRequire(import.meta.url)
+
 import {dirname, join} from 'node:path'
 import {pipeline} from 'node:stream/promises'
 import {createReadStream, createWriteStream} from 'node:fs'
 import {copyFile} from 'node:fs/promises'
 import _technicalDocsCli from '@derhuerst/technical-docs-cli'
+import {config} from '../api.js'
 const {
 	createMarkdownRenderer,
 	determineSyntaxStylesheetPath,
 } = _technicalDocsCli
 import {generateMarkdownApiDocs} from './api-docs.js'
+
+const pkg = require('../package.json')
 
 const BASE_URL = new URL('..', import.meta.url).href
 const API_DOCS_DEST = 'docs/api.md'
@@ -34,6 +42,23 @@ const SYNTAX_STYLESHEET_DEST = 'docs/syntax.css'
 
 const markdownRenderingCfg = {
 	syntaxStylesheetUrl: SYNTAX_STYLESHEET_URL,
+	additionalHeadChildren: (h) => {
+		if (!pkg.goatCounterUrl) return []
+		return [
+			// https://72afc0822cce0642af90.goatcounter.com/help/skip-dev#skip-loading-staging-beta-sites-312
+			h('script', `
+if (window.location.host !== ${JSON.stringify(config.hostname)}) {
+    window.goatcounter = {no_onload: true}
+}
+`),
+			// https://72afc0822cce0642af90.goatcounter.com/help/start
+			h('script', {
+				src: '//gc.zgo.at/count.js',
+				async: true,
+				'data-goatcounter': pkg.goatCounterUrl,
+			}),
+		]
+	},
 }
 for (const [src, dest] of DOCS_TO_RENDER) {
 	console.info(`rendering Markdown file ${src} to HTML file ${dest}`)
