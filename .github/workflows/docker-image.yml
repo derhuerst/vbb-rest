@@ -5,7 +5,7 @@ on:
       - 6
 jobs:
   lint-test:
-    name: lint & test
+    name: lint, build & test
     runs-on: ubuntu-latest
     steps:
     - name: checkout
@@ -16,6 +16,7 @@ jobs:
         node-version: 18.x
     - run: npm install
     - run: npm run lint
+    - run: npm run build
     - run: npm test
 
   build-and-publish:
