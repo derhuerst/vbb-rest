@@ -9,9 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: setup Node
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v3
       with:
         node-version: 18.x
     - run: npm install
@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check out the repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: configure Docker to use buildx
         uses: docker/setup-buildx-action@v2
       - name: log in to Docker Hub
