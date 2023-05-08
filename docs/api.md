@@ -657,6 +657,7 @@ curl -L -o bvg-tram-map.pdf 'https://3.vbb.transport.rest/maps/bvg-tram'
 
 parameter | description | type | default value
 ----------|-------------|------|--------------
+`query` | line name or Fahrtnummer | string | `*`
 `when` | Date & time to get trips for. See [date/time parameters](#datetime-parameters). | date+time | *now*
 `fromWhen` | Together with untilWhen, forms a time frame to get trips for. Mutually exclusive with `when`. See [date/time parameters](#datetime-parameters). | date+time | *now*
 `untilWhen` | Together with fromWhen, forms a time frame to get trips for. Mutually exclusive with `when`. See [date/time parameters](#datetime-parameters). | date+time | *now*
