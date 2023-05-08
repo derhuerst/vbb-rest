@@ -1,5 +1,9 @@
 # vbb-rest
 
+**Deprecated. Please use the [latest version](https://github.com/derhuerst/vbb-rest) of this API.**
+
+---
+
 ***vbb-rest* is a public transport REST API**, a clean alternative to the [VBB HAFAS API](https://github.com/public-transport/hafas-client/blob/5.25.0/p/vbb/readme.md).
 
 [**API documentation**](docs/readme.md)
