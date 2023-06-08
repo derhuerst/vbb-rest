@@ -597,7 +597,7 @@ parameter | description | type | default value
 ----------|-------------|------|--------------
 `id` | Filter by ID. | string | –
 `name` | Filter by name. | string | –
-`operator` | Filter by operator id. See [`agency.txt`](https://vbb-gtfs.jannisr.de/latest/agency.txt). | string | –
+`operator` | Filter by operator id. See [`agency.csv`](https://vbb-gtfs.jannisr.de/latest/agency.csv). | string | –
 `variants` | Return stops/stations along the line? | boolean | `true`
 `mode` | Filter by mode of transport as in [*Friendly Public Transport Format* `1.2.1`](https://github.com/public-transport/friendly-public-transport-format/blob/1.2.1/spec/readme.md). | string | –
 `product` | Filter by [product](https://github.com/public-transport/hafas-client/blob/5/p/vbb/products.js). | string | –
