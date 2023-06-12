@@ -82,7 +82,7 @@ Instead of receiving a JSON response, you can request [newline-delimited JSON](h
 			}, {
 				name: 'operator',
 				in: 'query',
-				description: 'Filter by operator id. See [`agency.txt`](https://vbb-gtfs.jannisr.de/latest/agency.txt).',
+				description: 'Filter by operator id. See [`agency.csv`](https://vbb-gtfs.jannisr.de/latest/agency.csv).',
 				schema: {
 					type: 'string',
 				},
