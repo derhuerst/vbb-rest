@@ -139,7 +139,7 @@ linesRoute.queryParameters = {
 		defaultStr: '–',
 	},
 	'operator': {
-		description: 'Filter by operator id. See [`agency.txt`](https://vbb-gtfs.jannisr.de/latest/agency.txt).',
+		description: 'Filter by operator id. See [`agency.csv`](https://vbb-gtfs.jannisr.de/latest/agency.csv).',
 		type: 'string',
 		defaultStr: '–',
 	},
