@@ -64,7 +64,7 @@ Uses [\`hafasClient.journeys()\`](https://github.com/public-transport/hafas-clie
 \`from\` (A), \`to\` (B), and the optional \`via\` must each have one of these formats:
 
 - as stop/station ID (e.g. \`from=900017101\` for *U Mehringdamm*)
-- as a POI (e.g. \`from.id=900980720&from.latitude=52.54333&from.longitude=13.35167\` for *ATZE Musiktheater*)
+- as a POI (e.g. \`from.id=900980720&from.latitude=52.54333&from.longitude=13.35167&from.name=ATZE+Musiktheater\` for *ATZE Musiktheater*)
 - as an address (e.g. \`from.latitude=52.543333&from.longitude=13.351686&from.address=Voltastr.+17\` for *Voltastr. 17*)
 
 ### Pagination
