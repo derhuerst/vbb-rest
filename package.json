@@ -57,7 +57,7 @@
 		"get-port": "^6.1.2",
 		"ndjson": "^2.0.0",
 		"pino-pretty": "^9.0.0",
-		"tap-min": "^2.0.0",
+		"tap-min": "^3.0.0",
 		"tape": "^5.6.1"
 	},
 	"goatCounterUrl": "https://72afc0822cce0642af90.goatcounter.com/count"
