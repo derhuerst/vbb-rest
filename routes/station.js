@@ -1,5 +1,12 @@
+// todo: use import assertions once they're supported by Node.js & ESLint
+// https://github.com/tc39/proposal-import-assertions
+import {createRequire} from 'module'
+const require = createRequire(import.meta.url)
+
 import linesAt from 'vbb-lines-at'
 import {data as stations} from '../lib/vbb-stations.js'
+
+const stationsPkg = require('vbb-stations/package.json')
 
 const err400 = (msg) => {
 	const err = new Error(msg)
@@ -25,7 +32,7 @@ stationRoute.openapiPaths = {
 		get: {
 			summary: 'Returns a stop/station from `vbb-stations`.',
 			description: `\
-Returns a stop/station from [\`vbb-stations@7\`](https://github.com/derhuerst/vbb-stations/tree/7.3.2).`,
+Returns a stop/station from [\`vbb-stations@${stationsPkg.version}\`](https://github.com/derhuerst/vbb-stations/tree/${stationsPkg.version}).`,
 			parameters: [{
 				name: 'id',
 				in: 'path',
@@ -37,7 +44,7 @@ Returns a stop/station from [\`vbb-stations@7\`](https://github.com/derhuerst/vb
 			}],
 			responses: {
 				'2XX': {
-					description: 'A stop/station, in the [`vbb-stations@7` format](https://github.com/derhuerst/vbb-stations/blob/7.3.2/readme.md).',
+					description: `A stop/station, in the [\`vbb-stations@${stationsPkg.version}\` format](https://github.com/derhuerst/vbb-stations/blob/${stationsPkg.version}/readme.md).`,
 					content: {
 						'application/json': {
 							schema: {

@@ -1,3 +1,8 @@
+// todo: use import assertions once they're supported by Node.js & ESLint
+// https://github.com/tc39/proposal-import-assertions
+import {createRequire} from 'module'
+const require = createRequire(import.meta.url)
+
 import computeEtag from 'etag'
 import serveBuffer from 'serve-buffer'
 import autocomplete from 'vbb-stations-autocomplete'
@@ -7,6 +12,9 @@ import _vbbStations from 'vbb-stations'
 const {filterByKeys: createFilter} = _vbbStations
 import {data as stations, timeModified} from '../lib/vbb-stations.js'
 import {toNdjsonBuf} from '../lib/to-ndjson-buf.js'
+
+const autocompletePkg = require('vbb-stations-autocomplete/package.json')
+const stationsPkg = require('vbb-stations/package.json')
 
 // todo: DRY with vbb-rest/routes/stations.js?
 
@@ -95,13 +103,13 @@ stationsRoute.openapiPaths = {
 		get: {
 			summary: 'Autocompletes stops/stations by name or filters stops/stations.',
 			description: `\
-If the \`query\` parameter is used, it will use [\`vbb-stations-autocomplete@4\`](https://github.com/derhuerst/vbb-stations-autocomplete/tree/4.3.0) to autocomplete stops/stations by name. Otherwise, it will filter the stops/stations in [\`vbb-stations@7\`](https://github.com/derhuerst/vbb-stations/tree/7.3.2).
+If the \`query\` parameter is used, it will use [\`vbb-stations-autocomplete@${autocompletePkg.version}\`](https://github.com/derhuerst/vbb-stations-autocomplete/tree/${autocompletePkg.version}) to autocomplete stops/stations by name. Otherwise, it will filter the stops/stations in [\`vbb-stations@${stationsPkg.version}\`](https://github.com/derhuerst/vbb-stations/tree/${stationsPkg.version}).
 
 Instead of receiving a JSON response, you can request [newline-delimited JSON](http://ndjson.org) by sending \`Accept: application/x-ndjson\`.`,
 			parameters: [{
 				name: 'query',
 				in: 'query',
-				description: 'Find stations by name using [`vbb-stations-autocomplete@4`](https://github.com/derhuerst/vbb-stations-autocomplete/tree/4.3.0).',
+				description: `Find stations by name using [\`vbb-stations-autocomplete@${autocompletePkg.version}\`](https://github.com/derhuerst/vbb-stations-autocomplete/tree/${autocompletePkg.version}).`,
 				schema: {
 					type: 'string',
 				},
@@ -132,7 +140,7 @@ Instead of receiving a JSON response, you can request [newline-delimited JSON](h
 			}],
 			responses: {
 				'2XX': {
-					description: 'An object of stops/stations in the [`vbb-stations@7` format](https://github.com/derhuerst/vbb-stations/blob/7.3.2/readme.md), with their IDs as the keys.',
+					description: `An object of stops/stations in the [\`vbb-stations@${stationsPkg.version}\` format](https://github.com/derhuerst/vbb-stations/blob/${stationsPkg.version}/readme.md), with their IDs as the keys.`,
 					content: {
 						'application/json': {
 							schema: {
@@ -150,7 +158,7 @@ Instead of receiving a JSON response, you can request [newline-delimited JSON](h
 
 stationsRoute.queryParameters = {
 	query: {
-		description: 'Find stations by name using [`vbb-stations-autocomplete@4`](https://github.com/derhuerst/vbb-stations-autocomplete/tree/4.3.0).',
+		description: `Find stations by name using [\`vbb-stations-autocomplete@${autocompletePkg.version}\`](https://github.com/derhuerst/vbb-stations-autocomplete/tree/${autocompletePkg.version}).`,
 		type: 'string',
 		defaultStr: '–',
 	},

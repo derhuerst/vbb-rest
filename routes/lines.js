@@ -1,3 +1,8 @@
+// todo: use import assertions once they're supported by Node.js & ESLint
+// https://github.com/tc39/proposal-import-assertions
+import {createRequire} from 'module'
+const require = createRequire(import.meta.url)
+
 import {statSync} from 'node:fs'
 import computeEtag from 'etag'
 import omit from 'lodash.omit'
@@ -8,6 +13,8 @@ import _vbbLines from 'vbb-lines'
 const {filterByKeys: createFilter} = _vbbLines
 import {data as lines, timeModified} from '../lib/vbb-lines.js'
 import {toNdjsonBuf} from '../lib/to-ndjson-buf.js'
+
+const stationsPkg = require('vbb-stations/package.json')
 
 const JSON_MIME = 'application/json'
 const NDJSON_MIME = 'application/x-ndjson'
@@ -111,7 +118,7 @@ Instead of receiving a JSON response, you can request [newline-delimited JSON](h
 			}],
 			responses: {
 				'2XX': {
-					description: 'An array of stops/stations, in the [`vbb-stations@7` format](https://github.com/derhuerst/vbb-stations/blob/7.3.2/readme.md).',
+					description: `An array of stops/stations, in the [\`vbb-stations@${stationsPkg.version}\` format](https://github.com/derhuerst/vbb-stations/blob/${stationsPkg.version}/readme.md).`,
 					content: {
 						'application/json': {
 							schema: {
