@@ -36,7 +36,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
       - name: build Docker image & push to Docker Hub
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           push: true
           platforms: linux/amd64,linux/arm64
@@ -61,7 +61,7 @@ jobs:
         id: datetime
         run: echo "::set-output name=datetime::$(date -u +'%Y-%m-%dT%H.%M.%SZ')"
       - name: push Docker image to GitHub Registry
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           push: true
           platforms: linux/amd64,linux/arm64
