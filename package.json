@@ -2,7 +2,7 @@
 	"private": true,
 	"name": "vbb-rest",
 	"description": "An HTTP API for Berlin & Brandenburg public transport.",
-	"version": "6.0.7",
+	"version": "7.0.0-alpha.3",
 	"type": "module",
 	"main": "index.js",
 	"author": "Jannis R <mail@jannisr.de>",
@@ -10,7 +10,7 @@
 		"Sophia Mersmann <sophia.mersmann1@gmail.com>",
 		"Traines <git@traines.eu>"
 	],
-	"homepage": "https://github.com/derhuerst/vbb-rest/tree/6",
+	"homepage": "https://github.com/derhuerst/vbb-rest/tree/7",
 	"repository": "derhuerst/vbb-rest",
 	"bugs": "https://github.com/derhuerst/vbb-rest/issues",
 	"license": "ISC",
@@ -24,7 +24,7 @@
 		"rest"
 	],
 	"engines": {
-		"node": ">=18"
+		"node": ">=20"
 	},
 	"dependencies": {
 		"cached-hafas-client": "^5.0.1",
@@ -32,7 +32,7 @@
 		"corser": "^2.0.1",
 		"etag": "^1.8.1",
 		"hafas-client-health-check": "^2.1.1",
-		"hafas-rest-api": "^5.1.0",
+		"hafas-rest-api": "^6.0.0-alpha.2",
 		"ioredis": "^5.0.3",
 		"lodash.omit": "^4.5.0",
 		"serve-buffer": "^3.0.3",
@@ -57,9 +57,9 @@
 		"@derhuerst/technical-docs-cli": "^1.5.0",
 		"axios": "^1.6.7",
 		"eslint": "^8.28.0",
-		"get-port": "^6.1.2",
+		"get-port": "^7.0.0",
 		"ndjson": "^2.0.0",
-		"pino-pretty": "^9.0.0",
+		"pino-pretty": "^10.3.1",
 		"tap-min": "^3.0.0",
 		"tape": "^5.6.1"
 	},

@@ -1,17 +1,20 @@
-# Getting Started with `v6.vbb.transport.rest`
+# Getting Started with `v7.vbb.transport.rest`
 
 Let's walk through the **requests that are necessary to implement a typical basic transit app**.
 
 *Note:* To properly & securely handle user input containing URL-unsafe characters, always [URL-encode](https://en.wikipedia.org/wiki/Percent-encoding) your query parameters!
 
-The following code snippets use [`curl`](https://curl.haxx.se) (a versatile command line HTTP tool) and [`jq`](https://stedolan.github.io/jq/) (the command line swiss army knife for processing JSON).
+The following code snippets use [`curl`](https://curl.haxx.se) (a versatile command line HTTP tool) and [`jq`](https://stedolan.github.io/jq/) (the command line swiss army knife for processing JSON).
+
+> [!NOTE]
+> The following `curl` commands use the `-L` flag to follow redirects, because some URLs redirect to similar ones. In your HTTP client, make sure to follow redirects, too.
 
 ### 1. search for stops
 
 The `/locations?query=…` route allows you to query stops, points of interest (POIs) & addresses. We're only interested in stops though, so we filter using `poi=false&addresses=false`:
 
 ```shell
-curl 'https://v6.vbb.transport.rest/locations?poi=false&addresses=false&query=südkreuz' -s | jq
+curl 'https://v7.vbb.transport.rest/locations?poi=false&addresses=false&query=südkreuz' -fsSL | jq
 ```
 
 ```js
@@ -48,7 +51,7 @@ curl 'https://v6.vbb.transport.rest/locations?poi=false&addresses=false&query=s�
 Let's fetch 5 of the next departures at *Berlin Südkreuz* (which has the ID `900058101`):
 
 ```shell
-curl 'https://v6.vbb.transport.rest/stops/900058101/departures?results=5' -s | jq
+curl 'https://v7.vbb.transport.rest/stops/900058101/departures?results=5' -fsSL | jq
 ```
 
 ```js
@@ -124,7 +127,7 @@ We call a connection from A to B – at a specific date & time, made up of secti
 Let's fetch 2 journeys from `900058101` (*Südkreuz*) to `900110005` (*Senefelderplatz*), departing tomorrow at 2pm (at the time of writing this).
 
 ```shell
-curl 'https://v6.vbb.transport.rest/journeys?from=900058101&to=900110005&departure=tomorrow+2pm&results=2' -s | jq
+curl 'https://v7.vbb.transport.rest/journeys?from=900058101&to=900110005&departure=tomorrow+2pm&results=2' -fsSL | jq
 ```
 
 ```js
@@ -251,7 +254,8 @@ curl 'https://v6.vbb.transport.rest/journeys?from=900058101&to=900110005&departu
 		"type": "journey",
 		"legs": [ /* … */ ],
 		// …
-	}]
+	}],
+	"realtimeDataUpdatedAt": 1601830200,
 }
 ```
 
@@ -259,4 +263,4 @@ Note that `departure` includes the `departureDelay`, and `arrival` includes the 
 
 ### 4. more features
 
-These are the basics. Check the full [API docs](api.md) for all features or use the [OpenAPI playground](https://petstore.swagger.io/?url=https%3A%2F%2Fv6.vbb.transport.rest%2F.well-known%2Fservice-desc%0A) to explore the API!
+These are the basics. Check the full [API docs](api.md) for all features or use the [OpenAPI playground](https://petstore.swagger.io/?url=https%3A%2F%2Fv7.vbb.transport.rest%2F.well-known%2Fservice-desc%0A) to explore the API!

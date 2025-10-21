@@ -67,7 +67,10 @@ let hafas = createHafas(
 	// pkg.name,
 	// seems like these are being blocked
 	// require('crypto').randomBytes(10).toString('hex'),
-	'App/4.5.1 (iPhone; iOS 15.2; Scale/3.00)',
+	(
+		process.env.HAFAS_USER_AGENT ||
+		'App/4.5.1 (iPhone; iOS 15.2; Scale/3.00)'
+	),
 	{profile: customVbbProfile},
 )
 let healthCheck = createHealthCheck(hafas, berlinFriedrichstr)
@@ -113,7 +116,7 @@ const config = {
 	description: pkg.description,
 	version: pkg.version,
 	homepage: pkg.homepage,
-	docsLink: 'https://github.com/derhuerst/vbb-rest/blob/6/docs/readme.md',
+	docsLink: 'https://github.com/derhuerst/vbb-rest/blob/7/docs/readme.md',
 	openapiSpec: true,
 	logging: true,
 	aboutPage: false,

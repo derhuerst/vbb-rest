@@ -2,7 +2,7 @@ name: build & publish Docker image
 on:
   push:
     branches:
-      - 6
+      - 7
 jobs:
   lint-test:
     name: lint, build & test
@@ -13,7 +13,7 @@ jobs:
     - name: setup Node
       uses: actions/setup-node@v4
       with:
-        node-version: 18.x
+        node-version: 20.x
     - run: npm install
     - run: npm run lint
     - run: npm run build
@@ -41,7 +41,7 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm64
           tags: |
-            derhuerst/vbb-rest:6
+            derhuerst/vbb-rest:7
             derhuerst/vbb-rest:latest
           # https://docs.docker.com/build/ci/github-actions/examples/#github-cache
           cache-from: type=gha
@@ -66,8 +66,8 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm64
           tags: |
-            ghcr.io/${{github.repository}}:v6
-            ghcr.io/${{github.repository}}:v6_${{steps.hash.outputs.hash}}_${{steps.datetime.outputs.datetime}}
+            ghcr.io/${{github.repository}}:v7
+            ghcr.io/${{github.repository}}:v7_${{steps.hash.outputs.hash}}_${{steps.datetime.outputs.datetime}}
           # https://docs.docker.com/build/ci/github-actions/examples/#github-cache
           cache-from: type=gha
           cache-to: type=gha,mode=max,oci-mediatypes=true,compression=zstd
